@@ -1,19 +1,28 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Route, Switch,
+Redirect } from 'react-router-dom';
+
+
+import ReserveSeats from './components/customer/ReserveSeats'
+
+import MainApp from './components/MainApp'
+import EmployeeApp from './components/EmployeeApp'
+import AdminApp from './components/AdminApp'
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
+      <Router>
+        <Switch>
+          <Route exact path='/' component={MainApp} />
+
+          <Redirect exact from='/customer' to='/customer/reserve' />
+          <Route path='/customer/reserve' component={ReserveSeats} />
+
+          <Route path='/employee' component={EmployeeApp} />
+          <Route path='/admin' component={AdminApp} />
+        </Switch>
+      </Router>
     );
   }
 }
