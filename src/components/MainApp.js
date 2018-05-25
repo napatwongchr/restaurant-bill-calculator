@@ -1,39 +1,40 @@
 import React, { Component } from 'react'
+import styled from 'styled-components'
+import { Container, Row, Col } from 'reactstrap'
 import { connect } from 'react-redux'
 import { selectRole } from '../actions/Auth'
+import RoleCard from './common/RoleCard'
 
 class MainApp extends Component {
   render() {
     const { history } = this.props
     return (
-      <div className='container'>
-        <h1 className='text-center'>Select Your Role</h1>
-        <div className='row'>
-          <div className='col-4'>
-            <div onClick={() => history.push('/customer')} className='card'>
-              <div className='card-body'>
-                CUSTOMER
-              </div>
-            </div>
-          </div>
-          <div className='col-4'>
-            <div onClick={() => history.push('/employee')} className='card'>
-              <div className='card-body'>
-                EMPLOYEE
-              </div>
-            </div>
-          </div>
-          <div className='col-4'>
-            <div onClick={() => history.push('/admin')} className='card'>
-              <div className='card-body'>
-                ADMIN
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+      <ContainerWrapper className='d-flex flex-column'>
+        <Row className='mx-auto my-5'>
+          <SelectRoleHeading>Select Your Role</SelectRoleHeading>
+        </Row>
+        <Row className='my-5'>
+          <Col>
+            <RoleCard onClick={() => history.push('/customer')} text='CUSTOMER'/>
+          </Col>
+          <Col>
+            <RoleCard onClick={() => history.push('/employee')} text='EMPLOYEE'/>
+          </Col>
+          <Col>
+            <RoleCard onClick={() => history.push('/admin')} text='ADMIN'/>
+          </Col>
+        </Row>
+      </ContainerWrapper>
     )
   }
 }
+
+const ContainerWrapper = styled(Container)`
+  height: 100vh;
+`
+
+const SelectRoleHeading = styled.h1`
+  font-size: 90px;
+`
 
 export default connect(null, { selectRole })(MainApp)

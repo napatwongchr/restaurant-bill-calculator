@@ -15,7 +15,7 @@ class App extends Component {
       <Router>
         <Switch>
           <Route exact path='/' component={MainApp} />
-
+          
           <Redirect exact from='/customer' to='/customer/reserve' />
           <Route path='/customer/reserve' component={ReserveSeats} />
 
