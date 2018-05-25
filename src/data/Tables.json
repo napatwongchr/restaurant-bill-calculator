@@ -1,0 +1,148 @@
+{
+  "tables": [
+    {
+      "id": 1,
+      "type": "COUNTER",
+      "capacity": 1,
+      "people": null
+    },
+    {
+      "id": 2,
+      "type": "COUNTER",
+      "capacity": 1,
+      "people": null
+    },
+    {
+      "id": 3,
+      "type": "COUNTER",
+      "capacity": 1,
+      "people": null
+    },
+    {
+      "id": 4,
+      "type": "COUNTER",
+      "capacity": 1,
+      "people": null
+    },
+    {
+      "id": 5,
+      "type": "COUNTER",
+      "capacity": 1,
+      "people": null
+    },
+    {
+      "id": 6,
+      "type": "COUNTER",
+      "capacity": 1,
+      "people": null
+    },
+    {
+      "id": 7,
+      "type": "COUNTER",
+      "capacity": 1,
+      "people": null
+    },
+    {
+      "id": 8,
+      "type": "COUNTER",
+      "capacity": 1,
+      "people": null
+    },
+    {
+      "id": 9,
+      "type": "COUNTER",
+      "capacity": 1,
+      "people": null
+    },
+    {
+      "id": 10,
+      "type": "COUNTER",
+      "capacity": 1,
+      "people": null
+    },
+    {
+      "id": 11,
+      "type": "COUNTER",
+      "capacity": 1,
+      "people": null
+    },
+    {
+      "id": 12,
+      "type": "COUNTER",
+      "capacity": 1,
+      "people": null
+    },
+    {
+      "id": 13,
+      "type": "2SEATS",
+      "capacity": 2,
+      "people": null
+    },
+    {
+      "id": 14,
+      "type": "2SEATS",
+      "capacity": 2,
+      "people": null
+    },
+    {
+      "id": 15,
+      "type": "2SEATS",
+      "capacity": 2,
+      "people": null
+    },
+    {
+      "id": 16,
+      "type": "2SEATS",
+      "capacity": 2,
+      "people": null
+    },
+    {
+      "id": 17,
+      "type": "8SEATS",
+      "capacity": 8,
+      "people": null
+    },
+    {
+      "id": 18,
+      "type": "8SEATS",
+      "capacity": 8,
+      "people": null
+    },
+    {
+      "id": 19,
+      "type": "4SEATS",
+      "capacity": 6,
+      "people": null
+    },
+    {
+      "id": 20,
+      "type": "4SEATS",
+      "capacity": 6,
+      "people": null
+    },
+    {
+      "id": 21,
+      "type": "4SEATS",
+      "capacity": 6,
+      "people": null
+    },
+    {
+      "id": 22,
+      "type": "4SEATS",
+      "capacity": 6,
+      "people": null
+    },
+    {
+      "id": 23,
+      "type": "4SEATS",
+      "capacity": 6,
+      "people": null
+    },
+    {
+      "id": 24,
+      "type": "4SEATS",
+      "capacity": 6,
+      "people": null
+    }
+  ]
+}
