@@ -1,24 +1,13 @@
 import React from 'react'
-import { Row, Col, Container } from 'reactstrap'
+import AdminLayout1 from './common/AdminLayout1'
 
 const AdminApp = () => {
   return (
-    <Container fluid style={{height: '100vh'}}>
-      <Row className='h-100'>
-        <Col id='sticky-sidebar' className='bg-dark' md='2'>
-          <div className='py-2 sticky-top'>
-             <div className='nav flex-column'>
-               
-             </div>
-           </div>
-        </Col>
-        <Col className='py-4 px-4'>
-          <h2>Promotion Code</h2>
-          {/* Content */}
-        </Col>
-      </Row>
-    </Container>
-
+    <AdminLayout1 headings='Dashboard'>
+      <div className='d-flex flex-row justify-content-center align-items-center h-75'>
+        <h3 className='text-muted'>Welcome to admin dashboard</h3>
+      </div>
+    </AdminLayout1>
   )
 }
 

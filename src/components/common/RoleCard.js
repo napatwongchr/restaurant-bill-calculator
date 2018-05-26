@@ -1,5 +1,5 @@
 import React from 'react'
-import { Card, CardBody } from 'reactstrap'
+import PropTypes from 'prop-types'
 
 const RoleCard = ({ onClick, text }) => {
   return (
@@ -9,6 +9,15 @@ const RoleCard = ({ onClick, text }) => {
       </div>
     </div>
   )
+}
+
+RoleCard.defaultProps = {
+  onClick: () => {}
+}
+
+RoleCard.propTypes = {
+  text: PropTypes.string,
+  onClick: PropTypes.func
 }
 
 export default RoleCard
