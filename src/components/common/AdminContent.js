@@ -16,7 +16,10 @@ AdminContent.defaultProps = {
 
 AdminContent.propTypes = {
   headings: PropTypes.string,
-  children: PropTypes.array.isRequired
+  children: PropTypes.oneOfType([
+    PropTypes.element,
+    PropTypes.array
+  ]).isRequired
 }
 
 export default AdminContent
