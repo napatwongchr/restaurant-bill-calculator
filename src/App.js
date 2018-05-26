@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch,
 Redirect } from 'react-router-dom';
 
+import AddPromotionCode from './components/admin/AddPromotionCode'
 import PromotionCode from './components/admin/PromotionCode'
 import ReserveSeats from './components/customer/ReserveSeats'
 
@@ -20,6 +21,7 @@ class App extends Component {
           <Route path='/customer/reserve' component={ReserveSeats} />
 
           <Route path='/employee' component={EmployeeApp} />
+          <Route path='/admin/promotion/add' component={AddPromotionCode} />
           <Route path='/admin/promotion' component={PromotionCode} />
           <Route path='/admin' component={AdminApp} />
         </Switch>

@@ -31,11 +31,16 @@ class PromotionCode extends Component {
   }
 
   render() {
+    const { history } = this.props
     return (
       <AdminLayout1 headings='Promotion Code'>
         <AdminHeadings>
           <h2>Promotion Codes</h2>
-          <Button color='primary' onClick={() => console.log('go add codes')}>Add</Button>
+          <Button
+            color='primary'
+            onClick={() => history.push('/admin/promotion/add')}>
+              Add
+          </Button>
         </AdminHeadings>
         <Table className='mt-3' bordered>
           <thead>
@@ -55,4 +60,4 @@ class PromotionCode extends Component {
 }
 
 
-export default PromotionCode
+export default connect()(PromotionCode)

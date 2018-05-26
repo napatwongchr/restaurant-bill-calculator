@@ -10,7 +10,10 @@ const AdminHeadings = ({ children }) => {
 }
 
 AdminHeadings.propTypes = {
-  children: PropTypes.array.isRequired
+  children: PropTypes.oneOfType([
+    PropTypes.element,
+    PropTypes.array
+  ]).isRequired
 }
 
 export default AdminHeadings
