@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
 import AdminLayout1 from '../common/AdminLayout1'
-import { Table } from 'reactstrap'
+import AdminHeadings from '../common/AdminHeadings'
+import { Table, Button } from 'reactstrap'
 import data from '../../data/PromotionCodes.json'
 
 class PromotionCode extends Component {
@@ -9,7 +11,21 @@ class PromotionCode extends Component {
       <tr key={index}>
         <th scope='row'>{ index + 1}</th>
         <td>{code}</td>
-        <td>Edit | Delete</td>
+        <td>
+          <Button
+            color='info'
+            size='sm'
+            onClick={() => console.log('go edit codes')}>
+              Edit
+          </Button>
+          <Button
+            className='ml-2'
+            color='danger'
+            size='sm'
+            onClick={() => console.log('go delete codes')}>
+              Delete
+          </Button>
+        </td>
       </tr>
     ))
   }
@@ -17,6 +33,10 @@ class PromotionCode extends Component {
   render() {
     return (
       <AdminLayout1 headings='Promotion Code'>
+        <AdminHeadings>
+          <h2>Promotion Codes</h2>
+          <Button color='primary' onClick={() => console.log('go add codes')}>Add</Button>
+        </AdminHeadings>
         <Table className='mt-3' bordered>
           <thead>
             <tr>

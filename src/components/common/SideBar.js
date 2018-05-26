@@ -6,14 +6,12 @@ import { Col } from 'reactstrap'
 const SideBar = () => {
   return (
     <Col id='sticky-sidebar' className='bg-dark' md='2'>
-      <div className='sticky-top'>
-        <div className='sidebar-headings'>
-          Menu
-        </div>
-         <div className='sidebar-menu'>
-           <Link to='/admin/promotion'>Promotion Code</Link>
-         </div>
-       </div>
+      <div class='py-2 sticky-top'>
+          <div class='nav flex-column'>
+              <Link to='/admin'>Dashboard</Link>
+              <Link to='/admin/promotion'>Promotion code</Link>
+          </div>
+      </div>
     </Col>
   )
 }
