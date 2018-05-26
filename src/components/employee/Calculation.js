@@ -1,34 +1,43 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
+import EmployeeHeadings from '../common/EmployeeHeadings'
+import EmployeeContent from '../common/EmployeeContent'
 import { Container, Row, Col,
 Input, Button } from 'reactstrap'
 
 class Calculation extends Component {
   render() {
     return (
-      <Container>
-        <Row>
-          <Col className='d-flex justify-content-center'>
-            <BillHeadings className='mt-5'>Bill Summary</BillHeadings>
-          </Col>
-        </Row>
-        <Row className='mt-5'>
-          <Col md='3'></Col>
-          <Col md='6' className='d-flex flex-column align-items-center'>
-            <h2>Table Id #123</h2>
-            <Button onClick={() => alert('Checked !!') } className='mt-4'>
-              Checkout
-            </Button>
-          </Col>
-          <Col md='3'></Col>
-        </Row>
-      </Container>
+      <ContainerWrapper fluid>
+        <EmployeeHeadings
+          mainHeadings='BILL SUMMARY'
+          subHeadings='Summary for table #123'/>
+        <EmployeeContent classname='d-flex justify-content-center'>
+          <BillSummary md='6'>
+
+              <h4>adsfdsafasdfasdfasfd</h4>
+              <h4>adsfdsafasdfasdfasfd</h4>
+              <h4>adsfdsafasdfasdfasfd</h4>
+              <h4>adsfdsafasdfasdfasfd</h4>
+              <h4>adsfdsafasdfasdfasfd</h4>
+              <span>asdsadasdasdasd</span>
+          </BillSummary>
+        </EmployeeContent>
+      </ContainerWrapper>
     )
   }
 }
 
-const BillHeadings = styled.h1`
-  font-size: 56px
+const ContainerWrapper = styled(Container)`
+  min-height: 100vh;
+  background-color: #f2f2f2;
+`
+
+const BillSummary = styled(Col)`
+  width: 100%;
+  background-color: #FFFFFF;
+  padding: 30px;
+  border-radius: 30px;
 `
 
 export default Calculation

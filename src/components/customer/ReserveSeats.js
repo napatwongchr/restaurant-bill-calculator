@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
+import SeatInput from '../common/SeatInput'
 import { Container, Row, Col,
-Input, Button, InputGroup,
-InputGroupText, InputGroupAddon } from 'reactstrap'
+Input, Button } from 'reactstrap'
 
 class ReserveSeats extends Component {
   constructor(props){
@@ -34,15 +34,11 @@ class ReserveSeats extends Component {
         <Row className='mt-5'>
           <Col md='3'></Col>
           <Col md='6' className='d-flex flex-column align-items-center'>
-            <InputGroup size='lg'>
-              <InputGroupAddon addonType='prepend'>
-                <Button onClick={this.decreaseCount} color='secondary'>-</Button>
-              </InputGroupAddon>
-              <Input value={this.state.count} placeholder='Seats' />
-              <InputGroupAddon addonType='append'>
-                <Button onClick={this.increaseCount} color='secondary'>+</Button>
-              </InputGroupAddon>
-            </InputGroup>
+            <SeatInput
+              decreaseCount={this.decreaseCount}
+              increaseCount={this.increaseCount}
+              count={this.state.count}
+            />
             <Button
               onClick={() => history.push('/customer/success')}
               color='primary'

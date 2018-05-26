@@ -11,7 +11,7 @@ class MainApp extends Component {
     return (
       <ContainerWrapper className='d-flex flex-column'>
         <Row className='mx-auto my-5'>
-          <SelectRoleHeading>Select Your Role</SelectRoleHeading>
+          <SelectRoleHeading>Select Role</SelectRoleHeading>
         </Row>
         <Row className='my-5'>
           <Col>
@@ -34,7 +34,7 @@ const ContainerWrapper = styled(Container)`
 `
 
 const SelectRoleHeading = styled.h1`
-  font-size: 90px;
+  font-size: 70px;
 `
 
 export default connect(null, { selectRole })(MainApp)
