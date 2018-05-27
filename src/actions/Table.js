@@ -3,6 +3,8 @@ import {
   FETCH_TABLE,
   FETCH_TABLE_BY_ID,
   CALCULATE_BILL_TOTAL,
+  CALCULATE_BILL_SUBTOTAL,
+  CALCULATE_EXCHANGE,
   APPLY_CODE
 } from './types'
 
@@ -24,9 +26,18 @@ export const fetchTableById = (id) => {
   }
 }
 
+export const calculateExchange = (total, recieve) => {
+  const exchange = recieve - total
+  return {
+    type: CALCULATE_EXCHANGE,
+    payload: exchange
+  }
+}
+
 export const calculateBillTotal = (items, codes = null, dispatch) => {
   let total = 0
   items.map(item => total = total + (item.quantity * item.price))
+  dispatch({ type: CALCULATE_BILL_SUBTOTAL, payload: total})
   switch (codes) {
     case 'LUCKY ONE':
       total = total - (total * 0.15)

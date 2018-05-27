@@ -4,25 +4,32 @@ import WrappedButton from '../common/WrappedButton'
 import { Row, Col, Table,
 Input } from 'reactstrap'
 
-const EmployeeBill = ({ table, billTotal, codes, modalToggle }) => {
+const EmployeeBill = ({ table, billTotal, codes,
+  subTotal, exchange, modalToggle, handleRecieveInput }) => {
   return (
     <BillSummary md='6'>
       <BillHeadings modalToggle={modalToggle}/>
       <BillDetail />
-      <BillItemDetail data={table.items}/>
-      <BillCodes data={codes}/>
-      <BillPrice data={billTotal}/>
+      <BillItemDetail items={table.items}/>
+      <BillCodes codes={codes}/>
+      <BillPrice
+        handleRecieveInput={handleRecieveInput}
+        exchange={exchange}
+        billTotal={billTotal}
+        subTotal={subTotal}/>
       <BillActions />
     </BillSummary>
   )
 }
 
-const BillCodes = ({data}) => {
+export default EmployeeBill
+
+const BillCodes = ({codes}) => {
   return (
     <Row className='my-3'>
       <Col>
         <h4>You have apply</h4>
-        <h5>{data || 'No code'}</h5>
+        <h5>{codes || 'No code'}</h5>
       </Col>
     </Row>
   )
@@ -59,7 +66,7 @@ const BillDetail = () => {
   )
 }
 
-const BillItemDetail = ({data}) => {
+const BillItemDetail = ({items}) => {
   return (
     <Row className='my-3'>
       <Col>
@@ -74,7 +81,7 @@ const BillItemDetail = ({data}) => {
             </tr>
           </thead>
           <tbody>
-            {data.map((item, index) => <tr key={index} align='center'>
+            {items.map((item, index) => <tr key={index} align='center'>
               <th scope='row'>{ index + 1}</th>
               <td>{item.name}</td>
               <td>{item.price}</td>
@@ -88,20 +95,25 @@ const BillItemDetail = ({data}) => {
   )
 }
 
-const BillPrice = ({data}) => {
+const BillPrice = ({billTotal, subTotal, handleRecieveInput, exchange}) => {
   return (
     <div>
       <Row className='mt-3 d-flex justify-content-end'>
         <Col className='d-flex' md='6'>
           <SummaryText>Recieve:</SummaryText>
-          <Input className='ml-2' bsSize='sm'/>
+          <Input
+            onChange={handleRecieveInput}
+            type='number'
+            placeholder='MONEY YOU RECIEVE'
+            className='ml-2'
+            bsSize='sm'/>
         </Col>
       </Row>
       <Row className='my-3 d-flex justify-content-end'>
         <Col className='d-flex flex-column align-items-end' md='6'>
-          <SummaryText color='#a0a0a0'>SUB TOTAL: 11 BAHT</SummaryText>
-          <SummaryText>TOTAL: {data} BAHT</SummaryText>
-          <SummaryText>EXCHANGE: 11 BAHT</SummaryText>
+          <SummaryText color='#a0a0a0'>SUB TOTAL: {subTotal} BAHT</SummaryText>
+          <SummaryText>TOTAL: {billTotal} BAHT</SummaryText>
+          <SummaryText>EXCHANGE: {exchange} BAHT</SummaryText>
         </Col>
       </Row>
     </div>
@@ -134,6 +146,3 @@ const BillSummary = styled(Col)`
   padding: 30px;
   border-radius: 30px;
 `
-
-
-export default EmployeeBill

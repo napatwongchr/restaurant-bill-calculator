@@ -10,7 +10,7 @@ const ApplyCodeModal = ({ isOpen, toggle, classname }) => {
      <Modal isOpen={isOpen} toggle={toggle} className={classname}>
        <ModalHeader toggle={toggle}>Apply Code</ModalHeader>
        <ModalBody>
-         <Input />
+         <Input placeholder='APPLY DISCOUNT CODE HERE ...'/>
        </ModalBody>
        <ModalFooter>
          <WrappedButton
