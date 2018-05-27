@@ -2,10 +2,10 @@ import React from 'react'
 import styled from 'styled-components'
 import { Button } from 'reactstrap'
 
-const WrappedButton = ({ text, onClick, size, color, textColor, iconName }) => {
+const WrappedButton = ({ text, onClick, size, color, textcolor, iconName }) => {
   return (
     <ButtonWrapper
-      textColor={textColor}
+      textcolor={textcolor}
       color={color}
       onClick={onClick}
       size={size}>
@@ -23,7 +23,7 @@ const ButtonWrapper = styled(Button)`
   display: flex;
   justify-content: center;
   align-items: center;
-  color: ${props => props.textColor || '#000'}
+  color: ${props => props.textcolor || '#000'}
   border-radius: 20px;
   background-color: ${props => props.color};
   &:hover{

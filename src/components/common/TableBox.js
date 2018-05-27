@@ -12,7 +12,7 @@ const TableBox = ({ number, onClick }) => {
 }
 
 const CircleBox = styled.div`
-  margin: 0 20px;
+  margin: 10px 20px;
   display: flex;
   flex-direction: column;
   justify-content: center;

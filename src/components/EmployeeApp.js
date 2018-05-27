@@ -12,8 +12,18 @@ const EmployeeApp = ({ history }) => {
         mainHeadings='BILL CALCULATOR'
         subHeadings='Please select the table' />
       <EmployeeContent>
-        <Col className='d-flex justify-content-center mx-5'>
+        <Col className='d-flex justify-content-center flex-wrap mx-5'>
           <TableBox onClick={() => history.push('/employee/calculation')} number={1}/>
+          <TableBox number={1}/>
+          <TableBox number={1}/>
+          <TableBox number={1}/>
+          <TableBox number={1}/>
+          <TableBox number={1}/>
+          <TableBox number={1}/>
+          <TableBox number={1}/>
+          <TableBox number={1}/>
+          <TableBox number={1}/>
+          <TableBox number={1}/>
           <TableBox number={1}/>
           <TableBox number={1}/>
           <TableBox number={1}/>
