@@ -4,25 +4,25 @@ import WrappedButton from '../common/WrappedButton'
 import { Row, Col, Table,
 Input } from 'reactstrap'
 
-const EmployeeBill = ({ modalToggle }) => {
+const EmployeeBill = ({ table, billTotal, codes, modalToggle }) => {
   return (
     <BillSummary md='6'>
       <BillHeadings modalToggle={modalToggle}/>
       <BillDetail />
-      <BillItemDetail />
-      <BillCodes />
-      <BillPrice />
+      <BillItemDetail data={table.items}/>
+      <BillCodes data={codes}/>
+      <BillPrice data={billTotal}/>
       <BillActions />
     </BillSummary>
   )
 }
 
-const BillCodes = () => {
+const BillCodes = ({data}) => {
   return (
     <Row className='my-3'>
       <Col>
         <h4>You have apply</h4>
-        <h5>Code: 3PAY4</h5>
+        <h5>{data || 'No code'}</h5>
       </Col>
     </Row>
   )
@@ -40,7 +40,7 @@ const BillHeadings = ({modalToggle}) => {
           onClick={modalToggle}
           iconName='card_giftcard'
           textcolor='#FFFFFF'
-          color='#9e9e9e'
+          color='#407fed'
           size='sm'
           text='APPLY CODE' />
       </Col>
@@ -52,14 +52,14 @@ const BillDetail = () => {
   return (
     <Row className='my-3'>
       <Col>
-        <span style={{display: 'block'}}>INVOICE: 1213232424</span>
-        <span>DATE: 12/02/2018</span>
+        <span style={{display: 'block'}}>INVOICE: {Math.floor(Math.random(1) * 1000000)}</span>
+        <span>DATE: {Date.now()}</span>
       </Col>
     </Row>
   )
 }
 
-const BillItemDetail = () => {
+const BillItemDetail = ({data}) => {
   return (
     <Row className='my-3'>
       <Col>
@@ -74,13 +74,13 @@ const BillItemDetail = () => {
             </tr>
           </thead>
           <tbody>
-            <tr align='center'>
-              <th scope='row'>1</th>
-              <td>Buffet</td>
-              <td>420</td>
-              <td>2</td>
-              <td>1,000</td>
-            </tr>
+            {data.map((item, index) => <tr key={index} align='center'>
+              <th scope='row'>{ index + 1}</th>
+              <td>{item.name}</td>
+              <td>{item.price}</td>
+              <td>{item.quantity}</td>
+              <td>{item.price * item.quantity}</td>
+            </tr>)}
           </tbody>
         </Table>
       </Col>
@@ -88,7 +88,7 @@ const BillItemDetail = () => {
   )
 }
 
-const BillPrice = () => {
+const BillPrice = ({data}) => {
   return (
     <div>
       <Row className='mt-3 d-flex justify-content-end'>
@@ -99,7 +99,7 @@ const BillPrice = () => {
       </Row>
       <Row className='my-3 d-flex justify-content-end'>
         <Col className='text-right' md='6'>
-          <SummaryText>TOTAL: 1000 BAHT</SummaryText>
+          <SummaryText>TOTAL: {data} BAHT</SummaryText>
         </Col>
       </Row>
     </div>

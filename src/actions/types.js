@@ -1,1 +1,5 @@
 export const SELECT_ROLE = 'SELECT_ROLE'
+
+export const FETCH_TABLE = 'FETCH_TABLE'
+export const FETCH_TABLE_BY_ID = 'FETCH_TABLE_BY_ID'
+export const CALCULATE_BILL_TOTAL = 'CALCULATE_BILL_TOTAL'

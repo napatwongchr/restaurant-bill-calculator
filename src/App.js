@@ -23,7 +23,7 @@ class App extends Component {
           <Route path='/customer/success' component={SuccessReserve} />
           <Route path='/customer' component={ReserveSeats} />
 
-          <Route path='/employee/calculation' component={EmployeeCalculation} />
+          <Route path='/employee/calculation/:tableId' component={EmployeeCalculation} />
           <Route path='/employee' component={EmployeeApp} />
 
           <Route path='/admin/promotion/add' component={AddPromotionCode} />
