@@ -1,20 +1,30 @@
 import React from 'react'
+import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import { Col } from 'reactstrap'
 
 const SideBar = () => {
   return (
-    <Col id='sticky-sidebar' className='bg-dark' md='2'>
+    <SideBarWrapper md='2'>
       <div className='py-2 sticky-top'>
           <div className='nav flex-column'>
-              <Link to='/admin'>Dashboard</Link>
-              <Link to='/admin/promotion'>Promotion code</Link>
+              <MenuLink to='/admin'>Dashboard</MenuLink>
+              <MenuLink to='/admin/promotion'>Promotion code</MenuLink>
           </div>
       </div>
-    </Col>
+    </SideBarWrapper>
   )
 }
+
+const MenuLink = styled(Link)`
+  color: #000;
+`
+
+const SideBarWrapper = styled(Col)`
+  background-color: #f9bc02;
+  min-height: 100vh;
+`
 
 SideBar.defaultProps = {
 

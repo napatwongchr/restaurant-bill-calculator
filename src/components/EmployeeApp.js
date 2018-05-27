@@ -10,7 +10,7 @@ const EmployeeApp = ({ history }) => {
     <ContainerWrapper fluid>
       <EmployeeHeadings
         mainHeadings='BILL CALCULATOR'
-        subHeadings='PLEASE SELECT THE TABLE' />
+        subHeadings='Please select the table' />
       <EmployeeContent>
         <Col className='d-flex justify-content-center mx-5'>
           <TableBox onClick={() => history.push('/employee/calculation')} number={1}/>

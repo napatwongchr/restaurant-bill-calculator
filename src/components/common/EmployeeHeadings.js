@@ -20,7 +20,8 @@ const HeadingsArea = styled(Row)`
 `
 
 const MainHeadings = styled.h1`
-  font-size: 56px
+  font-size: 56px;
+  font-weight: bolder;
 `
 
 const SubHeadings = styled.h5`
