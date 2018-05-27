@@ -45,11 +45,6 @@ const ContainerWrapper = styled(Container)`
   height: 100vh;
 `
 
-const CardContainer = styled(Row)`
-  height: 600px;
-`
-
-
 const SelectRoleHeading = styled.h1`
   font-size: 70px;
 `

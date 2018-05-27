@@ -17,9 +17,9 @@ const RoleCard = ({ onClick, text, icon }) => {
 
 const RoleCardWrapper = styled.div`
   height: 85%;
-  background-color: #f9bc02;
-  border: 10px solid #000;
-  border-radius: 30px;
+  background-color: #fff;
+  border: 0px solid #000;
+  border-radius: 50%;
   cursor: pointer;
   &:hover {
     transform: translate(0, -3px)
