@@ -9,19 +9,30 @@ class MainApp extends Component {
   render() {
     const { history } = this.props
     return (
-      <ContainerWrapper className='d-flex flex-column'>
+      <ContainerWrapper fluid className='d-flex flex-column'>
         <Row className='mx-auto my-5'>
-          <SelectRoleHeading>Select Role</SelectRoleHeading>
+          <Col>
+            <SelectRoleHeading>Select Role</SelectRoleHeading>
+          </Col>
         </Row>
-        <Row className='my-5'>
+        <Row className='my-5 h-75'>
           <Col>
-            <RoleCard onClick={() => history.push('/customer')} text='CUSTOMER'/>
+            <RoleCard
+              onClick={() => history.push('/customer')}
+              icon='store_mall_directory'
+              text='CUSTOMER'/>
           </Col>
           <Col>
-            <RoleCard onClick={() => history.push('/employee')} text='EMPLOYEE'/>
+            <RoleCard
+              onClick={() => history.push('/employee')}
+              icon='restaurant_menu'
+              text='EMPLOYEE'/>
           </Col>
           <Col>
-            <RoleCard onClick={() => history.push('/admin')} text='ADMIN'/>
+            <RoleCard
+              onClick={() => history.push('/admin')}
+              icon='settings'
+              text='ADMIN'/>
           </Col>
         </Row>
       </ContainerWrapper>
@@ -30,8 +41,14 @@ class MainApp extends Component {
 }
 
 const ContainerWrapper = styled(Container)`
+  background-color: #f9bc02;
   height: 100vh;
 `
+
+const CardContainer = styled(Row)`
+  height: 600px;
+`
+
 
 const SelectRoleHeading = styled.h1`
   font-size: 70px;
