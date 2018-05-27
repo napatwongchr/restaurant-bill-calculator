@@ -4,7 +4,8 @@ import {
   CALCULATE_BILL_TOTAL,
   CALCULATE_BILL_SUBTOTAL,
   CALCULATE_EXCHANGE,
-  APPLY_CODE
+  APPLY_CODE,
+  REMOVE_CODE
 } from '../actions/types'
 
 const INITIAL_STATE = {
@@ -30,6 +31,8 @@ export default (state=INITIAL_STATE, action) => {
       return { ...state, exchange: action.payload }
     case APPLY_CODE:
       return { ...state, codes: action.payload}
+    case REMOVE_CODE:
+      return { ...state, codes: null}
     default:
       return state
   }

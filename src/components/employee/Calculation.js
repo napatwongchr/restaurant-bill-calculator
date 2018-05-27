@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { fetchTableById, calculateExchange, applyCode } from '../../actions/Table'
+import { fetchTableById, calculateExchange, applyCode,
+removeCode } from '../../actions/Table'
 import styled from 'styled-components'
 import EmployeeHeadings from '../common/EmployeeHeadings'
 import EmployeeContent from '../common/EmployeeContent'
@@ -20,6 +21,7 @@ class Calculation extends Component {
     this.handleRecieveInput = this.handleRecieveInput.bind(this)
     this.handleApplyCode = this.handleApplyCode.bind(this)
     this.submitCode = this.submitCode.bind(this)
+    this.handleRemoveCode = this.handleRemoveCode.bind(this)
   }
 
   toggle() {
@@ -40,6 +42,11 @@ class Calculation extends Component {
     this.props.applyCode(items, this.state.codes, this.toggle)
   }
 
+  handleRemoveCode() {
+    const { table: { items } } = this.props
+    this.props.removeCode(items)
+  }
+
   componentWillMount() {
     const { fetchTableById, match: { params: { tableId } } } = this.props
     this.props.fetchTableById(+tableId)
@@ -53,6 +60,7 @@ class Calculation extends Component {
           subHeadings={`Summary for table #${table.id}`} />
         <EmployeeContent classname='d-flex justify-content-center'>
           <EmployeeBill
+            handleRemoveCode={this.handleRemoveCode}
             handleRecieveInput={this.handleRecieveInput}
             exchange={exchange}
             table={table}
@@ -62,7 +70,6 @@ class Calculation extends Component {
             modalToggle={this.toggle} />
           <ApplyCodeModal
             submitCode={this.submitCode}
-            codes={this.state.codes}
             handleApplyCode={this.handleApplyCode}
             isOpen={this.state.modal}
             classname={this.props.className}
@@ -92,4 +99,4 @@ const mapStateToProps = ({ table }) => {
   return { table: singleTable, billTotal, codes, subTotal, exchange }
 }
 export default connect(mapStateToProps, { fetchTableById,
-  calculateExchange, applyCode })(Calculation)
+  calculateExchange, applyCode, removeCode })(Calculation)

@@ -5,7 +5,7 @@ ModalBody, ModalFooter, Input } from 'reactstrap'
 import styled from 'styled-components'
 
 const ApplyCodeModal = ({ isOpen, toggle, classname,
-  handleApplyCode, codes, items, submitCode }) => {
+  handleApplyCode, items, submitCode }) => {
   return (
     <div>
      <Modal isOpen={isOpen} toggle={toggle} className={classname}>

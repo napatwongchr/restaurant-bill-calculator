@@ -5,13 +5,16 @@ import { Row, Col, Table,
 Input } from 'reactstrap'
 
 const EmployeeBill = ({ table, billTotal, codes,
-  subTotal, exchange, modalToggle, handleRecieveInput }) => {
+  subTotal, exchange, modalToggle,
+  handleRecieveInput, handleRemoveCode }) => {
   return (
     <BillSummary md='6'>
       <BillHeadings modalToggle={modalToggle}/>
       <BillDetail />
       <BillItemDetail items={table.items}/>
-      <BillCodes codes={codes}/>
+      <BillCodes
+        handleRemoveCode={handleRemoveCode}
+        codes={codes}/>
       <BillPrice
         handleRecieveInput={handleRecieveInput}
         exchange={exchange}
@@ -24,12 +27,25 @@ const EmployeeBill = ({ table, billTotal, codes,
 
 export default EmployeeBill
 
-const BillCodes = ({codes}) => {
+const BillCodes = ({codes, handleRemoveCode}) => {
   return (
     <Row className='my-3'>
       <Col>
         <h4>You have apply</h4>
-        <h5>{codes || 'No code'}</h5>
+        { codes
+          ? (<Row>
+              <Col className='d-flex align-items-center'>
+                <h5 className='mr-2'>{codes}</h5>
+                <WrappedButton
+                  onClick={handleRemoveCode}
+                  iconName='clear'
+                  color='#ef405a'
+                  size='sm'
+                  text='' />
+              </Col>
+            </Row>)
+          : 'No code'
+        }
       </Col>
     </Row>
   )

@@ -5,7 +5,8 @@ import {
   CALCULATE_BILL_TOTAL,
   CALCULATE_BILL_SUBTOTAL,
   CALCULATE_EXCHANGE,
-  APPLY_CODE
+  APPLY_CODE,
+  REMOVE_CODE
 } from './types'
 
 export const fetchTable = () => {
@@ -62,10 +63,16 @@ const calculateBillTotal = (items, codes = null, dispatch) => {
 }
 
 export const applyCode = (items, codes, callback) => {
-  console.log(items, codes)
   return dispatch => {
     calculateBillTotal(items, codes, dispatch)
     dispatch({ type: APPLY_CODE, payload: codes })
     callback()
+  }
+}
+
+export const removeCode = (items) => {
+  return dispatch => {
+    dispatch({ type: REMOVE_CODE })
+    calculateBillTotal(items, null, dispatch)
   }
 }
