@@ -4,10 +4,10 @@ import WrappedButton from '../common/WrappedButton'
 import { Row, Col, Table,
 Input } from 'reactstrap'
 
-const EmployeeBill = () => {
+const EmployeeBill = ({ modalToggle }) => {
   return (
     <BillSummary md='6'>
-      <BillHeadings />
+      <BillHeadings modalToggle={modalToggle}/>
       <BillDetail />
       <BillItemDetail />
       <BillCodes />
@@ -28,7 +28,7 @@ const BillCodes = () => {
   )
 }
 
-const BillHeadings = () => {
+const BillHeadings = ({modalToggle}) => {
   return (
     <Row>
       <Col className='d-flex'>
@@ -37,6 +37,7 @@ const BillHeadings = () => {
       </Col>
       <Col className='d-flex justify-content-end'>
         <WrappedButton
+          onClick={modalToggle}
           iconName='card_giftcard'
           textcolor='#FFFFFF'
           color='#9e9e9e'
@@ -93,7 +94,7 @@ const BillPrice = () => {
       <Row className='mt-3 d-flex justify-content-end'>
         <Col className='d-flex' md='6'>
           <SummaryText>Recieve:</SummaryText>
-          <Input className='ml-2' size='sm'/>
+          <Input className='ml-2' bsSize='sm'/>
         </Col>
       </Row>
       <Row className='my-3 d-flex justify-content-end'>
