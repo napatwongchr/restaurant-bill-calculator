@@ -28,11 +28,9 @@ export const fetchTableById = (id) => {
 }
 
 export const calculateExchange = (total, recieve) => {
-  const exchange = recieve - total
-  return {
-    type: CALCULATE_EXCHANGE,
-    payload: exchange
-  }
+  let exchange = 0
+  recieve.length !== 0 ? exchange = recieve - total : exchange = 0
+  return { type: CALCULATE_EXCHANGE, payload: exchange }
 }
 
 const calculateBillTotal = (items, codes = null, dispatch) => {

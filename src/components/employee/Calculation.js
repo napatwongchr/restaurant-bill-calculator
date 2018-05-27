@@ -18,7 +18,7 @@ class Calculation extends Component {
       codes: null
     }
     this.toggle = this.toggle.bind(this);
-    this.handleRecieveInput = this.handleRecieveInput.bind(this)
+    this.handleExchange = this.handleExchange.bind(this)
     this.handleApplyCode = this.handleApplyCode.bind(this)
     this.submitCode = this.submitCode.bind(this)
     this.handleRemoveCode = this.handleRemoveCode.bind(this)
@@ -32,7 +32,7 @@ class Calculation extends Component {
     this.setState({codes: event.target.value})
   }
 
-  handleRecieveInput(event) {
+  handleExchange(event) {
     const { billTotal } = this.props
     this.props.calculateExchange(billTotal, event.target.value)
   }
@@ -61,7 +61,7 @@ class Calculation extends Component {
         <EmployeeContent classname='d-flex justify-content-center'>
           <EmployeeBill
             handleRemoveCode={this.handleRemoveCode}
-            handleRecieveInput={this.handleRecieveInput}
+            handleExchange={this.handleExchange}
             exchange={exchange}
             table={table}
             subTotal={subTotal}

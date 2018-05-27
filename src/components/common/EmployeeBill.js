@@ -6,7 +6,7 @@ Input } from 'reactstrap'
 
 const EmployeeBill = ({ table, billTotal, codes,
   subTotal, exchange, modalToggle,
-  handleRecieveInput, handleRemoveCode }) => {
+  handleExchange, handleRemoveCode }) => {
   return (
     <BillSummary md='6'>
       <BillHeadings modalToggle={modalToggle}/>
@@ -16,7 +16,7 @@ const EmployeeBill = ({ table, billTotal, codes,
         handleRemoveCode={handleRemoveCode}
         codes={codes}/>
       <BillPrice
-        handleRecieveInput={handleRecieveInput}
+        handleExchange={handleExchange}
         exchange={exchange}
         billTotal={billTotal}
         subTotal={subTotal}/>
@@ -111,14 +111,14 @@ const BillItemDetail = ({items}) => {
   )
 }
 
-const BillPrice = ({billTotal, subTotal, handleRecieveInput, exchange}) => {
+const BillPrice = ({billTotal, subTotal, handleExchange, exchange}) => {
   return (
     <div>
       <Row className='mt-3 d-flex justify-content-end'>
         <Col className='d-flex' md='6'>
           <SummaryText>Recieve:</SummaryText>
           <Input
-            onChange={handleRecieveInput}
+            onChange={handleExchange}
             type='number'
             placeholder='MONEY YOU RECIEVE'
             className='ml-2'
