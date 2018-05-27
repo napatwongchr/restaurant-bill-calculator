@@ -1,7 +1,8 @@
 import {
   FETCH_TABLE,
   FETCH_TABLE_BY_ID,
-  CALCULATE_BILL_TOTAL
+  CALCULATE_BILL_TOTAL,
+  APPLY_CODE
 } from '../actions/types'
 
 const INITIAL_STATE = {
@@ -19,6 +20,8 @@ export default (state=INITIAL_STATE, action) => {
       return { ...state, singleTable: action.payload }
     case CALCULATE_BILL_TOTAL:
       return { ...state, billTotal: action.payload }
+    case APPLY_CODE:
+      return { ...state, codes: action.payload}
     default:
       return state
   }

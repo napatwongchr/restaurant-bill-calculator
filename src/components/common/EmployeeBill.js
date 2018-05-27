@@ -98,8 +98,10 @@ const BillPrice = ({data}) => {
         </Col>
       </Row>
       <Row className='my-3 d-flex justify-content-end'>
-        <Col className='text-right' md='6'>
+        <Col className='d-flex flex-column align-items-end' md='6'>
+          <SummaryText color='#a0a0a0'>SUB TOTAL: 11 BAHT</SummaryText>
           <SummaryText>TOTAL: {data} BAHT</SummaryText>
+          <SummaryText>EXCHANGE: 11 BAHT</SummaryText>
         </Col>
       </Row>
     </div>
@@ -123,6 +125,7 @@ const BillActions = () => {
 }
 
 const SummaryText = styled.span`
+  color: ${props => props.color || '#000'}
   font-size: 20px;
 `
 

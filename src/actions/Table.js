@@ -2,7 +2,8 @@ import TableData from '../data/Tables.json'
 import {
   FETCH_TABLE,
   FETCH_TABLE_BY_ID,
-  CALCULATE_BILL_TOTAL
+  CALCULATE_BILL_TOTAL,
+  APPLY_CODE
 } from './types'
 
 export const fetchTable = () => {
@@ -18,17 +19,36 @@ export const fetchTableById = (id) => {
     return table.id === id
   })
   return dispatch => {
-    calculateBillTotal(table, null, dispatch)
+    calculateBillTotal(table.items, null, dispatch)
     dispatch({ type: FETCH_TABLE_BY_ID, payload: table })
   }
 }
 
-export const calculateBillTotal = (table, codes = null, dispatch) => {
+export const calculateBillTotal = (items, codes = null, dispatch) => {
   let total = 0
-  if(!codes) {
-    table.items.map(item => {
-      total = total + (item.quantity * item.price)
-    })
+  items.map(item => total = total + (item.quantity * item.price))
+  switch (codes) {
+    case 'LUCKY ONE':
+      total = total - (total * 0.15)
+      dispatch({ type: CALCULATE_BILL_TOTAL, payload: total})
+    case 'LUCKY TWO':
+      total = total - (total * 0.20)
+      dispatch({ type: CALCULATE_BILL_TOTAL, payload: total})
+    case '4PAY3':
+      total = total - 459
+      dispatch({ type: CALCULATE_BILL_TOTAL, payload: total })
+    default:
+      if (total > 6000) {
+        total = total - (total * 0.25)
+        dispatch({ type: CALCULATE_BILL_TOTAL, payload: total})
+      } else if (total > 1000) {
+        total = total - (total * 0.15)
+        dispatch({ type: CALCULATE_BILL_TOTAL, payload: total})
+      }
+      dispatch({ type: CALCULATE_BILL_TOTAL, payload: total})
   }
-  dispatch({ type: CALCULATE_BILL_TOTAL, payload: total})
+}
+
+export const applyCode = (codes) => {
+
 }
