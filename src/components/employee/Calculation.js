@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { fetchTableById, calculateBillTotal, calculateExchange } from '../../actions/Table'
+import { fetchTableById, calculateExchange, applyCode } from '../../actions/Table'
 import styled from 'styled-components'
 import EmployeeHeadings from '../common/EmployeeHeadings'
 import EmployeeContent from '../common/EmployeeContent'
@@ -13,11 +13,13 @@ class Calculation extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      modal: false
+      modal: false,
+      codes: null
     }
     this.toggle = this.toggle.bind(this);
     this.handleRecieveInput = this.handleRecieveInput.bind(this)
     this.handleApplyCode = this.handleApplyCode.bind(this)
+    this.submitCode = this.submitCode.bind(this)
   }
 
   toggle() {
@@ -25,12 +27,17 @@ class Calculation extends Component {
   }
 
   handleApplyCode(event) {
-    console.log(event.target.value)
+    this.setState({codes: event.target.value})
   }
 
   handleRecieveInput(event) {
     const { billTotal } = this.props
     this.props.calculateExchange(billTotal, event.target.value)
+  }
+
+  submitCode() {
+    const { table: { items } } = this.props
+    this.props.applyCode(items, this.state.codes, this.toggle)
   }
 
   componentWillMount() {
@@ -54,6 +61,8 @@ class Calculation extends Component {
             codes={codes}
             modalToggle={this.toggle} />
           <ApplyCodeModal
+            submitCode={this.submitCode}
+            codes={this.state.codes}
             handleApplyCode={this.handleApplyCode}
             isOpen={this.state.modal}
             classname={this.props.className}
@@ -83,4 +92,4 @@ const mapStateToProps = ({ table }) => {
   return { table: singleTable, billTotal, codes, subTotal, exchange }
 }
 export default connect(mapStateToProps, { fetchTableById,
-  calculateBillTotal, calculateExchange })(Calculation)
+  calculateExchange, applyCode })(Calculation)
