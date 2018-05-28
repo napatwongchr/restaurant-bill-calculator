@@ -100,8 +100,8 @@ const ContainerWrapper = styled(Container)`
 `
 
 const mapStateToProps = ({ table, code }) => {
-  const { codes } = code
-  const { singleTable, billTotal, appliedCode, subTotal, exchange } = table
+  const { codes, appliedCode } = code
+  const { singleTable, billTotal, subTotal, exchange } = table
   return { singleTable, billTotal, appliedCode, subTotal, exchange, codes }
 }
 export default connect(mapStateToProps, { fetchTableById, fetchCodes,

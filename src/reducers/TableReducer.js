@@ -13,8 +13,7 @@ const INITIAL_STATE = {
   singleTable: null,
   billTotal: 0,
   subTotal: 0,
-  exchange: 0,
-  appliedCode: null
+  exchange: 0
 }
 
 export default (state=INITIAL_STATE, action) => {
@@ -29,10 +28,6 @@ export default (state=INITIAL_STATE, action) => {
       return { ...state, subTotal: action.payload }
     case CALCULATE_EXCHANGE:
       return { ...state, exchange: action.payload }
-    case APPLY_CODE:
-      return { ...state, appliedCode: action.payload}
-    case REMOVE_CODE:
-      return { ...state, appliedCode: null}
     default:
       return state
   }

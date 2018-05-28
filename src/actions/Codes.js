@@ -12,8 +12,7 @@ export const fetchCodes = () => {
 
 export const applyCode = (items, codes, callback) => {
   return dispatch => {
-    calculateBillTotal(items, codes, dispatch)
-    dispatch({ type: APPLY_CODE, payload: codes })
+    calculateBillTotal(items, codes, true, dispatch)
     callback()
   }
 }
@@ -21,6 +20,6 @@ export const applyCode = (items, codes, callback) => {
 export const removeCode = (items) => {
   return dispatch => {
     dispatch({ type: REMOVE_CODE })
-    calculateBillTotal(items, null, dispatch)
+    calculateBillTotal(items, null, false, dispatch)
   }
 }
