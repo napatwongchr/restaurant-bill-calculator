@@ -7,10 +7,10 @@ import data from '../../data/PromotionCodes.json'
 
 class PromotionCode extends Component {
   renderTableRows() {
-    return data.codes.map(({ code }, index) => (
+    return data.data.map(({ name }, index) => (
       <tr key={index}>
         <th scope='row'>{ index + 1}</th>
-        <td>{code}</td>
+        <td>{name}</td>
         <td>
           <Button
             color='info'

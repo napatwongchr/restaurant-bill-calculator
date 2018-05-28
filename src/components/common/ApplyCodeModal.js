@@ -5,7 +5,8 @@ ModalBody, ModalFooter, Input } from 'reactstrap'
 import styled from 'styled-components'
 
 const ApplyCodeModal = ({ isOpen, toggle, classname,
-  handleApplyCode, items, submitCode, inputCodes, selectedCode }) => {
+  handleApplyCode, items, handleSubmitCode,
+  inputCodes, selectedCode }) => {
   return  <div>
              <Modal isOpen={isOpen} toggle={toggle} className={classname}>
                <ModalHeader toggle={toggle}>
@@ -29,7 +30,7 @@ const ApplyCodeModal = ({ isOpen, toggle, classname,
                    color='#f9bc02'
                    size='sm'
                    text='APPLY'
-                   onClick={submitCode} />{' '}
+                   onClick={handleSubmitCode} />{' '}
                  <WrappedButton
                    textcolor='#FFF'
                    iconName='clear'

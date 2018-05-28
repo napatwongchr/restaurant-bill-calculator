@@ -33,7 +33,7 @@ export const calculateExchange = (total, recieve) => {
   return { type: CALCULATE_EXCHANGE, payload: exchange }
 }
 
-const calculateBillTotal = (items, codes = null, dispatch) => {
+export const calculateBillTotal = (items, codes = null, dispatch) => {
   let total = 0
   items.map(item => total = total + (item.quantity * item.price))
   dispatch({ type: CALCULATE_BILL_SUBTOTAL, payload: total})
@@ -56,21 +56,5 @@ const calculateBillTotal = (items, codes = null, dispatch) => {
       dispatch({ type: CALCULATE_BILL_TOTAL, payload: total})
     }
     dispatch({ type: CALCULATE_BILL_TOTAL, payload: total})
-  }
-
-}
-
-export const applyCode = (items, codes, callback) => {
-  return dispatch => {
-    calculateBillTotal(items, codes, dispatch)
-    dispatch({ type: APPLY_CODE, payload: codes })
-    callback()
-  }
-}
-
-export const removeCode = (items) => {
-  return dispatch => {
-    dispatch({ type: REMOVE_CODE })
-    calculateBillTotal(items, null, dispatch)
   }
 }

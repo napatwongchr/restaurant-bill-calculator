@@ -1,8 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { fetchTableById, calculateExchange, applyCode,
-removeCode } from '../../actions/Table'
-import { fetchCodes } from '../../actions/Codes'
+import { fetchTableById, calculateExchange } from '../../actions/Table'
+import { fetchCodes, applyCode, removeCode } from '../../actions/Codes'
 import styled from 'styled-components'
 import EmployeeHeadings from '../common/EmployeeHeadings'
 import EmployeeContent from '../common/EmployeeContent'
@@ -21,8 +20,8 @@ class Calculation extends Component {
     this.toggle = this.toggle.bind(this);
     this.handleExchange = this.handleExchange.bind(this)
     this.handleApplyCode = this.handleApplyCode.bind(this)
-    this.submitCode = this.submitCode.bind(this)
     this.handleRemoveCode = this.handleRemoveCode.bind(this)
+    this.handleSubmitCode = this.handleSubmitCode.bind(this)
   }
 
   toggle() {
@@ -38,13 +37,13 @@ class Calculation extends Component {
     this.props.calculateExchange(billTotal, event.target.value)
   }
 
-  submitCode() {
-    const { table: { items } } = this.props
+  handleSubmitCode() {
+    const { singleTable: { items } } = this.props
     this.props.applyCode(items, this.state.selectedCode, this.toggle)
   }
 
   handleRemoveCode() {
-    const { table: { items } } = this.props
+    const { singleTable: { items } } = this.props
     this.props.removeCode(items)
   }
 
@@ -54,18 +53,18 @@ class Calculation extends Component {
     this.props.fetchCodes()
   }
 
-  renderBill(table, billTotal, appliedCode, subTotal, exchange, codes) {
+  renderBill(singleTable, billTotal, appliedCode, subTotal, exchange, codes) {
     return (
       <div>
         <EmployeeHeadings
           mainHeadings='BILL SUMMARY'
-          subHeadings={`Summary for table #${table.id}`} />
+          subHeadings={`Summary for table #${singleTable.id}`} />
         <EmployeeContent>
           <EmployeeBill
             handleRemoveCode={this.handleRemoveCode}
             handleExchange={this.handleExchange}
             exchange={exchange}
-            table={table}
+            table={singleTable}
             subTotal={subTotal}
             billTotal={billTotal}
             appliedCode={appliedCode}
@@ -73,7 +72,7 @@ class Calculation extends Component {
           <ApplyCodeModal
             inputCodes={codes}
             selectedCode={this.state.selectedCode}
-            submitCode={this.submitCode}
+            handleSubmitCode={this.handleSubmitCode}
             handleApplyCode={this.handleApplyCode}
             isOpen={this.state.modal}
             classname={this.props.className}
@@ -84,11 +83,11 @@ class Calculation extends Component {
   }
 
   render() {
-    const { table, billTotal, appliedCode,
+    const { singleTable, billTotal, appliedCode,
       subTotal, exchange, codes } = this.props
     return (
       <ContainerWrapper fluid>
-        { table && this.renderBill(table, billTotal, appliedCode,
+        { singleTable && this.renderBill(singleTable, billTotal, appliedCode,
                                     subTotal, exchange, codes) }
       </ContainerWrapper>
     )
@@ -103,7 +102,7 @@ const ContainerWrapper = styled(Container)`
 const mapStateToProps = ({ table, code }) => {
   const { codes } = code
   const { singleTable, billTotal, appliedCode, subTotal, exchange } = table
-  return { table: singleTable, billTotal, appliedCode, subTotal, exchange, codes }
+  return { singleTable, billTotal, appliedCode, subTotal, exchange, codes }
 }
 export default connect(mapStateToProps, { fetchTableById, fetchCodes,
   calculateExchange, applyCode, removeCode })(Calculation)
