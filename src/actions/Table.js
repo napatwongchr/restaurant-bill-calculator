@@ -1,12 +1,13 @@
 import TableData from '../data/Tables.json'
+import fs from 'fs'
 import {
   FETCH_TABLE,
   FETCH_TABLE_BY_ID,
   CALCULATE_BILL_TOTAL,
   CALCULATE_BILL_SUBTOTAL,
   CALCULATE_EXCHANGE,
+  CHECK_OUT,
   APPLY_CODE,
-  REMOVE_CODE,
   CODE_6000,
   CODE_1000,
   CODE_LUCKYTWO,
@@ -23,9 +24,7 @@ export const fetchTable = () => {
 
 export const fetchTableById = (id) => {
   const tables = TableData.data
-  const table = tables.find(table => {
-    return table.id === id
-  })
+  const table = tables.find(table => table.id === id)
   return dispatch => {
     calculateBillTotal(table.items, null, true, dispatch)
     dispatch({ type: FETCH_TABLE_BY_ID, payload: table })
@@ -35,14 +34,16 @@ export const fetchTableById = (id) => {
 export const calculateExchange = (total, recieve) => {
   let exchange = 0
   recieve.length !== 0 ? exchange = recieve - total : exchange = 0
-  // exchange < 0 ? exchange = 0 : exchange = recieve - total 
+  // exchange < 0 ? exchange = 0 : exchange = recieve - total
   return { type: CALCULATE_EXCHANGE, payload: exchange }
 }
 
 export const calculateBillTotal = (items, codes, promotion, dispatch) => {
   let total = 0
+
   items.map(item => total = total + (item.quantity * item.price))
   dispatch({ type: CALCULATE_BILL_SUBTOTAL, payload: total})
+
   if (promotion) {
     if (codes) {
       const discountItems = generateDiscountItems(total, codes)

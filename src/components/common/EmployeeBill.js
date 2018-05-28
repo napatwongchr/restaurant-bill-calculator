@@ -76,7 +76,7 @@ const BillHeadings = ({ reservation, modalToggle }) => {
     <Row>
       <Col className='d-flex'>
         <i className='material-icons mr-2'>restaurant_menu</i>
-        <h4>360 RESTAURANT</h4>
+        <h4>063 RESTAURANT</h4>
       </Col>
       { reservation
         ? <Col className='d-flex justify-content-end'>

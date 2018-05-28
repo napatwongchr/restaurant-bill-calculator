@@ -2,7 +2,6 @@ import { data } from '../data/PromotionCodes.json'
 import { calculateBillTotal } from './Table'
 import {
   FETCH_CODES,
-  APPLY_CODE,
   REMOVE_CODE
 } from './types'
 
