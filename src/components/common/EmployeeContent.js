@@ -3,15 +3,17 @@ import PropTypes from 'prop-types'
 import { Row } from 'reactstrap'
 import styled from 'styled-components'
 
-const EmployeeContent = ({ children, classname }) => {
+const EmployeeContent = ({ children }) => {
   return (
-    <BodyArea className={classname}>
+    <BodyArea>
       {children}
     </BodyArea>
   )
 }
 
 const BodyArea = styled(Row)`
+  display: flex;
+  justify-content: center;
   position: relative;
   top: -50px;
 `

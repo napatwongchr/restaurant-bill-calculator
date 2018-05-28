@@ -12,10 +12,10 @@ class MainApp extends Component {
       <ContainerWrapper fluid className='d-flex flex-column'>
         <Row className='mx-auto my-5'>
           <Col>
-            <SelectRoleHeading>Select Role</SelectRoleHeading>
+            <SelectRoleHeading>SELECT ROLE</SelectRoleHeading>
           </Col>
         </Row>
-        <Row className='my-5 h-75'>
+        <CardContainer className='my-5'>
           <Col>
             <RoleCard
               onClick={() => history.push('/customer')}
@@ -34,7 +34,7 @@ class MainApp extends Component {
               icon='settings'
               text='ADMIN'/>
           </Col>
-        </Row>
+        </CardContainer>
       </ContainerWrapper>
     )
   }
@@ -45,8 +45,13 @@ const ContainerWrapper = styled(Container)`
   height: 100vh;
 `
 
+const CardContainer = styled(Row)`
+  height: 75%;
+`
+
 const SelectRoleHeading = styled.h1`
   font-size: 70px;
+  font-weight: bolder;
 `
 
 export default connect(null, { selectRole })(MainApp)

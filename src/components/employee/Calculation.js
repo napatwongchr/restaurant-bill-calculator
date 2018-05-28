@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { fetchTableById, calculateExchange, applyCode,
 removeCode } from '../../actions/Table'
+import { fetchCodes } from '../../actions/Codes'
 import styled from 'styled-components'
 import EmployeeHeadings from '../common/EmployeeHeadings'
 import EmployeeContent from '../common/EmployeeContent'
@@ -15,7 +16,7 @@ class Calculation extends Component {
     super(props)
     this.state = {
       modal: false,
-      codes: null
+      selectedCode: 'default'
     }
     this.toggle = this.toggle.bind(this);
     this.handleExchange = this.handleExchange.bind(this)
@@ -29,7 +30,7 @@ class Calculation extends Component {
   }
 
   handleApplyCode(event) {
-    this.setState({codes: event.target.value})
+    this.setState({selectedCode: event.target.value})
   }
 
   handleExchange(event) {
@@ -39,7 +40,7 @@ class Calculation extends Component {
 
   submitCode() {
     const { table: { items } } = this.props
-    this.props.applyCode(items, this.state.codes, this.toggle)
+    this.props.applyCode(items, this.state.selectedCode, this.toggle)
   }
 
   handleRemoveCode() {
@@ -50,15 +51,16 @@ class Calculation extends Component {
   componentWillMount() {
     const { fetchTableById, match: { params: { tableId } } } = this.props
     this.props.fetchTableById(+tableId)
+    this.props.fetchCodes()
   }
 
-  renderBill(table, billTotal, codes, subTotal, exchange) {
+  renderBill(table, billTotal, appliedCode, subTotal, exchange, codes) {
     return (
       <div>
         <EmployeeHeadings
           mainHeadings='BILL SUMMARY'
           subHeadings={`Summary for table #${table.id}`} />
-        <EmployeeContent classname='d-flex justify-content-center'>
+        <EmployeeContent>
           <EmployeeBill
             handleRemoveCode={this.handleRemoveCode}
             handleExchange={this.handleExchange}
@@ -66,9 +68,11 @@ class Calculation extends Component {
             table={table}
             subTotal={subTotal}
             billTotal={billTotal}
-            codes={codes}
+            appliedCode={appliedCode}
             modalToggle={this.toggle} />
           <ApplyCodeModal
+            inputCodes={codes}
+            selectedCode={this.state.selectedCode}
             submitCode={this.submitCode}
             handleApplyCode={this.handleApplyCode}
             isOpen={this.state.modal}
@@ -80,10 +84,12 @@ class Calculation extends Component {
   }
 
   render() {
-    const { table, billTotal, codes, subTotal, exchange } = this.props
+    const { table, billTotal, appliedCode,
+      subTotal, exchange, codes } = this.props
     return (
       <ContainerWrapper fluid>
-        { table && this.renderBill(table, billTotal, codes, subTotal, exchange) }
+        { table && this.renderBill(table, billTotal, appliedCode,
+                                    subTotal, exchange, codes) }
       </ContainerWrapper>
     )
   }
@@ -94,9 +100,10 @@ const ContainerWrapper = styled(Container)`
   background-color: #f2f2f2;
 `
 
-const mapStateToProps = ({ table }) => {
-  const { singleTable, billTotal, codes, subTotal, exchange } = table
-  return { table: singleTable, billTotal, codes, subTotal, exchange }
+const mapStateToProps = ({ table, code }) => {
+  const { codes } = code
+  const { singleTable, billTotal, appliedCode, subTotal, exchange } = table
+  return { table: singleTable, billTotal, appliedCode, subTotal, exchange, codes }
 }
-export default connect(mapStateToProps, { fetchTableById,
+export default connect(mapStateToProps, { fetchTableById, fetchCodes,
   calculateExchange, applyCode, removeCode })(Calculation)
