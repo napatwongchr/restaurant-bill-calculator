@@ -13,6 +13,7 @@ export const fetchCodes = () => {
 }
 
 export const addCode = (values) => {
+  console.log(values)
   return { type: ADD_CODE }
 }
 
