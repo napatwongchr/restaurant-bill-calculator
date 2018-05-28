@@ -14,3 +14,11 @@ This application is divided into 3 parts.
 - System can be able to remove discount code from bill.
 - System can be able to calculate exchanges.
 - System can be able to apply 1 discount code only.
+
+## Admin section
+- System can be able to add / edit / delete discount code
+
+## Future tasks
+- Seats reservation module
+- Responsive
+- Create storybook and build style guide

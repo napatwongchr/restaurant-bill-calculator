@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import WrappedButton from '../common/WrappedButton'
 import AdminLayout1 from '../common/AdminLayout1'
 import AdminHeadings from '../common/AdminHeadings'
 import { Table, Button } from 'reactstrap'
@@ -12,19 +13,22 @@ class PromotionCode extends Component {
         <th scope='row'>{ index + 1}</th>
         <td>{name}</td>
         <td>
-          <Button
-            color='info'
-            size='sm'
-            onClick={() => console.log('go edit codes')}>
-              Edit
-          </Button>
-          <Button
+          <WrappedButton
             className='ml-2'
-            color='danger'
+            onClick={() => console.log('edit')}
+            iconName='edit'
+            textcolor='#FFFFFF'
+            color='#407fed'
             size='sm'
-            onClick={() => console.log('go delete codes')}>
-              Delete
-          </Button>
+            text='EDIT' />
+          <WrappedButton
+            className='ml-2'
+            onClick={() => console.log('delete')}
+            iconName='clear'
+            textcolor='#FFFFFF'
+            color='#ef405a'
+            size='sm'
+            text='DELETE' />
         </td>
       </tr>
     ))
@@ -36,11 +40,13 @@ class PromotionCode extends Component {
       <AdminLayout1 headings='Promotion Code'>
         <AdminHeadings>
           <h2>Promotion Codes</h2>
-          <Button
-            color='primary'
-            onClick={() => history.push('/admin/promotion/add')}>
-              Add
-          </Button>
+          <WrappedButton
+            onClick={() => history.push('/admin/promotion/add')}
+            iconName='add'
+            textcolor='#000'
+            color='#f9bc02'
+            size='lg'
+            text='ADD' />
         </AdminHeadings>
         <Table className='mt-3' bordered>
           <thead>

@@ -3,9 +3,12 @@ import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import { Button } from 'reactstrap'
 
-const WrappedButton = ({ text, onClick, size, color, textcolor, iconName, onRight }) => {
+const WrappedButton = ({ text, onClick, size,
+  color, textcolor, iconName,
+  onRight, className }) => {
   return (
     <ButtonWrapper
+      className={className}
       textcolor={textcolor}
       color={color}
       onClick={onClick}
@@ -54,7 +57,8 @@ const ButtonContentWrapper = styled.div`
 
 WrappedButton.defaultProps = {
   onRight: false,
-  onClick: () => {}
+  onClick: () => {},
+  classname: ''
 }
 
 WrappedButton.propTypes = {
@@ -64,7 +68,8 @@ WrappedButton.propTypes = {
   textcolor: PropTypes.string,
   size: PropTypes.string,
   color: PropTypes.string,
-  onClick: PropTypes.func
+  onClick: PropTypes.func,
+  classname: PropTypes.string
 }
 
 export default WrappedButton

@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { fetchTableById, calculateExchange } from '../../actions/Table'
-import { fetchCodes, applyCode, removeCode } from '../../actions/Codes'
+import { fetchCodes, applyCode, removeCodeFromBill } from '../../actions/Codes'
 import styled from 'styled-components'
 import EmployeeHeadings from '../common/EmployeeHeadings'
 import EmployeeContent from '../common/EmployeeContent'
@@ -44,7 +44,7 @@ class Calculation extends Component {
 
   handleRemoveCode() {
     const { singleTable: { items } } = this.props
-    this.props.removeCode(items)
+    this.props.removeCodeFromBill(items)
   }
 
   componentWillMount() {
@@ -105,4 +105,4 @@ const mapStateToProps = ({ table, code }) => {
   return { singleTable, billTotal, appliedCode, subTotal, exchange, codes }
 }
 export default connect(mapStateToProps, { fetchTableById, fetchCodes,
-  calculateExchange, applyCode, removeCode })(Calculation)
+  calculateExchange, applyCode, removeCodeFromBill })(Calculation)

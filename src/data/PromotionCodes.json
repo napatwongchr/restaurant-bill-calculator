@@ -1,7 +1,7 @@
 {
   "data": [
-    { "name": "LUCKY ONE" },
-    { "name": "4PAY3" },
-    { "name": "LUCKY TWO" }
+    { "name": "LUCKY ONE", "discount": "0.15", "type": "percent" },
+    { "name": "4PAY3", "discount": "459", "type": "fixed" },
+    { "name": "LUCKY TWO", "discount": "0.20", "type": "percent" }
   ]
 }

@@ -8,8 +8,11 @@ export const CALCULATE_BILL_SUBTOTAL = 'CALCULATE_BILL_SUBTOTAL'
 export const CALCULATE_EXCHANGE = 'CALCULATE_EXCHANGE'
 
 export const FETCH_CODES = 'FETCH_CODES'
-export const APPLY_CODE = 'APPLY_CODE'
+export const ADD_CODE = 'ADD_CODE'
 export const REMOVE_CODE = 'REMOVE_CODE'
+export const EDIT_CODE = 'EDIT_CODE'
+export const APPLY_CODE = 'APPLY_CODE'
+export const REMOVE_CODE_FROM_BILL = 'REMOVE_CODE_FROM_BILL'
 export const GET_CODE_CASES = 'GET_CODE_CASES'
 
 export const CODE_6000 = 'CODE_6000'
