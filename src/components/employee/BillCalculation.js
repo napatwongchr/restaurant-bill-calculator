@@ -10,7 +10,7 @@ import ApplyCodeModal from '../common/ApplyCodeModal'
 
 import { Container } from 'reactstrap'
 
-class Calculation extends Component {
+class BillCalculation extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -48,9 +48,9 @@ class Calculation extends Component {
   }
 
   componentWillMount() {
-    const { fetchTableById, match: { params: { tableId } } } = this.props
-    this.props.fetchTableById(+tableId)
-    this.props.fetchCodes()
+    const { fetchTableById, fetchCodes, match: { params: { tableId } } } = this.props
+    fetchTableById(+tableId)
+    fetchCodes()
   }
 
   renderBill(singleTable, billTotal, appliedCode, subTotal, exchange, codes) {
@@ -105,4 +105,4 @@ const mapStateToProps = ({ table, code }) => {
   return { singleTable, billTotal, appliedCode, subTotal, exchange, codes }
 }
 export default connect(mapStateToProps, { fetchTableById, fetchCodes,
-  calculateExchange, applyCode, removeCodeFromBill })(Calculation)
+  calculateExchange, applyCode, removeCodeFromBill })(BillCalculation)
