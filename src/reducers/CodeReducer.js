@@ -1,6 +1,7 @@
 import {
   FETCH_CODES,
   APPLY_CODE,
+  ADD_CODE,
   REMOVE_CODE_FROM_BILL,
   GET_CODE_CASES
 } from '../actions/types'
@@ -15,6 +16,8 @@ export default (state=INITIAL_STATE, action) => {
   switch (action.type) {
     case FETCH_CODES:
       return {...state, codes: action.payload}
+    case ADD_CODE:
+      return {...state, codes: [...state.codes, action.payload]}
     case APPLY_CODE:
       return {...state, appliedCode: action.payload}
     case REMOVE_CODE_FROM_BILL:

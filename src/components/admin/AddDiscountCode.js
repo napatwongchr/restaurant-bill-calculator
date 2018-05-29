@@ -16,7 +16,8 @@ class AddDiscountCode extends Component {
   }
 
   submit(values) {
-    this.props.addCode(values)
+    const { addCode, history } = this.props
+    addCode(values, () => history.push('/admin/promotion'))
   }
 
   handleSelect(event) {
