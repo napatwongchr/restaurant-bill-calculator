@@ -7,7 +7,7 @@ Button, Form, FormGroup,
 Label } from 'reactstrap'
 import WrappedButton from '../common/WrappedButton'
 
-const EditDiscountCodeForm = ({ handleSubmit, selectValue, handleSelect }) => {
+const DiscountCodeForm = ({ handleSubmit }) => {
   return <Form>
             <Row>
               <Col>
@@ -23,8 +23,6 @@ const EditDiscountCodeForm = ({ handleSubmit, selectValue, handleSelect }) => {
                 </FormGroup>
                 <FormGroup>
                   <Field
-                    selectValue={selectValue}
-                    handleSelect={handleSelect}
                     required
                     label='Discount Type'
                     value='default'
@@ -94,8 +92,6 @@ const renderSelectField = ({
   label,
   className,
   required,
-  selectValue,
-  handleSelect,
   meta: { touched, error, warning }
 }) => (
   <div>
@@ -142,8 +138,8 @@ const validate = values => {
   return errors
 }
 
-export default reduxForm({
-  form: 'editDiscountCodeForm',
-  enableReinitialize: true,
-  validate
-})(EditDiscountCodeForm)
+export const EditDiscountCodeForm = reduxForm({ form: 'editDiscountCodeForm',
+enableReinitialize: true, validate })(DiscountCodeForm)
+
+export const AddDiscountCodeForm = reduxForm({ form: 'addDiscountCodeForm',
+validate })(DiscountCodeForm)

@@ -3,18 +3,11 @@ import { connect } from 'react-redux'
 import { addCode, fetchCodeById, editCode } from '../../actions/Codes'
 import { Field, reduxForm } from 'redux-form'
 import { Row, Col } from 'reactstrap'
-import EditDiscountCodeForm from './EditDiscountCodeForm'
+import { EditDiscountCodeForm } from './DiscountCodeForm'
 import AdminLayout1 from '../common/AdminLayout1'
 import AdminHeadings from '../common/AdminHeadings'
 
 class EditDiscountCode extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      discountType: ''
-    }
-  }
-
   componentWillMount() {
     const { fetchCodeById, match: { params } } = this.props
     fetchCodeById(+params.codeId)
@@ -26,11 +19,8 @@ class EditDiscountCode extends Component {
     editCode(data, () => history.push('/admin/discount'))
   }
 
-  handleSelect(event) {
-    this.setState({ discountType: event.target.value})
-  }
-
   render() {
+    // console.log(DiscountCodeForm)
     return (
       <AdminLayout1 headings='Add promotion code'>
         <AdminHeadings>
@@ -40,8 +30,6 @@ class EditDiscountCode extends Component {
           <Col>
             <EditDiscountCodeForm
               initialValues={this.props.code}
-              selectValue={this.state.discountType}
-              handleSelect={this.handleSelect.bind(this)}
               onSubmit={this.submit.bind(this)} />
           </Col>
         </Row>
