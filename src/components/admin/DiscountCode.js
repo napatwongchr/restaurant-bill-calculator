@@ -4,7 +4,7 @@ import { deleteCode } from '../../actions/Codes'
 import WrappedButton from '../common/WrappedButton'
 import AdminLayout1 from '../common/AdminLayout1'
 import AdminHeadings from '../common/AdminHeadings'
-import { Table, Button } from 'reactstrap'
+import { Table } from 'reactstrap'
 
 class PromotionCode extends Component {
   renderTableRows() {

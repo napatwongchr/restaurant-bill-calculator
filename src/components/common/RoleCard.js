@@ -16,7 +16,9 @@ const RoleCard = ({ onClick, text, icon }) => {
 }
 
 const RoleCardWrapper = styled.div`
-  height: 85%;
+  width: 300px;
+  margin: 0px 50px;
+  padding: 50px;
   background-color: #fff;
   border: 0px solid #000;
   border-radius: 50%;
@@ -32,7 +34,7 @@ const Role = styled.h2`
 
 const RoleIcon = styled.i`
   color: #000;
-  font-size: 150px;
+  font-size: 100px;
 `
 
 RoleCard.defaultProps = {

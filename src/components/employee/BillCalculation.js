@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { fetchTableById, calculateExchange } from '../../actions/Table'
-import { fetchCodes, applyCode, removeCodeFromBill } from '../../actions/Codes'
+import { applyCode, removeCodeFromBill } from '../../actions/Codes'
 import styled from 'styled-components'
 import EmployeeHeadings from '../common/EmployeeHeadings'
 import EmployeeContent from '../common/EmployeeContent'
@@ -60,6 +60,7 @@ class BillCalculation extends Component {
           subHeadings={`Summary for table #${singleTable.id}`} />
         <EmployeeContent>
           <EmployeeBill
+            history={this.props.history}
             handleRemoveCode={this.handleRemoveCode}
             handleExchange={this.handleExchange}
             exchange={exchange}

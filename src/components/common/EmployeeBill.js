@@ -6,7 +6,7 @@ Input } from 'reactstrap'
 
 const EmployeeBill = ({ table, billTotal, appliedCode,
   subTotal, exchange, modalToggle,
-  handleExchange, handleRemoveCode }) => {
+  handleExchange, handleRemoveCode, history }) => {
 
   const reservation = table.people
 
@@ -32,7 +32,7 @@ const EmployeeBill = ({ table, billTotal, appliedCode,
           </div>
         : <div>
             <BillHeadings reservation={reservation} modalToggle={modalToggle}/>
-            <h2 className='text-center py-4'>No reservation</h2>
+            <NoReservationContent history={history}/>
           </div> }
     </BillSummary>
   )
@@ -178,3 +178,23 @@ const BillActions = () => {
             </Col>
           </Row>
 }
+
+const NoReservationContent = ({ history }) => {
+  return <Row>
+            <NoReservationContentWrapper>
+              <h2 className='text-center py-4'>No reservation</h2>
+              <WrappedButton
+                textcolor='#000'
+                color='#f9bc02'
+                size='lg'
+                onClick={() => history.push('/employee')}
+                iconName='keyboard_backspace'
+                text='BACK' />
+            </NoReservationContentWrapper>
+          </Row>
+}
+
+const NoReservationContentWrapper = styled(Col)`
+  display: flex;
+  flex-direction: column;
+`

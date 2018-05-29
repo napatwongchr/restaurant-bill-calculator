@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { addCode, fetchCodeById, editCode } from '../../actions/Codes'
-import { Field, reduxForm } from 'redux-form'
+import { fetchCodeById, editCode } from '../../actions/Codes'
 import { Row, Col } from 'reactstrap'
 import { EditDiscountCodeForm } from './DiscountCodeForm'
 import AdminLayout1 from '../common/AdminLayout1'
@@ -20,7 +19,6 @@ class EditDiscountCode extends Component {
   }
 
   render() {
-    // console.log(DiscountCodeForm)
     return (
       <AdminLayout1 headings='Add promotion code'>
         <AdminHeadings>

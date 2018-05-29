@@ -17,31 +17,27 @@ class MainApp extends Component {
     const { history } = this.props
     return (
       <ContainerWrapper fluid className='d-flex flex-column'>
-        <Row className='mx-auto my-5'>
-          <Col>
+        <Row>
+          <HeadingWrapper>
             <SelectRoleHeading>SELECT ROLE</SelectRoleHeading>
-          </Col>
+          </HeadingWrapper>
         </Row>
-        <CardContainer className='my-5'>
-          <Col>
+        <Row className='h-50'>
+          <RoleCardWrapper>
             <RoleCard
               onClick={() => history.push('/customer')}
               icon='store_mall_directory'
               text='CUSTOMER'/>
-          </Col>
-          <Col>
             <RoleCard
               onClick={() => history.push('/employee')}
               icon='restaurant_menu'
               text='EMPLOYEE'/>
-          </Col>
-          <Col>
             <RoleCard
               onClick={() => history.push('/admin')}
               icon='settings'
               text='ADMIN'/>
-          </Col>
-        </CardContainer>
+          </RoleCardWrapper>
+        </Row>
       </ContainerWrapper>
     )
   }
@@ -52,8 +48,16 @@ const ContainerWrapper = styled(Container)`
   height: 100vh;
 `
 
-const CardContainer = styled(Row)`
-  height: 75%;
+const RoleCardWrapper = styled(Col)`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`
+
+const HeadingWrapper = styled(Col)`
+  display: flex;
+  justify-content: center;
+  margin: 70px 0px;
 `
 
 const SelectRoleHeading = styled.h1`

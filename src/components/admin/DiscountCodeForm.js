@@ -1,10 +1,8 @@
 import React from 'react'
-import { connect } from 'react-redux'
 import styled from 'styled-components'
 import { Field, reduxForm } from 'redux-form'
-import { Input, Row, Col,
-Button, Form, FormGroup,
-Label } from 'reactstrap'
+import { Row, Col, Form,
+  FormGroup } from 'reactstrap'
 import WrappedButton from '../common/WrappedButton'
 
 const DiscountCodeForm = ({ handleSubmit }) => {

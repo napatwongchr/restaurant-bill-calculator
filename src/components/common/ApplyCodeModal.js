@@ -2,7 +2,6 @@ import React from 'react'
 import WrappedButton from './WrappedButton'
 import { Modal, ModalHeader,
 ModalBody, ModalFooter, Input } from 'reactstrap'
-import styled from 'styled-components'
 
 const ApplyCodeModal = ({ isOpen, toggle, classname,
   handleApplyCode, items, handleSubmitCode,

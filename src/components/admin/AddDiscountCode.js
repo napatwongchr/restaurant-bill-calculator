@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { addCode } from '../../actions/Codes'
-import { Field, reduxForm } from 'redux-form'
 import { Row, Col } from 'reactstrap'
 import { AddDiscountCodeForm } from './DiscountCodeForm'
 import AdminLayout1 from '../common/AdminLayout1'
