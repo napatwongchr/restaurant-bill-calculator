@@ -6,7 +6,7 @@ import styled from 'styled-components'
 import EmployeeHeadings from '../common/EmployeeHeadings'
 import EmployeeContent from '../common/EmployeeContent'
 import EmployeeBill from '../common/EmployeeBill'
-import ApplyCodeModal from '../common/ApplyCodeModal'
+import ApplyCodeModal from './ApplyCodeModal'
 
 import { Container } from 'reactstrap'
 
@@ -14,12 +14,10 @@ class BillCalculation extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      modal: false,
-      selectedCode: 'default'
+      modal: false
     }
     this.toggle = this.toggle.bind(this);
     this.handleExchange = this.handleExchange.bind(this)
-    this.handleApplyCode = this.handleApplyCode.bind(this)
     this.handleRemoveCode = this.handleRemoveCode.bind(this)
     this.handleSubmitCode = this.handleSubmitCode.bind(this)
   }
@@ -28,18 +26,14 @@ class BillCalculation extends Component {
     this.setState({ modal: !this.state.modal })
   }
 
-  handleApplyCode(event) {
-    this.setState({selectedCode: event.target.value})
-  }
-
   handleExchange(event) {
     const { billTotal } = this.props
     this.props.calculateExchange(billTotal, event.target.value)
   }
 
-  handleSubmitCode() {
+  handleSubmitCode(value) {
     const { singleTable: { items } } = this.props
-    this.props.applyCode(items, this.state.selectedCode, this.toggle)
+    this.props.applyCode(items, value, this.toggle)
   }
 
   handleRemoveCode() {
@@ -71,11 +65,8 @@ class BillCalculation extends Component {
             modalToggle={this.toggle} />
           <ApplyCodeModal
             inputCodes={codes}
-            selectedCode={this.state.selectedCode}
             handleSubmitCode={this.handleSubmitCode}
-            handleApplyCode={this.handleApplyCode}
             isOpen={this.state.modal}
-            classname={this.props.className}
             toggle={this.toggle} />
         </EmployeeContent>
       </div>

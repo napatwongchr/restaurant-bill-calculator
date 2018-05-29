@@ -23,7 +23,6 @@ const DiscountCodeForm = ({ handleSubmit }) => {
                   <Field
                     required
                     label='Discount Type'
-                    value='default'
                     className='form-control'
                     name='discountCodeType'
                     component={renderSelectField} />
@@ -119,7 +118,7 @@ const ImportantText = styled.span`
   color: #ef405a;
 `
 
-const validate = values => {
+const validate = (values) => {
   const errors = {}
   if(!values.codeName) {
     errors.codeName = 'Required'

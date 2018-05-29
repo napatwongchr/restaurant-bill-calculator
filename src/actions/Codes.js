@@ -40,7 +40,7 @@ export const deleteCode = (id) => {
 
 export const applyCode = (items, codes, callback) => {
   return dispatch => {
-    calculateBillTotal(items, codes, true, dispatch)
+    calculateBillTotal(items, codes.discountCode, true, dispatch)
     callback()
   }
 }
