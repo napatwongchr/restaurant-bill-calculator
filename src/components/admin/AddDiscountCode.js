@@ -16,8 +16,8 @@ class AddDiscountCode extends Component {
   }
 
   submit(values) {
-    const { addCode, history } = this.props
-    addCode(values, () => history.push('/admin/discount'))
+    const { addCode, history, codes } = this.props
+    addCode(values, codes.length, () => history.push('/admin/discount'))
   }
 
   handleSelect(event) {
@@ -43,4 +43,9 @@ class AddDiscountCode extends Component {
   }
 }
 
-export default connect(null, { addCode })(AddDiscountCode)
+const mapStateToProps = ({ code }) => {
+  const { codes } = code
+  return { codes }
+}
+
+export default connect(mapStateToProps, { addCode })(AddDiscountCode)

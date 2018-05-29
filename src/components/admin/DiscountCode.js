@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { deleteCode } from '../../actions/Codes'
 import WrappedButton from '../common/WrappedButton'
 import AdminLayout1 from '../common/AdminLayout1'
 import AdminHeadings from '../common/AdminHeadings'
@@ -7,10 +8,10 @@ import { Table, Button } from 'reactstrap'
 
 class PromotionCode extends Component {
   renderTableRows() {
-    const { codes } = this.props
-    return codes.map(({ codeName }, index) => (
+    const { codes, deleteCode } = this.props
+    return codes.map(({ id, codeName }, index) => (
       <tr key={index}>
-        <th scope='row'>{ index + 1}</th>
+        <th scope='row'>{ id }</th>
         <td>{codeName}</td>
         <td>
           <WrappedButton
@@ -23,7 +24,7 @@ class PromotionCode extends Component {
             text='EDIT' />
           <WrappedButton
             className='ml-2'
-            onClick={() => console.log('delete')}
+            onClick={() => deleteCode(id)}
             iconName='clear'
             textcolor='#FFFFFF'
             color='#ef405a'
@@ -51,7 +52,7 @@ class PromotionCode extends Component {
         <Table className='mt-3' bordered>
           <thead>
             <tr>
-              <th>#</th>
+              <th>Id</th>
               <th>Codes</th>
               <th>Actions</th>
             </tr>
@@ -70,4 +71,4 @@ const mapStateToProps = ({ code }) => {
   return { codes }
 }
 
-export default connect(mapStateToProps)(PromotionCode)
+export default connect(mapStateToProps, { deleteCode })(PromotionCode)

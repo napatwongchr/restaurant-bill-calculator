@@ -1,9 +1,6 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-
-import { fetchTable } from './actions/Table'
-import { fetchCodes } from './actions/Codes'
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 
 import BillCalculation from './components/employee/BillCalculation'
 
@@ -18,10 +15,6 @@ import EmployeeApp from './components/EmployeeApp'
 import AdminApp from './components/AdminApp'
 
 class App extends Component {
-  // componentWillMount() {
-  //   this.props.fetchTable()
-  //   this.props.fetchCodes()
-  // }
 
   render() {
     return (
@@ -44,4 +37,4 @@ class App extends Component {
   }
 }
 
-export default connect(null, { fetchTable, fetchCodes })(App);
+export default App

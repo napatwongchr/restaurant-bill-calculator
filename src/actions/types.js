@@ -9,7 +9,7 @@ export const CALCULATE_EXCHANGE = 'CALCULATE_EXCHANGE'
 
 export const FETCH_CODES = 'FETCH_CODES'
 export const ADD_CODE = 'ADD_CODE'
-export const REMOVE_CODE = 'REMOVE_CODE'
+export const DELETE_CODE = 'DELETE_CODE'
 export const EDIT_CODE = 'EDIT_CODE'
 export const APPLY_CODE = 'APPLY_CODE'
 export const REMOVE_CODE_FROM_BILL = 'REMOVE_CODE_FROM_BILL'
