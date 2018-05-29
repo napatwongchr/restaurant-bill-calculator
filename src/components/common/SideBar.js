@@ -12,7 +12,7 @@ const SideBar = () => {
                 <i className='material-icons pr-2'>dashboard</i>
                 <span>Dashboard</span>
               </MenuLink>
-              <MenuLink to='/admin/promotion'>
+              <MenuLink to='/admin/discount'>
                 <i className='material-icons pr-2'>card_giftcard</i>
                 <span>Discount codes</span>
               </MenuLink>

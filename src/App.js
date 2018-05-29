@@ -18,10 +18,10 @@ import EmployeeApp from './components/EmployeeApp'
 import AdminApp from './components/AdminApp'
 
 class App extends Component {
-  componentWillMount() {
-    this.props.fetchTable()
-    this.props.fetchCodes()
-  }
+  // componentWillMount() {
+  //   this.props.fetchTable()
+  //   this.props.fetchCodes()
+  // }
 
   render() {
     return (
@@ -35,8 +35,8 @@ class App extends Component {
           <Route path='/employee/calculation/:tableId' component={BillCalculation} />
           <Route path='/employee' component={EmployeeApp} />
 
-          <Route path='/admin/promotion/add' component={AddDiscountCode} />
-          <Route path='/admin/promotion' component={DiscountCode} />
+          <Route path='/admin/discount/add' component={AddDiscountCode} />
+          <Route path='/admin/discount' component={DiscountCode} />
           <Route path='/admin' component={AdminApp} />
         </Switch>
       </Router>

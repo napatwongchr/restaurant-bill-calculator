@@ -1,4 +1,4 @@
-import { data } from '../data/PromotionCodes.json'
+import { data } from '../data/DiscountCodes.json'
 import { calculateBillTotal } from './Table'
 import {
   FETCH_CODES,
@@ -12,7 +12,7 @@ export const fetchCodes = () => {
   return { type: FETCH_CODES, payload: data}
 }
 
-export const addCode = (values) => {
+export const addCode = (values, callback) => {
   const codeData = {}
   const { codeName, amountDiscount, discountCodeType, limitPeople } = values
 
@@ -20,7 +20,7 @@ export const addCode = (values) => {
   codeData.amountDiscount = +amountDiscount
   codeData.discountCodeType = discountCodeType
   codeData.limitPeople = +limitPeople
-
+  callback()
   return { type: ADD_CODE, payload: codeData }
 }
 

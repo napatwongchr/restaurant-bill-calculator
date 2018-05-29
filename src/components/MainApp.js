@@ -2,10 +2,17 @@ import React, { Component } from 'react'
 import styled from 'styled-components'
 import { Container, Row, Col } from 'reactstrap'
 import { connect } from 'react-redux'
+import { fetchTable } from '../actions/Table'
+import { fetchCodes } from '../actions/Codes'
 import { selectRole } from '../actions/Auth'
 import RoleCard from './common/RoleCard'
 
 class MainApp extends Component {
+  componentWillMount() {
+    this.props.fetchTable()
+    this.props.fetchCodes()
+  }
+
   render() {
     const { history } = this.props
     return (
@@ -54,4 +61,4 @@ const SelectRoleHeading = styled.h1`
   font-weight: bolder;
 `
 
-export default connect(null, { selectRole })(MainApp)
+export default connect(null, { selectRole, fetchTable, fetchCodes })(MainApp)

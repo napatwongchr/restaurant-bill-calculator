@@ -41,7 +41,7 @@ class PromotionCode extends Component {
         <AdminHeadings>
           <h2>Discount Codes</h2>
           <WrappedButton
-            onClick={() => history.push('/admin/promotion/add')}
+            onClick={() => history.push('/admin/discount/add')}
             iconName='add'
             textcolor='#000'
             color='#f9bc02'
