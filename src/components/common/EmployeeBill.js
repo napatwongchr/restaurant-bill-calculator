@@ -28,7 +28,7 @@ const EmployeeBill = ({ table, billTotal, appliedCode,
               exchange={exchange}
               billTotal={billTotal}
               subTotal={subTotal} />
-            <BillActions />
+            <BillActions  history={history} />
           </div>
         : <div>
             <BillHeadings reservation={reservation} modalToggle={modalToggle}/>
@@ -50,10 +50,15 @@ const BillCodes = ({ appliedCode, handleRemoveCode }) => {
   return (
     <Row className='my-3'>
       <Col>
-        <h4>You have apply</h4>
+        <Row>
+          <Col className='d-flex'>
+            <i className='material-icons mr-2'>card_giftcard</i>
+            <h4>System has applied</h4>
+          </Col>
+        </Row>
         { appliedCode
           ? <Row>
-              <Col className='d-flex align-items-center'>
+              <Col md='3' className='d-flex flex-column'>
                 <WrappedButton
                   onRight
                   onClick={handleRemoveCode}
@@ -97,10 +102,10 @@ const BillDetail = () => {
   return <Row className='my-3'>
             <Col>
               <span style={{ display: 'block' }}>
-                INVOICE: { Math.floor(Math.random(1) * 1000000) }
+                INVOICE: 123123123
               </span>
               <span>
-                DATE: { Date.now() }
+                DATE: 12/02/2030
               </span>
             </Col>
           </Row>
@@ -167,9 +172,15 @@ const SummaryText = styled.span`
   font-size: 20px;
 `
 
-const BillActions = () => {
+const BillActions = ({ history }) => {
   return <Row>
-            <Col className='d-flex justify-content-end'>
+            <Col className='d-flex justify-content-between'>
+              <WrappedButton
+                onClick={() => history.push('/employee')}
+                iconName='keyboard_backspace'
+                color='#bfbfbf'
+                size='lg'
+                text='BACK' />
               <WrappedButton
                 iconName='send'
                 color='#f9bc02'

@@ -8,7 +8,7 @@ import { selectRole } from '../actions/Auth'
 import RoleCard from './common/RoleCard'
 
 class MainApp extends Component {
-  componentWillMount() {
+  componentDidMount() {
     this.props.fetchTable()
     this.props.fetchCodes()
   }

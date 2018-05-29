@@ -41,9 +41,9 @@ class BillCalculation extends Component {
     this.props.removeCodeFromBill(items)
   }
 
-  componentWillMount() {
-    const { fetchTableById, match: { params: { tableId } } } = this.props
-    fetchTableById(+tableId)
+  componentDidMount() {
+    const { fetchTableById, appliedCode, match: { params: { tableId } } } = this.props
+    fetchTableById(+tableId, appliedCode)
   }
 
   renderBill(singleTable, billTotal, appliedCode, subTotal, exchange, codes) {

@@ -20,10 +20,10 @@ export const fetchTable = () => {
   }
 }
 
-export const fetchTableById = (id) => {
+export const fetchTableById = (id, code) => {
   const table = data.find(table => table.id === id)
   return dispatch => {
-    calculateBillTotal(table.items, null, true, dispatch)
+    calculateBillTotal(table.items, code, true, dispatch)
     dispatch({ type: FETCH_TABLE_BY_ID, payload: table })
   }
 }
