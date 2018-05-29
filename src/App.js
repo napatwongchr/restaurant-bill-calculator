@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
-import { connect } from 'react-redux'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 
 import BillCalculation from './components/employee/BillCalculation'
 
+import EditDiscountCode from './components/admin/EditDiscountCode'
 import AddDiscountCode from './components/admin/AddDiscountCode'
 import DiscountCode from './components/admin/DiscountCode'
 
@@ -28,6 +28,7 @@ class App extends Component {
           <Route path='/employee/calculation/:tableId' component={BillCalculation} />
           <Route path='/employee' component={EmployeeApp} />
 
+          <Route path='/admin/discount/edit/:codeId' component={EditDiscountCode} />
           <Route path='/admin/discount/add' component={AddDiscountCode} />
           <Route path='/admin/discount' component={DiscountCode} />
           <Route path='/admin' component={AdminApp} />

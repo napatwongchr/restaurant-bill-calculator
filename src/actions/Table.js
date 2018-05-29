@@ -1,5 +1,4 @@
-import TableData from '../data/Tables.json'
-import fs from 'fs'
+import { data } from '../data/Tables.json'
 import {
   FETCH_TABLE,
   FETCH_TABLE_BY_ID,
@@ -18,13 +17,12 @@ import {
 export const fetchTable = () => {
   return {
     type: FETCH_TABLE,
-    payload: TableData.data
+    payload: data
   }
 }
 
 export const fetchTableById = (id) => {
-  const tables = TableData.data
-  const table = tables.find(table => table.id === id)
+  const table = data.find(table => table.id === id)
   return dispatch => {
     calculateBillTotal(table.items, null, true, dispatch)
     dispatch({ type: FETCH_TABLE_BY_ID, payload: table })

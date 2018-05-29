@@ -2,6 +2,7 @@ import { data } from '../data/DiscountCodes.json'
 import { calculateBillTotal } from './Table'
 import {
   FETCH_CODES,
+  FETCH_CODE_BY_ID,
   ADD_CODE,
   DELETE_CODE,
   EDIT_CODE,
@@ -10,6 +11,10 @@ import {
 
 export const fetchCodes = () => {
   return { type: FETCH_CODES, payload: data}
+}
+
+export const fetchCodeById = (id) => {
+  return { type: FETCH_CODE_BY_ID, payload: id }
 }
 
 export const addCode = (values, collectionLength, callback) => {
@@ -24,8 +29,9 @@ export const addCode = (values, collectionLength, callback) => {
   return { type: ADD_CODE, payload: codeData }
 }
 
-export const editCode = (id, values, callback) => {
-  return { type: EDIT_CODE }
+export const editCode = (data, callback) => {
+  callback()
+  return { type: EDIT_CODE, payload: data  }
 }
 
 export const deleteCode = (id) => {

@@ -8,7 +8,7 @@ import { Table, Button } from 'reactstrap'
 
 class PromotionCode extends Component {
   renderTableRows() {
-    const { codes, deleteCode } = this.props
+    const { codes, deleteCode, history } = this.props
     return codes.map(({ id, codeName }, index) => (
       <tr key={index}>
         <th scope='row'>{ id }</th>
@@ -16,7 +16,7 @@ class PromotionCode extends Component {
         <td>
           <WrappedButton
             className='ml-2'
-            onClick={() => console.log('edit')}
+            onClick={() => history.push(`/admin/discount/edit/${id}`)}
             iconName='edit'
             textcolor='#FFFFFF'
             color='#407fed'
