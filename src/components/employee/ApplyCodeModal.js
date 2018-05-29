@@ -5,7 +5,7 @@ import { Modal, ModalHeader,
 ModalBody, ModalFooter, Input } from 'reactstrap'
 
 const ApplyCodeModal = ({ isOpen, toggle, handleSubmitCode,
-  inputCodes }) => {
+  inputCodes, table }) => {
   return  <div>
              <Modal isOpen={isOpen} toggle={toggle}>
                <ModalHeader toggle={toggle}>
@@ -15,7 +15,8 @@ const ApplyCodeModal = ({ isOpen, toggle, handleSubmitCode,
                  <ApplyCodeForm
                    toggle={toggle}
                    onSubmit={handleSubmitCode}
-                   inputCodes={inputCodes} />
+                   inputCodes={inputCodes}
+                   table={table} />
                </ModalBody>
              </Modal>
            </div>

@@ -64,6 +64,7 @@ class BillCalculation extends Component {
             appliedCode={appliedCode}
             modalToggle={this.toggle} />
           <ApplyCodeModal
+            table={singleTable}
             inputCodes={codes}
             handleSubmitCode={this.handleSubmitCode}
             isOpen={this.state.modal}

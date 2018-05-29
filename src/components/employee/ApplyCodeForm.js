@@ -4,7 +4,7 @@ import { Row, Col, Form } from 'reactstrap'
 import WrappedButton from '../common/WrappedButton'
 import { Field, reduxForm } from 'redux-form'
 
-const ApplyCodeForm = ({ handleSubmit, inputCodes, toggle }) => {
+const ApplyCodeForm = ({ handleSubmit, inputCodes, toggle, table }) => {
   return (
     <Row>
       <Col>
@@ -36,12 +36,6 @@ const ApplyCodeForm = ({ handleSubmit, inputCodes, toggle }) => {
   )
 }
 
-const ButtonActionWrapper = styled(Col)`
-  display: flex;
-  justify-content: flex-end;
-  margin: 10px 0px;
-`
-
 const renderSelectField = ({
   inputCodes,
   name,
@@ -51,17 +45,36 @@ const renderSelectField = ({
   meta: { touched, error, warning }
 }) => (
   <div>
-    <Field className='form-control' component='select' name='discountCode'>
+    <Field className='form-control mb-2' component='select' name='discountCode'>
       <option value=''>Please select discount code</option>
       {inputCodes.map(code => <option key={code.id} value={code.codeName}>{code.codeName}</option>)}
     </Field>
+    { touched && (error && <ImportantText>{ error }</ImportantText>)}
   </div>
 )
 
-const validate = (value, { inputCodes }) => {
-  console.log(value, inputCodes)
+const ButtonActionWrapper = styled(Col)`
+  display: flex;
+  justify-content: flex-end;
+  margin: 10px 0px;
+`
+
+const ImportantText = styled.span`
+  color: #ef405a;
+`
+
+const validate = (value, { inputCodes, table }) => {
   const errors = {}
-  if(value.discountCode === "LUCKY ONE" ) {
+  if (!value.discountCode) {
+    errors.discountCode = 'Press cancle or outside area to dismiss.'
+  } else {
+    inputCodes.map(code => {
+      if(value.discountCode === code.codeName) {
+        if(code.limitPeople !== table.people) {
+          errors.discountCode = `${value.discountCode} needs ${code.limitPeople} people to be applied`
+        }
+      }
+    })
   }
   return errors
 }
