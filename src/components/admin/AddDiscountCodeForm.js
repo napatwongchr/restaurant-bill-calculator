@@ -80,7 +80,7 @@ const renderField = ({
   <div>
     <FormLabelWrapper>
       <LabelText>{label} { required && <ImportantText>*</ImportantText> }</LabelText>
-      {touched && (error && <ImportantText>{error}</ImportantText>) }
+      { touched && (error && <ImportantText>{error}</ImportantText>) }
     </FormLabelWrapper>
     <div>
       <input {...input} className={className} placeholder={label} type={type} />

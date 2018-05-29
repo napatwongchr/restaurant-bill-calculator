@@ -1,10 +1,14 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+
+import { fetchTable } from './actions/Table'
+import { fetchCodes } from './actions/Codes'
 
 import BillCalculation from './components/employee/BillCalculation'
 
-import AddPromotionCode from './components/admin/AddPromotionCode'
-import PromotionCode from './components/admin/PromotionCode'
+import AddDiscountCode from './components/admin/AddDiscountCode'
+import DiscountCode from './components/admin/DiscountCode'
 
 import SuccessReserve from './components/customer/SuccessReserve'
 import ReserveSeats from './components/customer/ReserveSeats'
@@ -14,6 +18,11 @@ import EmployeeApp from './components/EmployeeApp'
 import AdminApp from './components/AdminApp'
 
 class App extends Component {
+  componentWillMount() {
+    this.props.fetchTable()
+    this.props.fetchCodes()
+  }
+
   render() {
     return (
       <Router>
@@ -26,8 +35,8 @@ class App extends Component {
           <Route path='/employee/calculation/:tableId' component={BillCalculation} />
           <Route path='/employee' component={EmployeeApp} />
 
-          <Route path='/admin/promotion/add' component={AddPromotionCode} />
-          <Route path='/admin/promotion' component={PromotionCode} />
+          <Route path='/admin/promotion/add' component={AddDiscountCode} />
+          <Route path='/admin/promotion' component={DiscountCode} />
           <Route path='/admin' component={AdminApp} />
         </Switch>
       </Router>
@@ -35,4 +44,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default connect(null, { fetchTable, fetchCodes })(App);

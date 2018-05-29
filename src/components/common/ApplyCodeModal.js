@@ -20,7 +20,7 @@ const ApplyCodeModal = ({ isOpen, toggle, classname,
                     <option value='default' disabled>Please select discount code</option>
                     { inputCodes
                       ? inputCodes.map((code, index) =>
-                        <option key={index} value={code.name}>{code.name}</option>)
+                        <option key={index} value={code.codeName}>{code.codeName}</option>)
                       : null }
                  </Input>
                </ModalBody>

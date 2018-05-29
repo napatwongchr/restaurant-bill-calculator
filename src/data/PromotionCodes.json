@@ -1,7 +1,7 @@
 {
   "data": [
-    { "name": "LUCKY ONE", "discount": 0.15, "discountType": "percent", "people": 1 },
-    { "name": "4PAY3", "discount": 459, "discountType": "fixed", "people": 4 },
-    { "name": "LUCKY TWO", "discount": 0.20, "discountType": "percent", "people": 2 }
+    { "codeName": "LUCKY ONE", "amountDiscount": 0.15, "discountCodeType": "percent", "limitPeople": 1 },
+    { "codeName": "4PAY3", "amountDiscount": 459, "discountCodeType": "fixed", "limitPeople": 4 },
+    { "codeName": "LUCKY TWO", "amountDiscount": 0.20, "discountCodeType": "percent", "limitPeople": 2 }
   ]
 }

@@ -4,14 +4,14 @@ import WrappedButton from '../common/WrappedButton'
 import AdminLayout1 from '../common/AdminLayout1'
 import AdminHeadings from '../common/AdminHeadings'
 import { Table, Button } from 'reactstrap'
-import data from '../../data/PromotionCodes.json'
 
 class PromotionCode extends Component {
   renderTableRows() {
-    return data.data.map(({ name }, index) => (
+    const { codes } = this.props
+    return codes.map(({ codeName }, index) => (
       <tr key={index}>
         <th scope='row'>{ index + 1}</th>
-        <td>{name}</td>
+        <td>{codeName}</td>
         <td>
           <WrappedButton
             className='ml-2'
@@ -39,7 +39,7 @@ class PromotionCode extends Component {
     return (
       <AdminLayout1 headings='Promotion Code'>
         <AdminHeadings>
-          <h2>Promotion Codes</h2>
+          <h2>Discount Codes</h2>
           <WrappedButton
             onClick={() => history.push('/admin/promotion/add')}
             iconName='add'
@@ -65,5 +65,9 @@ class PromotionCode extends Component {
   }
 }
 
+const mapStateToProps = ({ code }) => {
+  const { codes } = code
+  return { codes }
+}
 
-export default connect()(PromotionCode)
+export default connect(mapStateToProps)(PromotionCode)

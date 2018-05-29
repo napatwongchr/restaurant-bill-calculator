@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { fetchTable } from '../actions/Table'
 import styled from 'styled-components'
 import EmployeeHeadings from './common/EmployeeHeadings'
 import EmployeeContent from './common/EmployeeContent'
@@ -8,10 +7,6 @@ import TableBox from './common/TableBox'
 import { Container, Col } from 'reactstrap'
 
 class EmployeeApp extends Component {
-  componentWillMount() {
-    this.props.fetchTable()
-  }
-
   renderTableList(tables) {
     const { history } = this.props
     return tables.map((table, index) => <TableBox
@@ -47,4 +42,4 @@ const mapStateToProps = ({ table }) => {
   return { tables }
 }
 
-export default connect(mapStateToProps, { fetchTable })(EmployeeApp)
+export default connect(mapStateToProps)(EmployeeApp)

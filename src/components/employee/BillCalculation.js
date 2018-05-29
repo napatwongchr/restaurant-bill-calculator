@@ -48,9 +48,8 @@ class BillCalculation extends Component {
   }
 
   componentWillMount() {
-    const { fetchTableById, fetchCodes, match: { params: { tableId } } } = this.props
+    const { fetchTableById, match: { params: { tableId } } } = this.props
     fetchTableById(+tableId)
-    fetchCodes()
   }
 
   renderBill(singleTable, billTotal, appliedCode, subTotal, exchange, codes) {
@@ -104,5 +103,5 @@ const mapStateToProps = ({ table, code }) => {
   const { singleTable, billTotal, subTotal, exchange } = table
   return { singleTable, billTotal, appliedCode, subTotal, exchange, codes }
 }
-export default connect(mapStateToProps, { fetchTableById, fetchCodes,
-  calculateExchange, applyCode, removeCodeFromBill })(BillCalculation)
+export default connect(mapStateToProps,
+  { fetchTableById, calculateExchange, applyCode, removeCodeFromBill })(BillCalculation)

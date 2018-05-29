@@ -7,7 +7,7 @@ import AddDiscountCodeForm from './AddDiscountCodeForm'
 import AdminLayout1 from '../common/AdminLayout1'
 import AdminHeadings from '../common/AdminHeadings'
 
-class AddPromotionCode extends Component {
+class AddDiscountCode extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -42,4 +42,4 @@ class AddPromotionCode extends Component {
   }
 }
 
-export default connect(null, { addCode })(AddPromotionCode)
+export default connect(null, { addCode })(AddDiscountCode)

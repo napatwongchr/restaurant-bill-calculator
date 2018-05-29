@@ -12,9 +12,17 @@ export const fetchCodes = () => {
   return { type: FETCH_CODES, payload: data}
 }
 
-export const addCode = (values) => {
-  console.log(values)
-  return { type: ADD_CODE }
+export const addCode = (values, callback) => {
+  const codeData = data
+  const { codeName, amountDiscount, discountCodeType, limitPeople } = values
+  codeData.push({ codeName,
+    amountDiscount: +amountDiscount,
+    discountCodeType,
+    limitPeople: +limitPeople })
+
+  return dispatch => {
+    dispatch({ type: ADD_CODE, payload: codeData })
+  }
 }
 
 export const editCode = (values) => {
