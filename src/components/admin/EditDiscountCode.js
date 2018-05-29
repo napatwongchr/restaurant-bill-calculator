@@ -11,7 +11,7 @@ class EditDiscountCode extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      discountType: 'default'
+      discountType: ''
     }
   }
 

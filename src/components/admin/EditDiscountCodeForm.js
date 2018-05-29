@@ -104,15 +104,11 @@ const renderSelectField = ({
       {touched && (error && <ImportantText>{error}</ImportantText>) }
     </FormLabelWrapper>
     <div>
-      <select
-        {...input}
-        className={className}
-        placeholder={label}
-        onChange={handleSelect}>
-        <option value='' disabled>Please select discount type</option>
+      <Field className='form-control' name='discountCodeType' component='select'>
+        <option value=''>Please select discount type</option>
         <option value='fixed'>Fixed</option>
         <option value='percent'>Percent</option>
-      </select>
+      </Field>
     </div>
   </div>
 )

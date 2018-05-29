@@ -21,17 +21,13 @@ export default (state=INITIAL_STATE, action) => {
     case FETCH_CODES:
       return { ...state, codes: action.payload }
     case FETCH_CODE_BY_ID:
-      const code = state.codes.find(code => code.id === action.payload)
-      return { ...state, singleCode: code }
+      return { ...state, singleCode: fetchCodeById(state, action) }
     case ADD_CODE:
-      return { ...state, codes: [...state.codes, action.payload] }
+      return { ...state, codes: addCode(state, action) }
     case EDIT_CODE:
-      const codeIndex = state.codes.findIndex(code => code.id === action.payload.id)
-      state.codes[codeIndex] = action.payload.values
-      return { ...state, codes: state.codes}
+      return { ...state, codes: updateCode(state, action)}
     case DELETE_CODE:
-      const newCodesArray = state.codes.filter(code => code.id !== action.payload)
-      return { ...state, codes: newCodesArray }
+      return { ...state, codes: deleteCode(state, action) }
     case APPLY_CODE:
       return { ...state, appliedCode: action.payload }
     case REMOVE_CODE_FROM_BILL:
@@ -41,4 +37,16 @@ export default (state=INITIAL_STATE, action) => {
     default:
       return state
   }
+}
+
+const fetchCodeById = (state, action) => state.codes.find(code => code.id === action.payload)
+
+const addCode = (state, action) => [...state.codes, action.payload]
+
+const deleteCode = (state, action) => state.codes.filter(code => code.id !== action.payload)
+
+const updateCode = (state, action) => {
+  const codeIndex = state.codes.findIndex(code => code.id === action.payload.id)
+  state.codes[codeIndex] = action.payload.values
+  return state.codes
 }
