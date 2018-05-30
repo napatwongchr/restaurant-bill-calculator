@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { fetchTableById, calculateExchange } from '../../actions/Table'
-import { applyCode, removeCodeFromBill } from '../../actions/Codes'
+import { applyCode, removeCodeFromBill, getSelectedCode } from '../../actions/Codes'
 import styled from 'styled-components'
 import EmployeeHeadings from '../common/EmployeeHeadings'
 import EmployeeContent from '../common/EmployeeContent'
@@ -27,18 +27,18 @@ class BillCalculation extends Component {
   }
 
   handleExchange(event) {
-    const { billTotal } = this.props
-    this.props.calculateExchange(billTotal, event.target.value)
+    const { billTotal, calculateExchange } = this.props
+    calculateExchange(billTotal, event.target.value)
   }
 
   handleSubmitCode(value) {
-    const { singleTable: { items } } = this.props
-    this.props.applyCode(items, value, this.toggle)
+    const { applyCode, getSelectedCode, singleTable: { items } } = this.props
+    applyCode(items, value, this.toggle)
   }
 
   handleRemoveCode() {
-    const { singleTable: { items } } = this.props
-    this.props.removeCodeFromBill(items)
+    const { removeCodeFromBill, singleTable: { items } } = this.props
+    removeCodeFromBill(items)
   }
 
   componentDidMount() {
@@ -46,7 +46,9 @@ class BillCalculation extends Component {
     fetchTableById(+tableId, appliedCode)
   }
 
-  renderBill(singleTable, billTotal, appliedCode, subTotal, exchange, codes) {
+  renderBill(singleTable, billTotal, appliedCode,
+    subTotal, exchange, codes,
+    selectedCode) {
     return (
       <div>
         <EmployeeHeadings
@@ -57,6 +59,7 @@ class BillCalculation extends Component {
             history={this.props.history}
             handleRemoveCode={this.handleRemoveCode}
             handleExchange={this.handleExchange}
+            selectedCode={selectedCode}
             exchange={exchange}
             table={singleTable}
             subTotal={subTotal}
@@ -76,11 +79,13 @@ class BillCalculation extends Component {
 
   render() {
     const { singleTable, billTotal, appliedCode,
-      subTotal, exchange, codes } = this.props
+      subTotal, exchange, codes,
+      selectedCode } = this.props
     return (
       <ContainerWrapper fluid>
         { singleTable && this.renderBill(singleTable, billTotal, appliedCode,
-                                    subTotal, exchange, codes) }
+                                    subTotal, exchange, codes,
+                                    selectedCode) }
       </ContainerWrapper>
     )
   }
@@ -92,9 +97,12 @@ const ContainerWrapper = styled(Container)`
 `
 
 const mapStateToProps = ({ table, code }) => {
-  const { codes, appliedCode } = code
+  const { codes, appliedCode, selectedCode } = code
   const { singleTable, billTotal, subTotal, exchange } = table
-  return { singleTable, billTotal, appliedCode, subTotal, exchange, codes }
+  return { singleTable, billTotal, appliedCode,
+    subTotal, exchange, codes,
+    selectedCode }
 }
 export default connect(mapStateToProps,
-  { fetchTableById, calculateExchange, applyCode, removeCodeFromBill })(BillCalculation)
+  { fetchTableById, calculateExchange, applyCode,
+    removeCodeFromBill, getSelectedCode })(BillCalculation)

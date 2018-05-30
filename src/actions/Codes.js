@@ -4,8 +4,10 @@ import {
   FETCH_CODES,
   FETCH_CODE_BY_ID,
   ADD_CODE,
+  SELECTED_CODE,
   DELETE_CODE,
   EDIT_CODE,
+  CLEAR_SELECTED_CODE,
   REMOVE_CODE_FROM_BILL
 } from './types'
 
@@ -45,8 +47,13 @@ export const applyCode = (items, codes, callback) => {
   }
 }
 
+export const getSelectedCode = ({ discountCode }) => {
+  return { type: SELECTED_CODE, payload: discountCode }
+}
+
 export const removeCodeFromBill = (items) => {
   return dispatch => {
+    dispatch({ type: CLEAR_SELECTED_CODE })
     dispatch({ type: REMOVE_CODE_FROM_BILL })
     calculateBillTotal(items, null, false, dispatch)
   }

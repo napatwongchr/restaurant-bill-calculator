@@ -2,17 +2,18 @@ import {
   FETCH_CODES,
   FETCH_CODE_BY_ID,
   APPLY_CODE,
+  SELECTED_CODE,
   ADD_CODE,
   DELETE_CODE,
   EDIT_CODE,
   REMOVE_CODE_FROM_BILL,
-  GET_CODE_CASES
+  CLEAR_SELECTED_CODE
 } from '../actions/types'
 
 const INITIAL_STATE = {
   codes: null,
   singleCode: {},
-  codeCases: null,
+  selectedCode: null,
   appliedCode: null
 }
 
@@ -28,12 +29,14 @@ export default (state=INITIAL_STATE, action) => {
       return { ...state, codes: updateCode(state, action)}
     case DELETE_CODE:
       return { ...state, codes: deleteCode(state, action) }
+    case SELECTED_CODE:
+      return { ...state, selectedCode: action.payload }
     case APPLY_CODE:
       return { ...state, appliedCode: action.payload }
     case REMOVE_CODE_FROM_BILL:
-      return { ...state, appliedCode: null}
-    case GET_CODE_CASES:
-      return { ...state, codeCases: action.payload }
+      return { ...state, appliedCode: null }
+    case CLEAR_SELECTED_CODE:
+      return { ...state, selectedCode: null }
     default:
       return state
   }

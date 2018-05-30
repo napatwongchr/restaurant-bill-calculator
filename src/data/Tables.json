@@ -4,12 +4,12 @@
       "id": 1,
       "type": "COUNTER",
       "capacity": 1,
-      "people": 1,
+      "people": 2,
       "items": [
         {
           "name": "Buffet",
           "quantity": 1,
-          "price": 459
+          "price": 60000
         }
       ]
     },

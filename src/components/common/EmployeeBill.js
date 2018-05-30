@@ -6,8 +6,8 @@ Input } from 'reactstrap'
 
 const EmployeeBill = ({ table, billTotal, appliedCode,
   subTotal, exchange, modalToggle,
-  handleExchange, handleRemoveCode, history }) => {
-
+  handleExchange, handleRemoveCode, selectedCode,
+  history }) => {
   const reservation = table.people
 
   return (
@@ -21,6 +21,7 @@ const EmployeeBill = ({ table, billTotal, appliedCode,
             <BillItemDetail
               items={table.items} />
             <BillCodes
+              selectedCode={selectedCode}
               handleRemoveCode={handleRemoveCode}
               appliedCode={appliedCode} />
             <BillPrice
@@ -28,7 +29,8 @@ const EmployeeBill = ({ table, billTotal, appliedCode,
               exchange={exchange}
               billTotal={billTotal}
               subTotal={subTotal} />
-            <BillActions  history={history} />
+            <BillActions
+              history={history} />
           </div>
         : <div>
             <BillHeadings reservation={reservation} modalToggle={modalToggle}/>
@@ -46,35 +48,40 @@ const BillSummary = styled(Col)`
 
 export default EmployeeBill
 
-const BillCodes = ({ appliedCode, handleRemoveCode }) => {
+const BillCodes = ({ appliedCode, handleRemoveCode, selectedCode }) => {
   return (
     <Row className='my-3'>
-      <Col>
-        <Row>
-          <Col className='d-flex'>
-            <i className='material-icons mr-2'>card_giftcard</i>
-            <h4>System has applied</h4>
-          </Col>
-        </Row>
+      <Col md='6'>
+        <HeadingWrapper>
+          <i className='material-icons mr-2'>card_giftcard</i>
+          <h4>System has applied</h4>
+        </HeadingWrapper>
         { appliedCode
-          ? <Row>
-              <Col md='3' className='d-flex flex-column'>
-                <WrappedButton
-                  onRight
-                  onClick={handleRemoveCode}
-                  iconName='clear'
-                  textcolor='#fff'
-                  color='#ef405a'
-                  size='sm'
-                  text={appliedCode} />
-              </Col>
-            </Row>
+          ? <div>
+            <WrappedButton
+              className='mt-2'
+              onRight
+              onClick={handleRemoveCode}
+              iconName='clear'
+              textcolor='#fff'
+              color='#ef405a'
+              size='sm'
+              text={appliedCode} />
+              { selectedCode && <h6 className='my-2'>
+                {`You have applied "${selectedCode}" but system has detected the best
+                discount code (${appliedCode}) for you.`}
+              </h6> }
+            </div>
           : 'No code'
         }
       </Col>
     </Row>
   )
 }
+
+const HeadingWrapper = styled.div`
+  display: flex;
+`
 
 const BillHeadings = ({ reservation, modalToggle }) => {
   return (
