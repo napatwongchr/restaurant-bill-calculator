@@ -1,61 +1,49 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
-import SeatInput from '../common/SeatInput'
-import { Container, Row, Col,
-Input, Button } from 'reactstrap'
+import WrappedButton from '../common/WrappedButton'
+import { Container, Row, Col } from 'reactstrap'
 
 class ReserveSeats extends Component {
-  constructor(props){
-    super(props)
-    this.state = {
-      count: 0
-    }
-    this.increaseCount = this.increaseCount.bind(this)
-    this.decreaseCount = this.decreaseCount.bind(this)
-  }
-
-  increaseCount() {
-    this.setState({ count: this.state.count + 1 })
-  }
-
-  decreaseCount() {
-    this.setState({ count: this.state.count - 1 })
-  }
-
   render() {
     const { history } = this.props
     return (
-      <Container>
-        <Row>
-          <Col className='d-flex justify-content-center'>
-            <Headings className='mt-5'>How many people you want to reserve ?</Headings>
-          </Col>
-        </Row>
-        <Row className='mt-5'>
-          <Col md='3'></Col>
-          <Col md='6' className='d-flex flex-column align-items-center'>
-            <SeatInput
-              decreaseCount={this.decreaseCount}
-              increaseCount={this.increaseCount}
-              count={this.state.count}
-            />
-            <Button
-              onClick={() => history.push('/customer/success')}
-              color='primary'
+      <ContainerWrapper fluid>
+        <HeadingsRowWrapper>
+          <HeadingsWrapper>
+            <Headings>Soon...</Headings>
+            <WrappedButton
+              className='ml-2'
+              onClick={() => history.push('/')}
+              iconName='keyboard_backspace'
+              textcolor='#FFFFFF'
+              color='#000'
               size='lg'
-              className='mt-5'>
-                Submit
-            </Button>
-          </Col>
-          <Col md='3'></Col>
-        </Row>
-      </Container>
+              text='BACK' />
+          </HeadingsWrapper>
+        </HeadingsRowWrapper>
+      </ContainerWrapper>
     )
   }
 }
 
+const ContainerWrapper = styled(Container)`
+  background-color: #f9bc02;
+  height: 100vh;
+`
+
+const HeadingsRowWrapper = styled(Row)`
+  height: 100%;
+`
+
+const HeadingsWrapper = styled(Col)`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`
+
 const Headings = styled.h1`
-  font-size: 56px
+  font-size: 100px
 `
 
 export default ReserveSeats

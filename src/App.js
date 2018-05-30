@@ -7,7 +7,6 @@ import EditDiscountCode from './components/admin/EditDiscountCode'
 import AddDiscountCode from './components/admin/AddDiscountCode'
 import DiscountCode from './components/admin/DiscountCode'
 
-import SuccessReserve from './components/customer/SuccessReserve'
 import ReserveSeats from './components/customer/ReserveSeats'
 
 import MainApp from './components/MainApp'
@@ -22,7 +21,6 @@ class App extends Component {
         <Switch>
           <Route exact path='/' component={MainApp} />
 
-          <Route path='/customer/success' component={SuccessReserve} />
           <Route path='/customer' component={ReserveSeats} />
 
           <Route path='/employee/calculation/:tableId' component={BillCalculation} />
