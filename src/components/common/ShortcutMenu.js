@@ -30,15 +30,6 @@ const expandMenuBox = keyframes`
   }
 `
 
-const linkFadeIn = keyframes`
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-`
-
 const textPop = keyframes`
   from {
     font-size: 1em;
@@ -49,7 +40,6 @@ const textPop = keyframes`
 `
 
 const MenuLink = styled(Link)`
-  animation: ${linkFadeIn} 1.5s;
   margin: 0px 8px;
   color: #fff;
   &:hover {
@@ -74,7 +64,7 @@ const ShortcutMenuWrapper = styled.div`
   cursor: pointer;
   transition: width 0.5s;
   &:hover {
-    animation: ${expandMenuBox} 0.25s both;
+    animation: ${expandMenuBox} 0.25s forwards;
   }
 `
 
