@@ -32,18 +32,18 @@ class BillCalculation extends Component {
   }
 
   handleSubmitCode(value) {
-    const { applyCode, singleTable: { items } } = this.props
-    applyCode(items, value, this.toggle)
+    const { applyCode, codes, singleTable: { items } } = this.props
+    applyCode(items, value, codes, this.toggle)
   }
 
   handleRemoveCode() {
-    const { removeCodeFromBill, singleTable: { items } } = this.props
-    removeCodeFromBill(items)
+    const { removeCodeFromBill, codes, singleTable: { items } } = this.props
+    removeCodeFromBill(items, codes)
   }
 
   componentDidMount() {
-    const { fetchTableById, appliedCode, match: { params: { tableId } } } = this.props
-    fetchTableById(+tableId, appliedCode)
+    const { fetchTableById, codes, appliedCode, match: { params: { tableId } } } = this.props
+    fetchTableById(+tableId, appliedCode, codes)
   }
 
   renderBill(singleTable, billTotal, appliedCode,
