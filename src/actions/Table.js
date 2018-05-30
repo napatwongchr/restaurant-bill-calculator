@@ -3,6 +3,7 @@ import {
   FETCH_TABLE,
   FETCH_TABLE_BY_ID,
   CLEAR_SELECTED_CODE,
+  REMOVE_CODE_FROM_BILL,
   SELECTED_CODE,
   RESET_EXCHANGE,
   CALCULATE_BILL_TOTAL,
@@ -21,10 +22,11 @@ export const fetchTable = () => {
 export const fetchTableById = (id, code, allCodes) => {
   const table = data.find(table => table.id === id)
   return dispatch => {
-    calculateBillTotal(table.items, code, allCodes, true, dispatch)
     dispatch({ type: CLEAR_SELECTED_CODE })
+    dispatch({ type: REMOVE_CODE_FROM_BILL })
     dispatch({ type: RESET_EXCHANGE })
     dispatch({ type: FETCH_TABLE_BY_ID, payload: table })
+    calculateBillTotal(table.items, null, allCodes, true, dispatch)
   }
 }
 
@@ -37,7 +39,9 @@ export const calculateExchange = (total, recieve) => {
 export const calculateBillTotal = (items, selectedCode, allCodes, promotion, dispatch) => {
   let total = 0
   items.map(item => total = total + (item.quantity * item.price))
+
   dispatch({ type: CALCULATE_BILL_SUBTOTAL, payload: total})
+
   if (promotion) {
     if (selectedCode) {
       const discountItems = generateDiscountItems(total, selectedCode, allCodes)

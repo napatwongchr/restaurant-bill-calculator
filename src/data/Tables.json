@@ -4,12 +4,12 @@
       "id": 1,
       "type": "COUNTER",
       "capacity": 1,
-      "people": 3,
+      "people": 1,
       "items": [
         {
           "name": "Buffet",
-          "quantity": 7,
-          "price": 1000
+          "quantity": 1,
+          "price": 459
         }
       ]
     },
@@ -17,12 +17,12 @@
       "id": 2,
       "type": "COUNTER",
       "capacity": 1,
-      "people": null,
+      "people": 1,
       "items": [
         {
           "name": "Buffet",
           "quantity": 1,
-          "price": 459
+          "price": 1000
         }
       ]
     },
@@ -30,12 +30,12 @@
       "id": 3,
       "type": "COUNTER",
       "capacity": 1,
-      "people": null,
+      "people": 1,
       "items": [
         {
           "name": "Buffet",
           "quantity": 1,
-          "price": 459
+          "price": 7000
         }
       ]
     },
@@ -160,8 +160,12 @@
       "id": 13,
       "type": "2SEATS",
       "capacity": 2,
-      "people": null,
-      "items": []
+      "people": 2,
+      "items": [{
+        "name": "Buffet",
+        "quantity": 2,
+        "price": 459
+      }]
     },
     {
       "id": 14,
@@ -188,8 +192,14 @@
       "id": 17,
       "type": "8SEATS",
       "capacity": 8,
-      "people": null,
-      "items": []
+      "people": 8,
+      "items": [
+        {
+          "name": "Buffet",
+          "quantity": 8,
+          "price": 459
+        }
+      ]
     },
     {
       "id": 18,
@@ -202,8 +212,12 @@
       "id": 19,
       "type": "4SEATS",
       "capacity": 4,
-      "people": null,
-      "items": []
+      "people": 4,
+      "items": [{
+        "name": "Buffet",
+        "quantity": 4,
+        "price": 459
+      }]
     },
     {
       "id": 20,

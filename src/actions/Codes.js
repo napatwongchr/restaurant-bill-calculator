@@ -18,6 +18,11 @@ export const fetchCodeById = (id) => {
   return { type: FETCH_CODE_BY_ID, payload: id }
 }
 
+export const clearSelectedCode = () => {
+  console.log('ok')
+  return { type: CLEAR_SELECTED_CODE }
+}
+
 export const addCode = (values, collectionLength, callback) => {
   const codeData = {}
   const { codeName, amountDiscount, discountCodeType, limitPeople } = values

@@ -7,7 +7,7 @@ Input } from 'reactstrap'
 const EmployeeBill = ({ table, billTotal, appliedCode,
   subTotal, exchange, modalToggle,
   handleExchange, handleRemoveCode, selectedCode,
-  history }) => {
+  removeCodeFromBill, history }) => {
   const reservation = table.people
   return (
     <BillSummary md='6'>
@@ -30,6 +30,7 @@ const EmployeeBill = ({ table, billTotal, appliedCode,
               billTotal={billTotal}
               subTotal={subTotal} />
             <BillActions
+              handleRemoveCode={handleRemoveCode}
               history={history} />
           </div>
         : <div>
@@ -68,7 +69,7 @@ const BillCodes = ({ appliedCode, handleRemoveCode, selectedCode }) => {
               size='sm'
               text={appliedCode} />
               { selectedCode && <h6 className='my-2'>
-                {`You have applied "${selectedCode}" but system has detected the best
+                {`You have selected "${selectedCode}" but system has detected the best
                 discount code (${appliedCode}) for you.`}
               </h6> }
             </div>
@@ -191,11 +192,14 @@ const SummaryText = styled.span`
   font-size: 20px;
 `
 
-const BillActions = ({ history }) => {
+const BillActions = ({ handleRemoveCode, history }) => {
   return <Row>
             <Col className='d-flex justify-content-between'>
               <WrappedButton
-                onClick={() => history.push('/employee')}
+                onClick={() => {
+                  handleRemoveCode()
+                  history.push('/employee')
+                }}
                 iconName='keyboard_backspace'
                 color='#bfbfbf'
                 size='lg'

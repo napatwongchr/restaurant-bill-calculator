@@ -8,6 +8,10 @@ This application is divided into 3 parts.
 2. Admin - User can be able to Add/Edit/Delete promotion codes.
 3. Customer - User can be able to reserve the seats.
 
+### Testing
+
+## Application capabilities
+
 ## Employee section
 - System can be able to calculate the bill price according to table.
 - System is automatically applied code according to bill's total price (For instance, total price > 6000 or 1000).
@@ -18,12 +22,16 @@ This application is divided into 3 parts.
 
 ## Admin section
 - System can be able to add / edit / delete discount code
+- Added / Edited codes can be able to applied from bill calculation.
+*
 
 ## Employee section
 - Future task
 
 ## Data
-The application stores data in the form of json in /src/data.
+The application stores data in the form of json in /src/data. All related data will be loaded from index page.
+* You can edit data here for testing purpose
+
 It contains 2 entities, as followings:
 
 1. Table.json
@@ -58,3 +66,4 @@ There are also other 2 codes that discount from bill, which are
 - Seats reservation module
 - Responsive
 - Create storybook and build style guide
+- Etc.
