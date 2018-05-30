@@ -42,8 +42,8 @@ class BillCalculation extends Component {
   }
 
   componentDidMount() {
-    const { fetchTableById, codes, selectedCode, match: { params: { tableId } } } = this.props
-    fetchTableById(+tableId, selectedCode, codes)
+    const { fetchTableById, codes, match: { params: { tableId } } } = this.props
+    fetchTableById(+tableId, codes)
   }
 
   renderBill(singleTable, billTotal, appliedCode,

@@ -19,7 +19,7 @@ export const fetchTable = () => {
   }
 }
 
-export const fetchTableById = (id, code, allCodes) => {
+export const fetchTableById = (id, allCodes) => {
   const table = data.find(table => table.id === id)
   return dispatch => {
     dispatch({ type: CLEAR_SELECTED_CODE })
