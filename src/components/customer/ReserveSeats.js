@@ -11,14 +11,6 @@ class ReserveSeats extends Component {
         <HeadingsRowWrapper>
           <HeadingsWrapper>
             <Headings>Soon...</Headings>
-            <WrappedButton
-              className='ml-2'
-              onClick={() => history.push('/')}
-              iconName='keyboard_backspace'
-              textcolor='#FFFFFF'
-              color='#000'
-              size='lg'
-              text='BACK' />
           </HeadingsWrapper>
         </HeadingsRowWrapper>
       </ContainerWrapper>

@@ -13,6 +13,7 @@ const AdminLayout1 = ({ headings, children }) => {
           { children }
         </AdminContent>
       </Row>
+      
     </Container>
   )
 }
