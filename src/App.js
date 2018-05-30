@@ -19,17 +19,14 @@ class App extends Component {
     return (
       <Router>
         <Switch>
-          <Route exact path='/' component={MainApp} />
-
           <Route path='/customer' component={ReserveSeats} />
-
           <Route path='/employee/calculation/:tableId' component={BillCalculation} />
           <Route path='/employee' component={EmployeeApp} />
-
           <Route path='/admin/discount/edit/:codeId' component={EditDiscountCode} />
           <Route path='/admin/discount/add' component={AddDiscountCode} />
           <Route path='/admin/discount' component={DiscountCode} />
           <Route path='/admin' component={AdminApp} />
+          <Route path='/' component={MainApp} />
         </Switch>
       </Router>
     );
