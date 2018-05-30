@@ -1,8 +1,6 @@
 import React from 'react'
 import ApplyCodeForm from './ApplyCodeForm'
-
-import { Modal, ModalHeader,
-ModalBody, ModalFooter, Input } from 'reactstrap'
+import { Modal, ModalHeader, ModalBody } from 'reactstrap'
 
 const ApplyCodeModal = ({ isOpen, toggle, handleSubmitCode,
   inputCodes, table }) => {

@@ -4,7 +4,6 @@ import {
   FETCH_CODES,
   FETCH_CODE_BY_ID,
   ADD_CODE,
-  SELECTED_CODE,
   DELETE_CODE,
   EDIT_CODE,
   CLEAR_SELECTED_CODE,
@@ -45,10 +44,6 @@ export const applyCode = (items, codes, callback) => {
     calculateBillTotal(items, codes.discountCode, true, dispatch)
     callback()
   }
-}
-
-export const getSelectedCode = ({ discountCode }) => {
-  return { type: SELECTED_CODE, payload: discountCode }
 }
 
 export const removeCodeFromBill = (items) => {

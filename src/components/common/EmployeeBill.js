@@ -9,7 +9,6 @@ const EmployeeBill = ({ table, billTotal, appliedCode,
   handleExchange, handleRemoveCode, selectedCode,
   history }) => {
   const reservation = table.people
-
   return (
     <BillSummary md='6'>
       { reservation
@@ -17,7 +16,8 @@ const EmployeeBill = ({ table, billTotal, appliedCode,
             <BillHeadings
               reservation={reservation}
               modalToggle={modalToggle} />
-            <BillDetail />
+            <BillDetail
+              peopleNumber={table.people} />
             <BillItemDetail
               items={table.items} />
             <BillCodes
@@ -105,18 +105,30 @@ const BillHeadings = ({ reservation, modalToggle }) => {
   )
 }
 
-const BillDetail = () => {
+const BillDetail = ({ peopleNumber }) => {
   return <Row className='my-3'>
-            <Col>
-              <span style={{ display: 'block' }}>
+            <BillDetailWrapper>
+              <BillDetailText color='#a0a0a0'>
                 INVOICE: 123123123
-              </span>
-              <span>
+              </BillDetailText>
+              <BillDetailText color='#a0a0a0'>
                 DATE: 12/02/2030
-              </span>
-            </Col>
+              </BillDetailText>
+              <BillDetailText>
+                PEOPLE NUMBER: { peopleNumber }
+              </BillDetailText>
+            </BillDetailWrapper>
           </Row>
 }
+
+const BillDetailWrapper = styled(Col)`
+  display: flex;
+  flex-direction: column;
+`
+
+const BillDetailText = styled.span`
+  color: ${ props => props.color || '#000' }
+`
 
 const BillItemDetail = ({ items }) => {
   return <Row className='my-3'>

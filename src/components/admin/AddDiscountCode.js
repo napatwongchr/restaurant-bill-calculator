@@ -24,7 +24,6 @@ class AddDiscountCode extends Component {
   }
 
   render() {
-    const { codes } = this.props
     return (
       <AdminLayout1 headings='Add discount code'>
         <AdminHeadings>

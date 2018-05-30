@@ -4,6 +4,7 @@ import {
   FETCH_TABLE_BY_ID,
   CLEAR_SELECTED_CODE,
   SELECTED_CODE,
+  RESET_EXCHANGE,
   CALCULATE_BILL_TOTAL,
   CALCULATE_BILL_SUBTOTAL,
   CALCULATE_EXCHANGE,
@@ -22,6 +23,7 @@ export const fetchTableById = (id, code) => {
   return dispatch => {
     calculateBillTotal(table.items, code, true, dispatch)
     dispatch({ type: CLEAR_SELECTED_CODE })
+    dispatch({ type: RESET_EXCHANGE })
     dispatch({ type: FETCH_TABLE_BY_ID, payload: table })
   }
 }

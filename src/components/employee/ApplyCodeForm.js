@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Row, Col, Form } from 'reactstrap'
+import { Row, Col } from 'reactstrap'
 import WrappedButton from '../common/WrappedButton'
 import { Field, reduxForm } from 'redux-form'
 
@@ -68,13 +68,13 @@ const validate = (value, { inputCodes, table }) => {
   if (!value.discountCode) {
     errors.discountCode = 'Press cancle or outside area to dismiss.'
   } else {
-    inputCodes.map(code => {
+    for(let code of inputCodes) {
       if(value.discountCode === code.codeName) {
         if(code.limitPeople !== table.people) {
           errors.discountCode = `${value.discountCode} needs ${code.limitPeople} people to be applied`
         }
       }
-    })
+    }
   }
   return errors
 }

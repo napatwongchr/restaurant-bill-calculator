@@ -3,7 +3,8 @@ import {
   FETCH_TABLE_BY_ID,
   CALCULATE_BILL_TOTAL,
   CALCULATE_BILL_SUBTOTAL,
-  CALCULATE_EXCHANGE
+  CALCULATE_EXCHANGE,
+  RESET_EXCHANGE
 } from '../actions/types'
 
 const INITIAL_STATE = {
@@ -26,6 +27,8 @@ export default (state=INITIAL_STATE, action) => {
       return { ...state, subTotal: action.payload }
     case CALCULATE_EXCHANGE:
       return { ...state, exchange: action.payload }
+    case RESET_EXCHANGE:
+      return { ...state, exchange: 0 }
     default:
       return state
   }

@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { fetchTableById, calculateExchange } from '../../actions/Table'
-import { applyCode, removeCodeFromBill, getSelectedCode } from '../../actions/Codes'
+import { applyCode, removeCodeFromBill } from '../../actions/Codes'
 import styled from 'styled-components'
 import EmployeeHeadings from '../common/EmployeeHeadings'
 import EmployeeContent from '../common/EmployeeContent'
@@ -32,7 +32,7 @@ class BillCalculation extends Component {
   }
 
   handleSubmitCode(value) {
-    const { applyCode, getSelectedCode, singleTable: { items } } = this.props
+    const { applyCode, singleTable: { items } } = this.props
     applyCode(items, value, this.toggle)
   }
 
@@ -105,4 +105,4 @@ const mapStateToProps = ({ table, code }) => {
 }
 export default connect(mapStateToProps,
   { fetchTableById, calculateExchange, applyCode,
-    removeCodeFromBill, getSelectedCode })(BillCalculation)
+    removeCodeFromBill })(BillCalculation)
