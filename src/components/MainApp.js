@@ -15,7 +15,7 @@ class MainApp extends Component {
   render() {
     const { history } = this.props
     return (
-      <ContainerWrapper fluid className='d-flex flex-column'>
+      <ContainerWrapper fluid>
         <Row>
           <HeadingWrapper>
             <SelectRoleHeading>SELECT ROLE</SelectRoleHeading>
@@ -44,7 +44,7 @@ class MainApp extends Component {
 
 const ContainerWrapper = styled(Container)`
   background-color: #f9bc02;
-  height: 100vh;
+  min-height: 100vh;
 `
 
 const RoleCardWrapper = styled(Col)`

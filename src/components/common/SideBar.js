@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import menus from '../../data/SidebarMenus'
 import { Link } from 'react-router-dom'
 import { Col } from 'reactstrap'
 
@@ -8,14 +9,10 @@ const SideBar = () => {
     <SideBarWrapper md='2'>
       <div className='sticky-top pt-3'>
           <MenuWrapper>
-              <MenuLink to='/admin'>
-                <i className='material-icons pr-2'>dashboard</i>
-                <span>Dashboard</span>
-              </MenuLink>
-              <MenuLink to='/admin/discount'>
-                <i className='material-icons pr-2'>card_giftcard</i>
-                <span>Discount codes</span>
-              </MenuLink>
+            { menus.map(menu => <MenuLink key={menu.title} to={menu.url}>
+              <i className='material-icons pr-2'>{menu.icon}</i>
+              <span>{menu.title}</span>
+            </MenuLink>)}
           </MenuWrapper>
       </div>
     </SideBarWrapper>

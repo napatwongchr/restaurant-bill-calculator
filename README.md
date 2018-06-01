@@ -79,4 +79,5 @@ There are also other 2 codes that discount from bill, which are
 - Seats reservation module
 - Responsive
 - Create storybook and build style guide
+- Automation test
 - Etc.

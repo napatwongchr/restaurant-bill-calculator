@@ -4,7 +4,9 @@ import styled from 'styled-components'
 
 const TableBox = ({ number, onClick, hasPeople }) => {
   return (
-    <CircleBox className='circle-box' onClick={onClick}>
+    <CircleBox
+      className='circle-box'
+      onClick={onClick}>
       { hasPeople && <HasPeopleIcon className='material-icons'>person</HasPeopleIcon> }
       <TableHeadings>Table</TableHeadings>
       <TableNumber>{number}</TableNumber>

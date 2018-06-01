@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { fetchTableById, calculateExchange } from '../../actions/Table'
 import { applyCode, removeCodeFromBill } from '../../actions/Codes'
 import styled from 'styled-components'
-import EmployeeHeadings from '../common/EmployeeHeadings'
+import EmployeeHeading from '../common/EmployeeHeading'
 import EmployeeContent from '../common/EmployeeContent'
 import EmployeeBill from '../common/EmployeeBill'
 import ApplyCodeModal from './ApplyCodeModal'
@@ -46,17 +46,15 @@ class BillCalculation extends Component {
     fetchTableById(+tableId, codes)
   }
 
-  renderBill(singleTable, billTotal, appliedCode,
-    subTotal, exchange, codes,
-    selectedCode) {
+  renderBill() {
+    const { singleTable, billTotal, appliedCode,
+      subTotal, exchange, codes,
+      selectedCode, history } = this.props
     return (
       <div>
-        <EmployeeHeadings
-          mainHeadings='BILL SUMMARY'
-          subHeadings={`Summary for table #${singleTable.id}`} />
         <EmployeeContent>
           <EmployeeBill
-            history={this.props.history}
+            history={history}
             handleRemoveCode={this.handleRemoveCode}
             handleExchange={this.handleExchange}
             selectedCode={selectedCode}
@@ -78,14 +76,13 @@ class BillCalculation extends Component {
   }
 
   render() {
-    const { singleTable, billTotal, appliedCode,
-      subTotal, exchange, codes,
-      selectedCode } = this.props
+    const { singleTable } = this.props
     return (
       <ContainerWrapper fluid>
-        { singleTable && this.renderBill(singleTable, billTotal, appliedCode,
-                                    subTotal, exchange, codes,
-                                    selectedCode) }
+        <EmployeeHeading
+          mainHeading='BILL SUMMARY'
+          subHeading={`Summary for table #${singleTable.id}`} />
+        { singleTable && this.renderBill() }
       </ContainerWrapper>
     )
   }
@@ -100,9 +97,9 @@ const mapStateToProps = ({ table, code }) => {
   const { codes, appliedCode, selectedCode } = code
   const { singleTable, billTotal, subTotal, exchange } = table
   return { singleTable, billTotal, appliedCode,
-    subTotal, exchange, codes,
-    selectedCode }
+    subTotal, exchange, codes, selectedCode }
 }
+
 export default connect(mapStateToProps,
   { fetchTableById, calculateExchange, applyCode,
     removeCodeFromBill })(BillCalculation)

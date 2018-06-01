@@ -5,22 +5,18 @@ import styled from 'styled-components'
 
 const EmployeeContent = ({ children }) => {
   return (
-    <BodyArea>
-      {children}
-    </BodyArea>
+    <EmployeeContentWrapper>
+      { children }
+    </EmployeeContentWrapper>
   )
 }
 
-const BodyArea = styled(Row)`
+const EmployeeContentWrapper = styled(Row)`
   display: flex;
   justify-content: center;
   position: relative;
   top: -50px;
 `
-
-EmployeeContent.defaultProps = {
-  classname: ''
-}
 
 EmployeeContent.propTypes = {
   children: PropTypes.oneOfType([

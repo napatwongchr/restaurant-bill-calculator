@@ -5,12 +5,12 @@ import PropTypes from 'prop-types'
 const RoleCard = ({ onClick, text, icon }) => {
   return (
     <RoleCardWrapper onClick={onClick} className='card'>
-      <div className='card-body d-flex flex-column justify-content-center align-items-center'>
+      <RoleCardContent className='card-body'>
         <RoleIcon className='material-icons'>
           {icon}
         </RoleIcon>
-        <Role>{ text }</Role>
-      </div>
+        <RoleText>{ text }</RoleText>
+      </RoleCardContent>
     </RoleCardWrapper>
   )
 }
@@ -27,7 +27,15 @@ const RoleCardWrapper = styled.div`
     transform: translate(0, -3px)
   }
 `
-const Role = styled.h2`
+
+const RoleCardContent = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`
+
+const RoleText = styled.h2`
   color: #000;
   font-weight: bold;
 `
@@ -35,9 +43,11 @@ const Role = styled.h2`
 const RoleIcon = styled.i`
   color: #000;
   font-size: 100px;
+  padding: 5px;
 `
 
 RoleCard.defaultProps = {
+  text: 'MENU NAME',
   onClick: () => {}
 }
 

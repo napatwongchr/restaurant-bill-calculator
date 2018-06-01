@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import styled from 'styled-components'
 import { fetchTable } from '../actions/Table'
-import EmployeeHeadings from './common/EmployeeHeadings'
+import EmployeeHeading from './common/EmployeeHeading'
 import EmployeeContent from './common/EmployeeContent'
 import TableBox from './common/TableBox'
 import { Container, Col } from 'reactstrap'
@@ -25,13 +25,13 @@ class EmployeeApp extends Component {
     const { tables } = this.props
     return (
       <ContainerWrapper fluid>
-        <EmployeeHeadings
-          mainHeadings='BILL CALCULATOR'
-          subHeadings='Please select the table' />
+        <EmployeeHeading
+          mainHeading='BILL CALCULATOR'
+          subHeading='Please select the table' />
         <EmployeeContent>
-          <Col className='d-flex justify-content-center flex-wrap mx-5'>
+          <TableListWrapper className='mx-5'>
             { tables && this.renderTableList(tables) }
-          </Col>
+          </TableListWrapper>
         </EmployeeContent>
       </ContainerWrapper>
     )
@@ -41,6 +41,12 @@ class EmployeeApp extends Component {
 const ContainerWrapper = styled(Container)`
   min-height: 100vh;
   background-color: #f2f2f2;
+`
+
+const TableListWrapper = styled(Col)`
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
 `
 
 const mapStateToProps = ({ table }) => {

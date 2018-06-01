@@ -1,5 +1,6 @@
 import React from 'react'
-import { mount, shallow } from 'enzyme'
+import { mount } from 'enzyme'
+import Tables from '../../data/Tables'
 import RootWithoutPersists from '../../RootWithoutPersists'
 
 import EmployeeApp from '../EmployeeApp'
@@ -9,19 +10,7 @@ let component
 beforeEach(() => {
   const initialState = {
                           table: {
-                            tables: [{
-                                "id": 1,
-                                "type": "COUNTER",
-                                "capacity": 1,
-                                "people": 1,
-                                "items": [
-                                  {
-                                    "name": "Buffet",
-                                    "quantity": 1,
-                                    "price": 459
-                                  }
-                                ]
-                              }]
+                            tables: Tables.data
                           }
                       }
   component = mount(<RootWithoutPersists initialState={initialState}>
@@ -38,5 +27,5 @@ it('Employee app contains heading text', () => {
 })
 
 it('Employee app contains list of table according to data', () => {
-  expect(component.find('div.circle-box').length).toEqual(1)
+  expect(component.find('div.circle-box').length).toEqual(24)
 })

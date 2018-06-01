@@ -58,18 +58,22 @@ const ButtonContentWrapper = styled.div`
 WrappedButton.defaultProps = {
   onRight: false,
   onClick: () => {},
-  classname: ''
+  className: '',
+  size: 'lg',
+  color: '#000',
+  textcolor: '#fff',
+  iconName: ''
 }
 
 WrappedButton.propTypes = {
   onRight: PropTypes.bool,
   iconName: PropTypes.string,
-  text: PropTypes.string,
+  text: PropTypes.string.isRequired,
   textcolor: PropTypes.string,
   size: PropTypes.string,
   color: PropTypes.string,
   onClick: PropTypes.func,
-  classname: PropTypes.string
+  className: PropTypes.string
 }
 
 export default WrappedButton

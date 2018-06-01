@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
 import styled, { keyframes } from 'styled-components'
 
@@ -68,5 +69,10 @@ const ShortcutMenuWrapper = styled.div`
   }
 `
 
+ShortcutMenu.propTypes = {
+  onMouseEnter: PropTypes.func.isRequired,
+  onMouseLeave: PropTypes.func.isRequired,
+  shortCutMenuToggle: PropTypes.bool.isRequired
+}
 
 export default ShortcutMenu
