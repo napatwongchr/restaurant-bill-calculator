@@ -1,8 +1,8 @@
 import React from 'react'
 import { mount, shallow } from 'enzyme'
-import RootWithoutPersists from '../RootWithoutPersists'
+import RootWithoutPersists from '../../RootWithoutPersists'
 
-import EmployeeApp from '../components/EmployeeApp'
+import EmployeeApp from '../EmployeeApp'
 
 let component
 
@@ -27,6 +27,10 @@ beforeEach(() => {
   component = mount(<RootWithoutPersists initialState={initialState}>
                       <EmployeeApp />
                     </RootWithoutPersists>)
+})
+
+afterEach(() => {
+  component.unmount()
 })
 
 it('Employee app contains heading text', () => {
