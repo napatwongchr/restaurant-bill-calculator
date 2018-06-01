@@ -1,6 +1,11 @@
 ## Restaurant bill calculator
 This project was created for assignment purpose.
 
+[VIEW PROJECT ONLINE HERE](https://napatwongchr.github.io/restaurant-bill-calculator)
+
+### To run development
+npm run start
+
 ## Instruction
 This application is divided into 3 parts.
 
@@ -12,10 +17,10 @@ This application is divided into 3 parts.
 The application stores data in the form of json in /src/data. All related data will be loaded from index page. **(You can edit data here for testing purpose)** It contains 2 entities, as followings:
 
 1. Table.json
-- Table composes many different fields: id, type, capacity, people, items (list of foods)
+- Table composes of many different fields: id, type, capacity, people, items (list of foods)
 
 2. DiscountCode.json
-- Discount codes composes many different fields: codeName, amountDiscount, discountCodeType, limitPeople
+- Discount code composes of many different fields: codeName, amountDiscount, discountCodeType, limitPeople
 
 ### Initial data
 The application has generated initial data for itself.
@@ -45,9 +50,6 @@ There are also other 2 codes that discount from bill, which are
 - Total price > 1000 then discount for 15%
 
 
-### Testing
-
-
 ## Application capabilities summary
 
 ### Employee section
@@ -62,7 +64,7 @@ There are also other 2 codes that discount from bill, which are
 - System can be able to add / edit / delete discount code (EXCLUDE 6000, 1000 condition for now)
 - Added / Edited codes can be able to applied from bill calculation.
 
-### Employee section
+### Customer section
 - Future task
 
 ## Future tasks
@@ -70,3 +72,8 @@ There are also other 2 codes that discount from bill, which are
 - Responsive
 - Create storybook and build style guide
 - Etc.
+
+### To test
+npm run test
+
+*Test just adding not complete*
