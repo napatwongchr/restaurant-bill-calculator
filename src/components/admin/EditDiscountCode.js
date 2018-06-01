@@ -19,6 +19,7 @@ class EditDiscountCode extends Component {
   }
 
   render() {
+    const { code } = this.props
     return (
       <AdminLayout1 headings='Add promotion code'>
         <AdminHeadings>
@@ -27,7 +28,7 @@ class EditDiscountCode extends Component {
         <Row className='mt-3'>
           <Col>
             <EditDiscountCodeForm
-              initialValues={this.props.code}
+              initialValues={code}
               onSubmit={this.submit.bind(this)} />
           </Col>
         </Row>

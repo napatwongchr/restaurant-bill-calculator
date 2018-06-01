@@ -6,7 +6,7 @@ import AdminLayout1 from '../common/AdminLayout1'
 import AdminHeadings from '../common/AdminHeadings'
 import { Table } from 'reactstrap'
 
-class PromotionCode extends Component {
+class DiscountCode extends Component {
   renderTableRows() {
     const { codes, deleteCode, history } = this.props
     return codes.map(({ id, codeName }, index) => (
@@ -71,4 +71,4 @@ const mapStateToProps = ({ code }) => {
   return { codes }
 }
 
-export default connect(mapStateToProps, { deleteCode })(PromotionCode)
+export default connect(mapStateToProps, { deleteCode })(DiscountCode)

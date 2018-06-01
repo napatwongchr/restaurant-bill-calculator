@@ -37,7 +37,6 @@ export const calculateExchange = (total, recieve) => {
 }
 
 export const calculateBillTotal = (table, selectedCode, allCodes, promotion, dispatch) => {
-  console.log(table)
   let total = 0
   table.items.map(item => total = total + (item.quantity * item.price))
 
