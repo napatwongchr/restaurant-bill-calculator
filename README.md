@@ -6,17 +6,17 @@ This project was created for assignment purpose.
 ### To run development
 npm run start
 
-### To test *(Test just adding not complete)*
+### To test *(Automated tests have just added not complete yet)*
 npm run test
 
-[Test cases document](https://docs.google.com/spreadsheets/d/1urSpLeFdifPelMELo-8JASaMHmSH6WXb5FA8fjbEhAk/edit?usp=sharing)
+[Test cases document (for manual)](https://docs.google.com/spreadsheets/d/1urSpLeFdifPelMELo-8JASaMHmSH6WXb5FA8fjbEhAk/edit?usp=sharing)
 
 ## Instructions
 This application is divided into 3 parts.
 
 1. Employee - User can be able to calculate bill according to table.
 2. Admin - User can be able to Add/Edit/Delete promotion codes.
-3. Customer - User can be able to reserve the seats.
+3. Customer - User can be able to reserve the seats.(Soon)
 
 ## Data
 The application stores data in the form of json in /src/data. All related data will be loaded from MainApp component. **(You can edit data here for testing purpose)** It contains 2 entities, as followings:
@@ -37,13 +37,14 @@ In Table.json, there are 24 tables, which are
 - 8 seats table for 2 tables
 
 **I have initialized data for testing purpose as followings:**
-- Table 1 contains 1 people 1 buffet item, which is 459 baht
-- Table 2 contains 1 people 1 buffet item, which is 1200 baht
-- Table 3 contains 1 people 1 buffet item, which is 7000 baht
-- Table 4 contains no people, so no reservation pop up
-- Table 13 contains 2 people 2 buffet item, which is 918 baht
+*(All this data can be able to apply along with test cases document)*
+- Table 1 contains 1 people 1 buffet item, which is 459 baht (can apply with test case No:6,11)
+- Table 2 contains 1 people 1 buffet item, which is 1200 baht (can apply with test case No:7,8)
+- Table 3 contains 1 people 1 buffet item, which is 7000 baht (can apply with test case No:7,15)
+- Table 4 contains no people, so no reservation pop up (can apply with test case No:2 )
+- Table 13 contains 2 people 2 buffet item, which is 918 baht (can apply with test case No:7,9,12)
 - Table 17 contains 8 people 8 buffet item, which is 3672 baht
-- Table 19 contains 4 people 4 buffet item, which is 1836 baht
+- Table 19 contains 4 people 4 buffet item, which is 1836 baht (can apply with test case No:7,10,13,14)
 
 In DiscountCodes, there are 3 different codes, which are
 - "LUCKY ONE" for 1 people for 15% discount
