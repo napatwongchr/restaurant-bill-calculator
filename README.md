@@ -1,15 +1,15 @@
 ## Restaurant bill calculator
 This project was created for assignment purpose.
 
-[VIEW PROJECT ONLINE HERE](https://napatwongchr.github.io/restaurant-bill-calculator)
+[View project online here](https://napatwongchr.github.io/restaurant-bill-calculator)
 
 ### To run development
 npm run start
 
-### To test
+### To test *(Test just adding not complete)*
 npm run test
 
-*Test just adding not complete*
+[Test cases document](https://docs.google.com/spreadsheets/d/1urSpLeFdifPelMELo-8JASaMHmSH6WXb5FA8fjbEhAk/edit?usp=sharing)
 
 ## Instructions
 This application is divided into 3 parts.

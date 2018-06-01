@@ -59,7 +59,7 @@ export const calculateBillTotal = (items, selectedCode, allCodes, promotion, dis
       } else if (total > 1000) {
         total = total - (total * 0.15)
         dispatch({ type: CALCULATE_BILL_TOTAL, payload: total})
-        dispatch({ type: APPLY_CODE, payload: 'CODE_1000' })
+        dispatch({ type: APPLY_CODE, payload: 'LUCKY ONE' })
       }
       dispatch({ type: CALCULATE_BILL_TOTAL, payload: total})
     }
@@ -92,7 +92,7 @@ const generateDiscountItems = (total, selectedCode, allCodes) => {
 
   if(total > 1000) {
     let calculatedTotal = total - (total * 0.15)
-    discountItems.push({ code: 'CODE_1000', price: calculatedTotal})
+    discountItems.push({ code: 'LUCKY ONE', price: calculatedTotal})
   }
 
   for(let code of allCodes) {
