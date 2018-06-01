@@ -128,9 +128,15 @@ const validate = (values) => {
   }
   if(!values.amountDiscount) {
     errors.amountDiscount = 'Required'
+  } else if(values.amountDiscount < 0) {
+    errors.amountDiscount = 'Amount discount should not be less than zero'
   }
   if(!values.limitPeople) {
     errors.limitPeople = 'Required'
+  } else if(values.limitPeople < 0) {
+    errors.limitPeople = 'Limit people should not be less than zero'
+  } else if(!/^\+?(0|[1-9]\d*)$/.test(values.limitPeople)) {
+    errors.limitPeople = 'Limit people should be integer'
   }
   return errors
 }

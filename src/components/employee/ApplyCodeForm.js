@@ -21,7 +21,7 @@ const ApplyCodeForm = ({ handleSubmit, inputCodes, toggle, table }) => {
                 color='#f9bc02'
                 size='sm'
                 text='APPLY'
-                onClick={handleSubmit} />{' '}
+                onClick={handleSubmit} />
               <WrappedButton
                 textcolor='#FFF'
                 iconName='clear'
@@ -70,7 +70,7 @@ const validate = (value, { inputCodes, table }) => {
   } else {
     for(let code of inputCodes) {
       if(value.discountCode === code.codeName) {
-        if(code.limitPeople !== table.people) {
+        if(code.limitPeople !== table.people && code.limitPeople !== 0) {
           errors.discountCode = `${value.discountCode} needs ${code.limitPeople} people to be applied`
         }
       }

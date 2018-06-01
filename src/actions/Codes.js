@@ -31,8 +31,9 @@ export const addCode = (values, collectionLength, callback) => {
 }
 
 export const editCode = (data, callback) => {
+  const parsedData = {...data, values: {...data.values, limitPeople: +data.values.limitPeople}}
   callback()
-  return { type: EDIT_CODE, payload: data  }
+  return { type: EDIT_CODE, payload: parsedData  }
 }
 
 export const deleteCode = (id) => {
