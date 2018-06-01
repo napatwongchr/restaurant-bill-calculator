@@ -60,8 +60,8 @@ WrappedButton.defaultProps = {
   onClick: () => {},
   className: '',
   size: 'lg',
-  color: '#000',
-  textcolor: '#fff',
+  color: '#3774EA',
+  textcolor: '#000',
   iconName: ''
 }
 

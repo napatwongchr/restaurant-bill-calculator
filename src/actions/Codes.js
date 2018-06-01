@@ -40,17 +40,18 @@ export const deleteCode = (id) => {
   return { type: DELETE_CODE, payload: id }
 }
 
-export const applyCode = (items, selectedCode, allCodes, callback) => {
+export const applyCode = (table, selectedCode, allCodes, callback) => {
   return dispatch => {
-    calculateBillTotal(items, selectedCode.discountCode, allCodes, true, dispatch)
+    dispatch({ type: CLEAR_SELECTED_CODE })
+    calculateBillTotal(table, selectedCode.discountCode, allCodes, true, dispatch)
     callback()
   }
 }
 
-export const removeCodeFromBill = (items, codes) => {
+export const removeCodeFromBill = (table, codes) => {
   return dispatch => {
     dispatch({ type: CLEAR_SELECTED_CODE })
     dispatch({ type: REMOVE_CODE_FROM_BILL })
-    calculateBillTotal(items, null, codes, false, dispatch)
+    calculateBillTotal(table, null, codes, false, dispatch)
   }
 }

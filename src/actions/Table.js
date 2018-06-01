@@ -26,7 +26,7 @@ export const fetchTableById = (id, allCodes) => {
     dispatch({ type: REMOVE_CODE_FROM_BILL })
     dispatch({ type: RESET_EXCHANGE })
     dispatch({ type: FETCH_TABLE_BY_ID, payload: table })
-    calculateBillTotal(table.items, null, allCodes, true, dispatch)
+    calculateBillTotal(table, null, allCodes, true, dispatch)
   }
 }
 
@@ -36,21 +36,25 @@ export const calculateExchange = (total, recieve) => {
   return { type: CALCULATE_EXCHANGE, payload: exchange }
 }
 
-export const calculateBillTotal = (items, selectedCode, allCodes, promotion, dispatch) => {
+export const calculateBillTotal = (table, selectedCode, allCodes, promotion, dispatch) => {
+  console.log(table)
   let total = 0
-  items.map(item => total = total + (item.quantity * item.price))
+  table.items.map(item => total = total + (item.quantity * item.price))
 
   dispatch({ type: CALCULATE_BILL_SUBTOTAL, payload: total})
 
   if (promotion) {
     if (selectedCode) {
       const discountItems = generateDiscountItems(total, selectedCode, allCodes)
-      const minPriceItem = findMinPrice(discountItems)
-      if(minPriceItem.code !== selectedCode) {
+      const minPriceItem = findMinPrice(discountItems, table.people)
+      if(minPriceItem.codeName !== selectedCode) {
         dispatch({ type: SELECTED_CODE, payload: selectedCode })
+        dispatch({ type: CALCULATE_BILL_TOTAL, payload: minPriceItem.price })
+        dispatch({ type: APPLY_CODE, payload: minPriceItem.codeName })
+      } else {
+        dispatch({ type: CALCULATE_BILL_TOTAL, payload: minPriceItem.price })
+        dispatch({ type: APPLY_CODE, payload: minPriceItem.codeName })
       }
-      dispatch({ type: CALCULATE_BILL_TOTAL, payload: minPriceItem.price })
-      dispatch({ type: APPLY_CODE, payload: minPriceItem.code })
     } else {
       if (total > 6000) {
         total = total - (total * 0.25)
@@ -68,14 +72,20 @@ export const calculateBillTotal = (items, selectedCode, allCodes, promotion, dis
   }
 }
 
-const findMinPrice = (items) => {
+const findMinPrice = (items, condition) => {
   let minPriceItem = {}
   for (let item of items) {
     if (Object.keys(minPriceItem).length === 0) {
       minPriceItem = item
     } else {
-      if (item.price < minPriceItem.price) {
-        minPriceItem = item
+      if (item.limitPeople === 0) {
+        if (item.price < minPriceItem.price) {
+          minPriceItem = item
+        }
+      } else {
+        if (item.price < minPriceItem.price && item.limitPeople === condition) {
+          minPriceItem = item
+        }
       }
     }
   }
@@ -87,23 +97,21 @@ const generateDiscountItems = (total, selectedCode, allCodes) => {
 
   if(total > 6000) {
     let calculatedTotal = total - (total * 0.25)
-    discountItems.push({ code: 'CODE_6000', price: calculatedTotal })
+    discountItems.push({ codeName: 'CODE_6000', price: calculatedTotal })
   }
 
   if(total > 1000) {
     let calculatedTotal = total - (total * 0.15)
-    discountItems.push({ code: 'LUCKY ONE', price: calculatedTotal})
+    discountItems.push({ codeName: 'LUCKY ONE', price: calculatedTotal})
   }
 
   for(let code of allCodes) {
-    if(selectedCode === code.codeName) {
-      if(code.discountCodeType === 'fixed') {
-        let calculatedTotal = total - code.amountDiscount
-        discountItems.push({ code: code.codeName, price: calculatedTotal})
-      } else if(code.discountCodeType === 'percent') {
-        let calculatedTotal = total - (total * code.amountDiscount)
-        discountItems.push({ code: code.codeName, price: calculatedTotal})
-      }
+    if(code.discountCodeType === 'fixed') {
+      let calculatedTotal = total - code.amountDiscount
+      discountItems.push({ ...code, price: calculatedTotal})
+    } else if(code.discountCodeType === 'percent') {
+      let calculatedTotal = total - (total * code.amountDiscount)
+      discountItems.push({ ...code, price: calculatedTotal})
     }
   }
 

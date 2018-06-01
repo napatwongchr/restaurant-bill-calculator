@@ -32,13 +32,13 @@ class BillCalculation extends Component {
   }
 
   handleSubmitCode(value) {
-    const { applyCode, codes, singleTable: { items } } = this.props
-    applyCode(items, value, codes, this.toggle)
+    const { applyCode, codes, singleTable } = this.props
+    applyCode(singleTable, value, codes, this.toggle)
   }
 
   handleRemoveCode() {
-    const { removeCodeFromBill, codes, singleTable: { items } } = this.props
-    removeCodeFromBill(items, codes)
+    const { removeCodeFromBill, codes, singleTable } = this.props
+    removeCodeFromBill(singleTable, codes)
   }
 
   componentDidMount() {
