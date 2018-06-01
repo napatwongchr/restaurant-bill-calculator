@@ -6,7 +6,12 @@ This project was created for assignment purpose.
 ### To run development
 npm run start
 
-## Instruction
+### To test
+npm run test
+
+*Test just adding not complete*
+
+## Instructions
 This application is divided into 3 parts.
 
 1. Employee - User can be able to calculate bill according to table.
@@ -14,7 +19,7 @@ This application is divided into 3 parts.
 3. Customer - User can be able to reserve the seats.
 
 ## Data
-The application stores data in the form of json in /src/data. All related data will be loaded from index page. **(You can edit data here for testing purpose)** It contains 2 entities, as followings:
+The application stores data in the form of json in /src/data. All related data will be loaded from MainApp component. **(You can edit data here for testing purpose)** It contains 2 entities, as followings:
 
 1. Table.json
 - Table composes of many different fields: id, type, capacity, people, items (list of foods)
@@ -46,19 +51,21 @@ In DiscountCodes, there are 3 different codes, which are
 - "4PAY3" for 4 people for 459 baht discount
 
 There are also other 2 codes that discount from bill, which are
-- Total price > 6000 then discount for 25%
-- Total price > 1000 then discount for 15%
+- Total price > 6000 then discount for 25% (CODE_6000)
+- Total price > 1000 then discount for 15% (CODE_1000)
+*These 2 codes are not editable like 3 codes above, it's automatically calculated*
 
 
 ## Application capabilities summary
 
 ### Employee section
 - System can be able to calculate the bill price according to table.
+- System can be able to applied promotion code
 - System is automatically applied code according to bill's total price (For instance, total price > 6000 or 1000).
 - System can be able to applied highest discount price code for customer automatically, if the bill is within the scope of discount rules.
 - System can be able to remove discount code from bill.
 - System can be able to calculate exchanges.
-- System can be able to apply 1 discount code only.
+- System can be able to apply 1 discount code only no top up discount code.
 
 ### Admin section
 - System can be able to add / edit / delete discount code (EXCLUDE 6000, 1000 condition for now)
@@ -72,8 +79,3 @@ There are also other 2 codes that discount from bill, which are
 - Responsive
 - Create storybook and build style guide
 - Etc.
-
-### To test
-npm run test
-
-*Test just adding not complete*

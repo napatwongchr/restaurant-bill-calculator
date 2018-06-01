@@ -1,11 +1,9 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
-import WrappedButton from '../common/WrappedButton'
 import { Container, Row, Col } from 'reactstrap'
 
 class ReserveSeats extends Component {
   render() {
-    const { history } = this.props
     return (
       <ContainerWrapper fluid>
         <HeadingsRowWrapper>

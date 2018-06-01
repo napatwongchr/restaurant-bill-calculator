@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
-import { HashRouter as Router, Route, Switch,
-Link } from 'react-router-dom'
+import { HashRouter as Router, Route, Switch } from 'react-router-dom'
 
 import ShortcutMenu from './components/common/ShortcutMenu'
 import BillCalculation from './components/employee/BillCalculation'
@@ -53,6 +52,5 @@ class App extends Component {
 const MainAppWrapper = styled.div`
   position: relative;
 `
-
 
 export default App

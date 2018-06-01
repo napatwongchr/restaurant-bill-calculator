@@ -38,4 +38,13 @@ const TableNumber = styled.span`
   font-size: 40px;
 `
 
+TableBox.defaultProps = {
+  onClick: () => {}
+}
+
+TableBox.propTypes = {
+  number: PropTypes.string,
+  onClick: PropTypes.func
+}
+
 export default TableBox

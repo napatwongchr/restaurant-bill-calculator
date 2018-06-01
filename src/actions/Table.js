@@ -99,6 +99,7 @@ const generateDiscountItems = (total, selectedCode, allCodes) => {
     if(selectedCode === code.codeName) {
       if(code.discountCodeType === 'fixed') {
         let calculatedTotal = total - code.amountDiscount
+        discountItems.push({ code: code.codeName, price: calculatedTotal})
       } else if(code.discountCodeType === 'percent') {
         let calculatedTotal = total - (total * code.amountDiscount)
         discountItems.push({ code: code.codeName, price: calculatedTotal})

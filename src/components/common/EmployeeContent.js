@@ -22,4 +22,11 @@ EmployeeContent.defaultProps = {
   classname: ''
 }
 
+EmployeeContent.propTypes = {
+  children: PropTypes.oneOfType([
+    PropTypes.element,
+    PropTypes.array
+  ]).isRequired
+}
+
 export default EmployeeContent

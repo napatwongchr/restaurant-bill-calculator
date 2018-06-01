@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { fetchTableById, calculateExchange } from '../../actions/Table'
-import { applyCode, removeCodeFromBill, clearSelectedCode } from '../../actions/Codes'
+import { applyCode, removeCodeFromBill } from '../../actions/Codes'
 import styled from 'styled-components'
 import EmployeeHeadings from '../common/EmployeeHeadings'
 import EmployeeContent from '../common/EmployeeContent'

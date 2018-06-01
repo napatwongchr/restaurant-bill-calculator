@@ -4,7 +4,6 @@ import { Container, Row, Col } from 'reactstrap'
 import { connect } from 'react-redux'
 import { fetchTable } from '../actions/Table'
 import { fetchCodes } from '../actions/Codes'
-import { selectRole } from '../actions/Auth'
 import RoleCard from './common/RoleCard'
 
 class MainApp extends Component {
@@ -65,4 +64,4 @@ const SelectRoleHeading = styled.h1`
   font-weight: bolder;
 `
 
-export default connect(null, { selectRole, fetchTable, fetchCodes })(MainApp)
+export default connect(null, { fetchTable, fetchCodes })(MainApp)
