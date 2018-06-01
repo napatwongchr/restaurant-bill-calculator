@@ -1,16 +1,22 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import styled from 'styled-components'
+import { fetchTable } from '../actions/Table'
 import EmployeeHeadings from './common/EmployeeHeadings'
 import EmployeeContent from './common/EmployeeContent'
 import TableBox from './common/TableBox'
 import { Container, Col } from 'reactstrap'
 
 class EmployeeApp extends Component {
+  componentDidMount() {
+    this.props.fetchTable()
+  }
+
   renderTableList(tables) {
     const { history } = this.props
     return tables.map((table, index) => <TableBox
       key={table.id}
+      hasPeople={table.people}
       onClick={() => history.push(`/employee/calculation/${table.id}`)}
       number={table.id}/>)
   }
@@ -42,4 +48,4 @@ const mapStateToProps = ({ table }) => {
   return { tables }
 }
 
-export default connect(mapStateToProps)(EmployeeApp)
+export default connect(mapStateToProps, { fetchTable })(EmployeeApp)

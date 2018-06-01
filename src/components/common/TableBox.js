@@ -2,9 +2,10 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
-const TableBox = ({ number, onClick }) => {
+const TableBox = ({ number, onClick, hasPeople }) => {
   return (
     <CircleBox className='circle-box' onClick={onClick}>
+      { hasPeople && <HasPeopleIcon className='material-icons'>person</HasPeopleIcon> }
       <TableHeadings>Table</TableHeadings>
       <TableNumber>{number}</TableNumber>
     </CircleBox>
@@ -12,6 +13,7 @@ const TableBox = ({ number, onClick }) => {
 }
 
 const CircleBox = styled.div`
+  position: relative;
   margin: 10px 20px;
   display: flex;
   flex-direction: column;
@@ -25,6 +27,16 @@ const CircleBox = styled.div`
   &:hover {
     transform: translate(0px, -5px);
   }
+`
+
+const HasPeopleIcon = styled.i`
+  color: #fff;
+  background-color: #407fed;
+  border-radius: 50px;
+  padding: 3px;
+  position: absolute;
+  top: -4px;
+  right: -5px;
 `
 
 const TableHeadings = styled.span`
@@ -43,7 +55,7 @@ TableBox.defaultProps = {
 }
 
 TableBox.propTypes = {
-  number: PropTypes.string,
+  number: PropTypes.number,
   onClick: PropTypes.func
 }
 
