@@ -19,13 +19,7 @@ export const fetchCodeById = (id) => {
 }
 
 export const addCode = (values, collectionLength, callback) => {
-  const codeData = {}
-  const { codeName, amountDiscount, discountCodeType, limitPeople } = values
-  codeData.id = collectionLength + 1
-  codeData.codeName = codeName
-  codeData.amountDiscount = +amountDiscount
-  codeData.discountCodeType = discountCodeType
-  codeData.limitPeople = +limitPeople
+  const codeData = { id: collectionLength + 1, ...values }
   callback()
   return { type: ADD_CODE, payload: codeData }
 }

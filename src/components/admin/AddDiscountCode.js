@@ -31,7 +31,9 @@ class AddDiscountCode extends Component {
         </AdminHeadings>
         <Row className='mt-3'>
           <Col>
-            <AddDiscountCodeForm onSubmit={this.submit.bind(this)} />
+            <AddDiscountCodeForm
+              buttonText='Add'
+              onSubmit={this.submit.bind(this)} />
           </Col>
         </Row>
       </AdminLayout1>

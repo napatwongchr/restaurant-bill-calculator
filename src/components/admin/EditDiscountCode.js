@@ -23,11 +23,12 @@ class EditDiscountCode extends Component {
     return (
       <AdminLayout1 headings='Add promotion code'>
         <AdminHeadings>
-          <h2>Edit Discount Code </h2>
+          <h2>Edit Discount Code</h2>
         </AdminHeadings>
         <Row className='mt-3'>
           <Col>
             <EditDiscountCodeForm
+              buttonText='Update'
               initialValues={code}
               onSubmit={this.submit.bind(this)} />
           </Col>

@@ -5,7 +5,7 @@ import { Row, Col, Form,
   FormGroup } from 'reactstrap'
 import WrappedButton from '../common/WrappedButton'
 
-const DiscountCodeForm = ({ handleSubmit }) => {
+const DiscountCodeForm = ({ handleSubmit, buttonText }) => {
   return <Form>
             <Row>
               <Col>
@@ -32,6 +32,8 @@ const DiscountCodeForm = ({ handleSubmit }) => {
                 <FormGroup>
                   <Field
                     required
+                    format={numberFormatter}
+                    parse={numberParser}
                     label='Amount discount'
                     className='form-control'
                     type='number'
@@ -41,7 +43,8 @@ const DiscountCodeForm = ({ handleSubmit }) => {
                 </FormGroup>
                 <FormGroup>
                   <Field
-                    required
+                    format={numberFormatter}
+                    parse={numberParser}
                     label='Limit People'
                     className='form-control'
                     type='number'
@@ -59,11 +62,14 @@ const DiscountCodeForm = ({ handleSubmit }) => {
                   textcolor='#000'
                   color='#f9bc02'
                   size='lg'
-                  text='ADD' />
+                  text={buttonText} />
               </Col>
             </Row>
           </Form>
 }
+
+const numberFormatter = (value) => String(value)
+const numberParser = (value) => Number(value)
 
 const renderField = ({
   input,
@@ -131,12 +137,10 @@ const validate = (values) => {
   } else if(values.amountDiscount < 0) {
     errors.amountDiscount = 'Amount discount should not be less than zero'
   }
-  if(!values.limitPeople) {
-    errors.limitPeople = 'Required'
-  } else if(values.limitPeople < 0) {
+  if(values.limitPeople < 0) {
     errors.limitPeople = 'Limit people should not be less than zero'
-  } else if(!/^\+?(0|[1-9]\d*)$/.test(values.limitPeople)) {
-    errors.limitPeople = 'Limit people should be integer'
+} else if(!Number.isInteger(values.limitPeople)) {
+    errors.limitPeople = 'Limit peple should be intger'
   }
   return errors
 }

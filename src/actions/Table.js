@@ -77,7 +77,7 @@ export const findMinPrice = (items, condition) => {
     if (Object.keys(minPriceItem).length === 0) {
       minPriceItem = item
     } else {
-      if (item.limitPeople === 0) {
+      if (!item.limitPeople) {
         if (item.price < minPriceItem.price) {
           minPriceItem = item
         }
@@ -116,3 +116,12 @@ export const generateDiscountItems = (total, allCodes) => {
 
   return discountItems
 }
+
+// export const cutRepeatItem = (items) => {
+//   for(let i = 0; i <= items.length; i++){
+//     for(let j = i + 1; j <= items.length; j++){
+//
+//     }
+//   }
+//
+// }
