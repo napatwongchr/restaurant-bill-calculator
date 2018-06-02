@@ -65,6 +65,10 @@ const DiscountCodeForm = ({ handleSubmit }) => {
           </Form>
 }
 
+const fieldNumberFormatter = (value) => String(value)
+
+const fieldNumberParser = (value) => Number(value)
+
 const renderField = ({
   input,
   label,
