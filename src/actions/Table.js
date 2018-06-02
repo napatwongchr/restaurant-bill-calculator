@@ -44,7 +44,7 @@ export const calculateBillTotal = (table, selectedCode, allCodes, promotion, dis
 
   if (promotion) {
     if (selectedCode) {
-      const discountItems = generateDiscountItems(total, selectedCode, allCodes)
+      const discountItems = generateDiscountItems(total, allCodes)
       const minPriceItem = findMinPrice(discountItems, table.people)
       if(minPriceItem.codeName !== selectedCode) {
         dispatch({ type: SELECTED_CODE, payload: selectedCode })
@@ -71,7 +71,7 @@ export const calculateBillTotal = (table, selectedCode, allCodes, promotion, dis
   }
 }
 
-const findMinPrice = (items, condition) => {
+export const findMinPrice = (items, condition) => {
   let minPriceItem = {}
   for (let item of items) {
     if (Object.keys(minPriceItem).length === 0) {
@@ -91,7 +91,7 @@ const findMinPrice = (items, condition) => {
   return minPriceItem
 }
 
-const generateDiscountItems = (total, selectedCode, allCodes) => {
+export const generateDiscountItems = (total, allCodes) => {
   let discountItems = []
 
   if(total > 6000) {
