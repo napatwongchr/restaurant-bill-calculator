@@ -52,6 +52,9 @@ class BillCalculation extends Component {
       selectedCode, history } = this.props
     return (
       <div>
+        <EmployeeHeading
+          mainHeading='BILL SUMMARY'
+          subHeading={`Summary for table #${singleTable.id}`} />
         <EmployeeContent>
           <EmployeeBill
             history={history}
@@ -79,9 +82,6 @@ class BillCalculation extends Component {
     const { singleTable } = this.props
     return (
       <ContainerWrapper fluid>
-        <EmployeeHeading
-          mainHeading='BILL SUMMARY'
-          subHeading={`Summary for table #${singleTable.id}`} />
         { singleTable && this.renderBill() }
       </ContainerWrapper>
     )
