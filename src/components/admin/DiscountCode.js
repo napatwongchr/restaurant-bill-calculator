@@ -4,19 +4,43 @@ import { deleteCode } from '../../actions/Codes'
 import WrappedButton from '../common/WrappedButton'
 import AdminLayout1 from '../common/AdminLayout1'
 import AdminHeadings from '../common/AdminHeadings'
+import ConfirmationModal from '../common/ConfirmationModal'
 import { Table } from 'reactstrap'
 
 class DiscountCode extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      modal: false,
+      code: {}
+    }
+   this.toggle = this.toggle.bind(this)
+   this.handleDelete = this.handleDelete.bind(this)
+  }
+
+  toggle() {
+    this.setState({
+      modal: !this.state.modal
+    })
+  }
+
+  handleDelete() {
+    const { deleteCode } = this.props
+    const { code } = this.state
+    deleteCode(code.id)
+    this.toggle()
+  }
+
   renderTableRows() {
-    const { codes, deleteCode, history } = this.props
-    return codes.map(({ id, codeName }, index) => (
+    const { codes, history } = this.props
+    return codes.map((code, index) => (
       <tr key={index}>
-        <th scope='row'>{ id }</th>
-        <td>{codeName}</td>
+        <th scope='row'>{ code.id }</th>
+        <td>{code.codeName}</td>
         <td>
           <WrappedButton
             className='ml-2'
-            onClick={() => history.push(`/admin/discount/edit/${id}`)}
+            onClick={() => history.push(`/admin/discount/edit/${code.id}`)}
             iconName='edit'
             textcolor='#FFFFFF'
             color='#407fed'
@@ -24,7 +48,10 @@ class DiscountCode extends Component {
             text='EDIT' />
           <WrappedButton
             className='ml-2'
-            onClick={() => deleteCode(id)}
+            onClick={() => {
+              this.setState({ code })
+              this.toggle()
+            }}
             iconName='clear'
             textcolor='#FFFFFF'
             color='#ef405a'
@@ -37,6 +64,7 @@ class DiscountCode extends Component {
 
   render() {
     const { history } = this.props
+    const { code, modal } = this.state
     return (
       <AdminLayout1 headings='Promotion Code'>
         <AdminHeadings>
@@ -61,6 +89,13 @@ class DiscountCode extends Component {
             { this.renderTableRows() }
           </tbody>
         </Table>
+        <ConfirmationModal
+          text={`Are you sure you want to delete ${code.codeName}?`}
+          code={code}
+          isOpen={modal}
+          toggle={this.toggle}
+          handleDelete={this.handleDelete}
+        />
       </AdminLayout1>
     )
   }

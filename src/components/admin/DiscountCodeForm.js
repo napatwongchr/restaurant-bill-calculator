@@ -69,7 +69,7 @@ const DiscountCodeForm = ({ handleSubmit, buttonText }) => {
 }
 
 const numberFormatter = (value) => String(value)
-const numberParser = (value) => Number(value)
+const numberParser = (value) => value === undefined ? undefined : Number(value)
 
 const renderField = ({
   input,
