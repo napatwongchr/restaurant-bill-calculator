@@ -12,7 +12,7 @@ const DiscountCodeForm = ({ handleSubmit, buttonText }) => {
                 <FormGroup>
                   <Field
                     required
-                    label='Code name'
+                    label='Code Name'
                     className='form-control'
                     type='text'
                     name='codeName'
@@ -34,7 +34,7 @@ const DiscountCodeForm = ({ handleSubmit, buttonText }) => {
                     required
                     format={numberFormatter}
                     parse={numberParser}
-                    label='Amount discount'
+                    label='Amount Discount'
                     className='form-control'
                     type='number'
                     name='amountDiscount'
@@ -140,7 +140,7 @@ const validate = (values) => {
   if(values.limitPeople < 0) {
     errors.limitPeople = 'Limit people should not be less than zero'
 } else if(!Number.isInteger(values.limitPeople)) {
-    errors.limitPeople = 'Limit peple should be intger'
+    errors.limitPeople = 'Limit peple should be integer'
   }
   return errors
 }

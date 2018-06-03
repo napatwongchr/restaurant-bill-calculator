@@ -6,7 +6,7 @@ This project was created for assignment purpose.
 ### To run development
 npm run start
 
-### To test *(Automated tests have just added not complete yet)*
+### To test *(Automated tests have just added not cover all cases yet)*
 npm run test
 
 [Test cases document (for manual)](https://docs.google.com/spreadsheets/d/1urSpLeFdifPelMELo-8JASaMHmSH6WXb5FA8fjbEhAk/edit?usp=sharing)
@@ -15,7 +15,7 @@ npm run test
 This application is divided into 3 parts.
 
 1. Employee - User can be able to calculate bill according to table.
-2. Admin - User can be able to Add/Edit/Delete promotion codes.
+2. Admin - User can be able to Add/Edit/Delete discount codes.
 3. Customer - User can be able to reserve the seats.(Soon)
 
 ## Data
@@ -53,7 +53,7 @@ In DiscountCodes, there are 3 different codes, which are
 
 There are also other 2 codes that discount from bill, which are
 - Total price > 6000 then discount for 25% (CODE_6000)
-- Total price > 1000 then discount for 15% (CODE_1000)
+- Total price > 1000 then discount for 15% (LUCKY ONE)
 *These 2 codes are not editable like 3 codes above, it's automatically calculated*
 
 
@@ -61,7 +61,7 @@ There are also other 2 codes that discount from bill, which are
 
 ### Employee section
 - System can be able to calculate the bill price according to table.
-- System can be able to applied promotion code
+- System can be able to applied discount code
 - System is automatically applied code according to bill's total price (For instance, total price > 6000 or 1000).
 - System can be able to applied highest discount price code for customer automatically, if the bill is within the scope of discount rules.
 - System can be able to remove discount code from bill.
@@ -79,5 +79,5 @@ There are also other 2 codes that discount from bill, which are
 - Seats reservation module
 - Responsive
 - Create storybook and build style guide
-- Automation test
+- More automation tests
 - Etc.

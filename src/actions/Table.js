@@ -116,12 +116,3 @@ export const generateDiscountItems = (total, allCodes) => {
 
   return discountItems
 }
-
-// export const cutRepeatItem = (items) => {
-//   for(let i = 0; i <= items.length; i++){
-//     for(let j = i + 1; j <= items.length; j++){
-//
-//     }
-//   }
-//
-// }

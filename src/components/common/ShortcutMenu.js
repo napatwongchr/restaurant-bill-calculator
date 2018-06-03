@@ -63,7 +63,6 @@ const ShortcutMenuWrapper = styled.div`
   bottom: 30px;
   right: 30px;
   cursor: pointer;
-  transition: width 0.5s;
   &:hover {
     animation: ${expandMenuBox} 0.25s forwards;
   }
