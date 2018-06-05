@@ -27,17 +27,17 @@ class BillCalculation extends Component {
   }
 
   handleExchange(event) {
-    const { billTotal, calculateExchange } = this.props
+    const { table: { billTotal }, calculateExchange } = this.props
     calculateExchange(billTotal, event.target.value)
   }
 
   handleSubmitCode(value) {
-    const { applyCode, codes, singleTable } = this.props
+    const { applyCode, code: { codes }, table: { singleTable } } = this.props
     applyCode(singleTable, value, codes, this.toggle)
   }
 
   handleRemoveCode() {
-    const { removeCodeFromBill, codes, singleTable } = this.props
+    const { removeCodeFromBill, code: { codes }, table: { singleTable } } = this.props
     removeCodeFromBill(singleTable, codes)
   }
 
@@ -47,9 +47,7 @@ class BillCalculation extends Component {
   }
 
   renderBill() {
-    const { singleTable, billTotal, appliedCode,
-      subTotal, exchange, codes,
-      selectedCode, history } = this.props
+    const { code: { codes }, table: { singleTable }, history } = this.props
     return (
       <div>
         <EmployeeHeading
@@ -57,18 +55,14 @@ class BillCalculation extends Component {
           subHeading={`Summary for table #${singleTable.id}`} />
         <EmployeeContent>
           <EmployeeBill
+            { ...this.props.table }
+            { ...this.props.code }
             history={history}
             handleRemoveCode={this.handleRemoveCode}
             handleExchange={this.handleExchange}
-            selectedCode={selectedCode}
-            exchange={exchange}
-            table={singleTable}
-            subTotal={subTotal}
-            billTotal={billTotal}
-            appliedCode={appliedCode}
             modalToggle={this.toggle} />
           <ApplyCodeModal
-            table={singleTable}
+            singleTable={singleTable}
             inputCodes={codes}
             handleSubmitCode={this.handleSubmitCode}
             isOpen={this.state.modal}
@@ -79,7 +73,7 @@ class BillCalculation extends Component {
   }
 
   render() {
-    const { singleTable } = this.props
+    const { singleTable } = this.props.table
     return (
       <ContainerWrapper fluid>
         { singleTable && this.renderBill() }
@@ -94,10 +88,7 @@ const ContainerWrapper = styled(Container)`
 `
 
 const mapStateToProps = ({ table, code }) => {
-  const { codes, appliedCode, selectedCode } = code
-  const { singleTable, billTotal, subTotal, exchange } = table
-  return { singleTable, billTotal, appliedCode,
-    subTotal, exchange, codes, selectedCode }
+  return { table, code }
 }
 
 export default connect(mapStateToProps,

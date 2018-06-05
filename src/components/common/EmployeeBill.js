@@ -4,11 +4,12 @@ import WrappedButton from '../common/WrappedButton'
 import { Row, Col, Table,
 Input } from 'reactstrap'
 
-const EmployeeBill = ({ table, billTotal, appliedCode,
+const EmployeeBill = ({ singleTable, billTotal, appliedCode,
   subTotal, exchange, modalToggle,
   handleExchange, handleRemoveCode, selectedCode,
   removeCodeFromBill, history }) => {
-  const reservation = table.people
+    console.log()
+  const reservation = singleTable.people
   return (
     <BillSummary md='6'>
       { reservation
@@ -17,9 +18,9 @@ const EmployeeBill = ({ table, billTotal, appliedCode,
               reservation={reservation}
               modalToggle={modalToggle} />
             <BillDetail
-              peopleNumber={table.people} />
+              peopleNumber={singleTable.people} />
             <BillItemDetail
-              items={table.items} />
+              items={singleTable.items} />
             <BillCodes
               selectedCode={selectedCode}
               handleRemoveCode={handleRemoveCode}
@@ -205,6 +206,7 @@ const BillActions = ({ handleRemoveCode, history }) => {
                 size='lg'
                 text='BACK' />
               <WrappedButton
+                onClick={() => alert('Chekout the table !')}
                 iconName='send'
                 color='#f9bc02'
                 size='lg'

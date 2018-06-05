@@ -3,7 +3,7 @@ import ApplyCodeForm from './ApplyCodeForm'
 import { Modal, ModalHeader, ModalBody } from 'reactstrap'
 
 const ApplyCodeModal = ({ isOpen, toggle, handleSubmitCode,
-  inputCodes, table }) => {
+  inputCodes, singleTable }) => {
   return  <div>
              <Modal isOpen={isOpen} toggle={toggle}>
                <ModalHeader toggle={toggle}>
@@ -14,7 +14,7 @@ const ApplyCodeModal = ({ isOpen, toggle, handleSubmitCode,
                    toggle={toggle}
                    onSubmit={handleSubmitCode}
                    inputCodes={inputCodes}
-                   table={table} />
+                   singleTable={singleTable} />
                </ModalBody>
              </Modal>
            </div>
