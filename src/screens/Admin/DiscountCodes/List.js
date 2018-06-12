@@ -4,7 +4,7 @@ import AdminHeadings from '../../../components/UI/AdminHeadings'
 import WrappedButton from '../../../components/UI/WrappedButton'
 import DiscountCodesList from '../../../components/admin/DiscountCodes/List'
 
-const ScreenDiscountCodesList = ({ history }) => {
+const ScreenAdminDiscountCodesList = ({ history }) => {
   return (
     <AdminLayout1 headings='Promotion Code'>
       <AdminHeadings>
@@ -17,9 +17,9 @@ const ScreenDiscountCodesList = ({ history }) => {
           size='lg'
           text='ADD' />
       </AdminHeadings>
-      <DiscountCodesList history={history}/>
+      <DiscountCodesList />
     </AdminLayout1>
   )
 }
 
-export default ScreenDiscountCodesList
+export default ScreenAdminDiscountCodesList

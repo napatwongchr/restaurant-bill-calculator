@@ -4,7 +4,7 @@ import AdminLayout1 from '../../../components/UI/AdminLayout1'
 import AdminHeadings from '../../../components/UI/AdminHeadings'
 import DiscountCodesFormAdd from '../../../components/admin/DiscountCodes/Form/Add'
 
-const ScreenDiscountCodesAdd = () => {
+const ScreenAdminDiscountCodesAdd = () => {
   return (
     <AdminLayout1 headings='Add discount code'>
       <AdminHeadings>
@@ -19,4 +19,4 @@ const ScreenDiscountCodesAdd = () => {
   )
 }
 
-export default ScreenDiscountCodesAdd
+export default ScreenAdminDiscountCodesAdd

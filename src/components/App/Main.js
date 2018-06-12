@@ -1,10 +1,11 @@
 import React, { Component } from 'react'
+import { withRouter } from 'react-router-dom'
 import styled from 'styled-components'
 import { Container, Row, Col } from 'reactstrap'
 import { connect } from 'react-redux'
-import { fetchTable } from '../actions/Table'
-import { fetchCodes } from '../actions/Codes'
-import RoleCard from './common/RoleCard'
+import { fetchTable } from '../../actions/Table'
+import { fetchCodes } from '../../actions/Codes'
+import RoleCard from '../UI/RoleCard'
 
 class MainApp extends Component {
   componentDidMount() {
@@ -64,4 +65,6 @@ const SelectRoleHeading = styled.h1`
   font-weight: bolder;
 `
 
-export default connect(null, { fetchTable, fetchCodes })(MainApp)
+export default withRouter(
+  connect(null, { fetchTable, fetchCodes })(MainApp)
+)

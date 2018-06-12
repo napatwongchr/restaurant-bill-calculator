@@ -1,19 +1,17 @@
-import React, { Component } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 import { Container, Row, Col } from 'reactstrap'
 
-class ReserveSeats extends Component {
-  render() {
-    return (
-      <ContainerWrapper fluid>
-        <HeadingsRowWrapper>
-          <HeadingsWrapper>
-            <Headings>Soon...</Headings>
-          </HeadingsWrapper>
-        </HeadingsRowWrapper>
-      </ContainerWrapper>
-    )
-  }
+const ScreenCustomerSoon = () => {
+  return (
+    <ContainerWrapper fluid>
+      <HeadingsRowWrapper>
+        <HeadingsWrapper>
+          <Headings>Soon...</Headings>
+        </HeadingsWrapper>
+      </HeadingsRowWrapper>
+    </ContainerWrapper>
+  )
 }
 
 const ContainerWrapper = styled(Container)`
@@ -36,4 +34,4 @@ const Headings = styled.h1`
   font-size: 100px
 `
 
-export default ReserveSeats
+export default ScreenCustomerSoon

@@ -62,7 +62,6 @@ class DiscountCodesList extends Component {
   }
 
   render() {
-    const { history } = this.props
     const { code, modal } = this.state
     return (
       <div>
