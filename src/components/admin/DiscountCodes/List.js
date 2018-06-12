@@ -1,13 +1,12 @@
 import React, { Component } from 'react'
+import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
-import { deleteCode } from '../../actions/Codes'
-import WrappedButton from '../common/WrappedButton'
-import AdminLayout1 from '../common/AdminLayout1'
-import AdminHeadings from '../common/AdminHeadings'
-import ConfirmationModal from '../common/ConfirmationModal'
+import { deleteCode } from '../../../actions/Codes'
+import WrappedButton from '../../common/WrappedButton'
+import ConfirmationModal from '../../common/ConfirmationModal'
 import { Table } from 'reactstrap'
 
-class DiscountCode extends Component {
+class DiscountCodesList extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -40,7 +39,7 @@ class DiscountCode extends Component {
         <td>
           <WrappedButton
             className='ml-2'
-            onClick={() => history.push(`/admin/discount/edit/${code.id}`)}
+            onClick={() => history.push(`/admin/discount-codes/edit/${code.id}`)}
             iconName='edit'
             textcolor='#FFFFFF'
             color='#407fed'
@@ -66,17 +65,7 @@ class DiscountCode extends Component {
     const { history } = this.props
     const { code, modal } = this.state
     return (
-      <AdminLayout1 headings='Promotion Code'>
-        <AdminHeadings>
-          <h2>Discount Codes</h2>
-          <WrappedButton
-            onClick={() => history.push('/admin/discount/add')}
-            iconName='add'
-            textcolor='#000'
-            color='#f9bc02'
-            size='lg'
-            text='ADD' />
-        </AdminHeadings>
+      <div>
         <Table className='mt-3' bordered>
           <thead>
             <tr>
@@ -96,7 +85,7 @@ class DiscountCode extends Component {
           toggle={this.toggle}
           handleDelete={this.handleDelete}
         />
-      </AdminLayout1>
+      </div>
     )
   }
 }
@@ -106,4 +95,6 @@ const mapStateToProps = ({ code }) => {
   return { codes }
 }
 
-export default connect(mapStateToProps, { deleteCode })(DiscountCode)
+export default withRouter(
+  connect(mapStateToProps, { deleteCode })(DiscountCodesList)
+)

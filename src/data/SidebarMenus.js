@@ -6,7 +6,7 @@ export default [
   },
   {
     title: 'Discount codes',
-    url: '/admin/discount',
+    url: '/admin/discount-codes',
     icon: 'card_giftcard'
   }
 ]

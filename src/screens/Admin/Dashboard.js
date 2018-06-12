@@ -1,8 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
-import AdminLayout1 from './common/AdminLayout1'
+import AdminLayout1 from '../../components/UI/AdminLayout1'
 
-const AdminApp = () => {
+const ScreenDashboard = () => {
   return (
     <AdminLayout1 headings='Dashboard'>
       <AdminContentWrapper>
@@ -21,4 +21,4 @@ const AdminContentWrapper = styled.div`
   height: 100%;
 `
 
-export default AdminApp
+export default ScreenDashboard
