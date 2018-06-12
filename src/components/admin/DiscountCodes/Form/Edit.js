@@ -2,9 +2,9 @@ import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 
-import { fetchCodeById, editCode } from '../../../../actions/Codes'
+import { fetchCodeById, editCode } from 'actions/Codes'
 
-import { DiscountCodesFormEdit } from './Form'
+import { DiscountCodesFormEdit } from 'components/Admin/DiscountCodes/Form/Form'
 
 class DiscountCodesEdit extends Component {
   componentDidMount() {

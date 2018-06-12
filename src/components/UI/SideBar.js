@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 import { Col } from 'reactstrap'
 
-import menus from '../../data/SidebarMenus'
+import menus from 'data/SidebarMenus'
 
 const SideBar = () => {
   return (

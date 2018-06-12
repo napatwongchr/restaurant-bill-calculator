@@ -3,10 +3,10 @@ import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { Table } from 'reactstrap'
 
-import { deleteCode } from '../../../actions/Codes'
+import { deleteCode } from 'actions/Codes'
 
-import WrappedButton from '../../UI/WrappedButton'
-import ConfirmationModal from '../../UI/ConfirmationModal'
+import WrappedButton from 'components/UI/WrappedButton'
+import ConfirmationModal from 'components/UI/ConfirmationModal'
 
 class DiscountCodesList extends Component {
   constructor(props) {

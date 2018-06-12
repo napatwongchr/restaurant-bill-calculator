@@ -2,8 +2,8 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Container, Row } from 'reactstrap'
 
-import SideBar from '../UI/SideBar'
-import AdminContent from '../UI/AdminContent'
+import SideBar from 'components/UI/SideBar'
+import AdminContent from 'components/UI/AdminContent'
 
 const AdminLayout1 = ({ headings, children }) => {
   return (

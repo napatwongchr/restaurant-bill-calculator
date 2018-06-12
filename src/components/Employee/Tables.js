@@ -4,9 +4,9 @@ import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { Col } from 'reactstrap'
 
-import { fetchTable } from '../../actions/Table'
+import { fetchTable } from 'actions/Table'
 
-import TableBox from '../UI/TableBox'
+import TableBox from 'components/UI/TableBox'
 
 
 class EmployeeApp extends Component {

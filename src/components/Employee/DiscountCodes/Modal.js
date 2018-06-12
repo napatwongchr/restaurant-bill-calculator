@@ -1,7 +1,7 @@
 import React from 'react'
 import { Modal, ModalHeader, ModalBody } from 'reactstrap'
 
-import EmployeeDiscountCodesForm from './Form'
+import EmployeeDiscountCodesForm from 'components/Employee/DiscountCodes/Form'
 
 const EmployeeDiscountCodesModal = ({ isOpen, toggle, handleSubmitCode,
   inputCodes, singleTable }) => (

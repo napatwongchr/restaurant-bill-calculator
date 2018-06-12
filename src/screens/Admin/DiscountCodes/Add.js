@@ -1,9 +1,9 @@
 import React from 'react'
 import { Row, Col } from 'reactstrap'
 
-import AdminLayout1 from '../../../components/UI/AdminLayout1'
-import AdminHeadings from '../../../components/UI/AdminHeadings'
-import DiscountCodesFormAdd from '../../../components/Admin/DiscountCodes/Form/Add'
+import AdminLayout1 from 'components/UI/AdminLayout1'
+import AdminHeadings from 'components/UI/AdminHeadings'
+import DiscountCodesFormAdd from 'components/Admin/DiscountCodes/Form/Add'
 
 const ScreenAdminDiscountCodesAdd = () => {
   return (

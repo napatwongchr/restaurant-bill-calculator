@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { Row, Col } from 'reactstrap'
 import { Field, reduxForm } from 'redux-form'
 
-import WrappedButton from '../../UI/WrappedButton'
+import WrappedButton from 'components/UI/WrappedButton'
 
 
 const EmployeeDiscountCodesForm = ({ handleSubmit, inputCodes, toggle, singleTable }) => (

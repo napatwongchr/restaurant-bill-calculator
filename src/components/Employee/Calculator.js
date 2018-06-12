@@ -2,11 +2,11 @@ import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 
-import { fetchTableById, calculateExchange } from '../../actions/Table'
-import { applyCode, removeCodeFromBill } from '../../actions/Codes'
+import { fetchTableById, calculateExchange } from 'actions/Table'
+import { applyCode, removeCodeFromBill } from 'actions/Codes'
 
-import EmployeeBill from '../UI/EmployeeBill'
-import EmployeeDiscountCodesModal from './DiscountCodes/Modal'
+import EmployeeBill from 'components/UI/EmployeeBill'
+import EmployeeDiscountCodesModal from 'components/Employee/DiscountCodes/Modal'
 
 class EmployeeCalculator extends Component {
   constructor(props) {

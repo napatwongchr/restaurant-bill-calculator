@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import { Row, Col, Table, Input } from 'reactstrap'
 
-import WrappedButton from '../UI/WrappedButton'
+import WrappedButton from 'components/UI/WrappedButton'
 
 
 const EmployeeBill = ({ singleTable, billTotal, appliedCode,
