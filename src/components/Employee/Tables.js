@@ -9,7 +9,7 @@ import { fetchTable } from 'actions/Table'
 import TableBox from 'components/UI/TableBox'
 
 
-class EmployeeApp extends Component {
+class EmployeeTables extends Component {
   componentDidMount() {
     this.props.fetchTable()
   }
@@ -45,5 +45,5 @@ const mapStateToProps = ({ table }) => {
 }
 
 export default withRouter(
-  connect(mapStateToProps, { fetchTable })(EmployeeApp)
+  connect(mapStateToProps, { fetchTable })(EmployeeTables)
 )
