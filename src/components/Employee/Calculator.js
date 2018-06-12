@@ -1,16 +1,18 @@
 import React, { Component } from 'react'
+import { Container } from 'reactstrap'
+import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
+import styled from 'styled-components'
+
 import { fetchTableById, calculateExchange } from '../../actions/Table'
 import { applyCode, removeCodeFromBill } from '../../actions/Codes'
-import styled from 'styled-components'
+
 import EmployeeHeading from '../UI/EmployeeHeading'
 import EmployeeContent from '../UI/EmployeeContent'
 import EmployeeBill from '../UI/EmployeeBill'
-import ApplyCodeModal from './ApplyCodeModal'
+import EmployeeDiscountCodesModal from './DiscountCodes/Modal'
 
-import { Container } from 'reactstrap'
-
-class BillCalculation extends Component {
+class EmployeeCalculator extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -50,35 +52,26 @@ class BillCalculation extends Component {
     const { code: { codes }, table: { singleTable }, history } = this.props
     return (
       <div>
-        <EmployeeHeading
-          mainHeading='BILL SUMMARY'
-          subHeading={`Summary for table #${singleTable.id}`} />
-        <EmployeeContent>
-          <EmployeeBill
-            { ...this.props.table }
-            { ...this.props.code }
-            history={history}
-            handleRemoveCode={this.handleRemoveCode}
-            handleExchange={this.handleExchange}
-            modalToggle={this.toggle} />
-          <ApplyCodeModal
-            singleTable={singleTable}
-            inputCodes={codes}
-            handleSubmitCode={this.handleSubmitCode}
-            isOpen={this.state.modal}
-            toggle={this.toggle} />
-        </EmployeeContent>
+        <EmployeeBill
+          { ...this.props.table }
+          { ...this.props.code }
+          history={history}
+          handleRemoveCode={this.handleRemoveCode}
+          handleExchange={this.handleExchange}
+          modalToggle={this.toggle} />
+        <EmployeeDiscountCodesModal
+          singleTable={singleTable}
+          inputCodes={codes}
+          handleSubmitCode={this.handleSubmitCode}
+          isOpen={this.state.modal}
+          toggle={this.toggle} />
       </div>
     )
   }
 
   render() {
     const { singleTable } = this.props.table
-    return (
-      <ContainerWrapper fluid>
-        { singleTable && this.renderBill() }
-      </ContainerWrapper>
-    )
+    return singleTable && this.renderBill()
   }
 }
 
@@ -91,6 +84,8 @@ const mapStateToProps = ({ table, code }) => {
   return { table, code }
 }
 
-export default connect(mapStateToProps,
-  { fetchTableById, calculateExchange, applyCode,
-    removeCodeFromBill })(BillCalculation)
+export default withRouter(
+  connect(mapStateToProps,
+    { fetchTableById, calculateExchange, applyCode,
+      removeCodeFromBill })(EmployeeCalculator)
+)

@@ -3,17 +3,18 @@ import { HashRouter as Router, Route, Switch,
 Redirect } from 'react-router-dom'
 
 import ShortcutMenu from './components/UI/ShortcutMenu'
-import BillCalculation from './components/employee/BillCalculation'
 
-import ScreenAdminDashboard from './screens/Admin/Dashboard'
-import ScreenAdminDiscountCodesEdit from './screens/Admin/DiscountCodes/Edit'
-import ScreenAdminDiscountCodesAdd from './screens/Admin/DiscountCodes/Add'
-import ScreenAdminDiscountCodesList from './screens/Admin/DiscountCodes/List'
+import ScreensAdminDashboard from './screens/Admin/Dashboard'
+import ScreensAdminDiscountCodesEdit from './screens/Admin/DiscountCodes/Edit'
+import ScreensAdminDiscountCodesAdd from './screens/Admin/DiscountCodes/Add'
+import ScreensAdminDiscountCodesList from './screens/Admin/DiscountCodes/List'
 
-import ScreenCustomerSoon from './screens/Customer/Soon'
+import ScreensCustomerSoon from './screens/Customer/Soon'
 
-import ScreenAppMain from './screens/App/Main'
-import EmployeeApp from './components/EmployeeApp'
+import ScreensEmployeeCalculator from './screens/Employee/Calculator'
+import ScreensEmployeeTables from './screens/Employee/Tables'
+
+import ScreensMainApp from './screens/App/Main'
 
 class App extends Component {
   constructor(props){
@@ -29,18 +30,20 @@ class App extends Component {
         <Router>
           <div>
             <Switch>
-                <Route path='/customer/soon' component={ScreenCustomerSoon} />
+                <Route path='/customer/soon' component={ScreensCustomerSoon} />
                 <Redirect from='/customer' to='/customer/soon' />
 
-                <Route path='/employee/calculation/:tableId' component={BillCalculation} />
-                <Route path='/employee' component={EmployeeApp} />
+                <Route path='/employee/calculator/:tableId' component={ScreensEmployeeCalculator} />
+                <Route path='/employee/tables' component={ScreensEmployeeTables} />
+                <Redirect from='/employee' to='/employee/tables' />
 
-                <Route path='/admin/discount-codes/edit/:codeId' component={ScreenAdminDiscountCodesEdit} />
-                <Route path='/admin/discount-codes/add' component={ScreenAdminDiscountCodesAdd} />
-                <Route path='/admin/discount-codes' component={ScreenAdminDiscountCodesList} />
-                <Route path='/admin' component={ScreenAdminDashboard} />
+                <Route path='/admin/discount-codes/edit/:codeId' component={ScreensAdminDiscountCodesEdit} />
+                <Route path='/admin/discount-codes/add' component={ScreensAdminDiscountCodesAdd} />
+                <Route path='/admin/discount-codes' component={ScreensAdminDiscountCodesList} />
+                <Route path='/admin/dashboard' component={ScreensAdminDashboard} />
+                <Redirect from='/admin' to='/admin/dashboard' />
 
-                <Route path='/' component={ScreenAppMain} />
+                <Route path='/' component={ScreensMainApp} />
             </Switch>
             <ShortcutMenu
               shortCutMenuToggle={this.state.shortCutMenuToggle}

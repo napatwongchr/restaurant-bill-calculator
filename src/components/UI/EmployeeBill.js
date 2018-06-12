@@ -8,13 +8,12 @@ const EmployeeBill = ({ singleTable, billTotal, appliedCode,
   subTotal, exchange, modalToggle,
   handleExchange, handleRemoveCode, selectedCode,
   removeCodeFromBill, history }) => {
-  const reservation = singleTable.people
   return (
-    <BillSummary md='6'>
-      { reservation
+    <BillSummary>
+      { singleTable.people
         ? <div>
             <BillHeadings
-              reservation={reservation}
+              reservation={singleTable.people}
               modalToggle={modalToggle} />
             <BillDetail
               peopleNumber={singleTable.people} />
@@ -34,7 +33,7 @@ const EmployeeBill = ({ singleTable, billTotal, appliedCode,
               history={history} />
           </div>
         : <div>
-            <BillHeadings reservation={reservation} modalToggle={modalToggle}/>
+            <BillHeadings reservation={singleTable.people} modalToggle={modalToggle}/>
             <NoReservationContent history={history}/>
           </div> }
     </BillSummary>
@@ -45,6 +44,7 @@ const BillSummary = styled(Col)`
   background-color: #FFFFFF;
   padding: 30px;
   border-radius: 30px;
+  width: 650px;
 `
 
 export default EmployeeBill
