@@ -2,7 +2,7 @@ import React from 'react'
 import AdminLayout1 from '../../../components/UI/AdminLayout1'
 import AdminHeadings from '../../../components/UI/AdminHeadings'
 import WrappedButton from '../../../components/UI/WrappedButton'
-import DiscountCodesList from '../../../components/admin/DiscountCodes/List'
+import DiscountCodesList from '../../../components/Admin/DiscountCodes/List'
 
 const ScreenAdminDiscountCodesList = ({ history }) => {
   return (

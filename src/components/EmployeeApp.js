@@ -2,9 +2,9 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import styled from 'styled-components'
 import { fetchTable } from '../actions/Table'
-import EmployeeHeading from './common/EmployeeHeading'
-import EmployeeContent from './common/EmployeeContent'
-import TableBox from './common/TableBox'
+import EmployeeHeading from './UI/EmployeeHeading'
+import EmployeeContent from './UI/EmployeeContent'
+import TableBox from './UI/TableBox'
 import { Container, Col } from 'reactstrap'
 
 class EmployeeApp extends Component {

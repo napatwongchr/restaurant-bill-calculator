@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { Field, reduxForm } from 'redux-form'
 import { Row, Col, Form,
   FormGroup } from 'reactstrap'
-import WrappedButton from '../../../common/WrappedButton'
+import WrappedButton from '../../../UI/WrappedButton'
 
 const DiscountCodesForm = ({ handleSubmit, buttonText }) => {
   return (

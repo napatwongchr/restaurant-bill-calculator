@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { HashRouter as Router, Route, Switch,
 Redirect } from 'react-router-dom'
 
-import ShortcutMenu from './components/common/ShortcutMenu'
+import ShortcutMenu from './components/UI/ShortcutMenu'
 import BillCalculation from './components/employee/BillCalculation'
 
 import ScreenAdminDashboard from './screens/Admin/Dashboard'

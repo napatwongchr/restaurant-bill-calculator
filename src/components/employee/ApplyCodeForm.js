@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { Row, Col } from 'reactstrap'
-import WrappedButton from '../common/WrappedButton'
+import WrappedButton from '../UI/WrappedButton'
 import { Field, reduxForm } from 'redux-form'
 
 const ApplyCodeForm = ({ handleSubmit, inputCodes, toggle, singleTable }) => {

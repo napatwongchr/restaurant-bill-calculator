@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import WrappedButton from '../common/WrappedButton'
+import WrappedButton from '../UI/WrappedButton'
 import { Row, Col, Table,
 Input } from 'reactstrap'
 
@@ -8,7 +8,6 @@ const EmployeeBill = ({ singleTable, billTotal, appliedCode,
   subTotal, exchange, modalToggle,
   handleExchange, handleRemoveCode, selectedCode,
   removeCodeFromBill, history }) => {
-    console.log()
   const reservation = singleTable.people
   return (
     <BillSummary md='6'>
