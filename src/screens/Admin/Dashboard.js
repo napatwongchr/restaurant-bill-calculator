@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+
 import AdminLayout1 from '../../components/UI/AdminLayout1'
 
 const ScreenDashboard = () => {

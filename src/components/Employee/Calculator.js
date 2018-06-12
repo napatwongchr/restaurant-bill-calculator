@@ -1,14 +1,10 @@
 import React, { Component } from 'react'
-import { Container } from 'reactstrap'
 import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
-import styled from 'styled-components'
 
 import { fetchTableById, calculateExchange } from '../../actions/Table'
 import { applyCode, removeCodeFromBill } from '../../actions/Codes'
 
-import EmployeeHeading from '../UI/EmployeeHeading'
-import EmployeeContent from '../UI/EmployeeContent'
 import EmployeeBill from '../UI/EmployeeBill'
 import EmployeeDiscountCodesModal from './DiscountCodes/Modal'
 
@@ -74,11 +70,6 @@ class EmployeeCalculator extends Component {
     return singleTable && this.renderBill()
   }
 }
-
-const ContainerWrapper = styled(Container)`
-  min-height: 100vh;
-  background-color: #f2f2f2;
-`
 
 const mapStateToProps = ({ table, code }) => {
   return { table, code }

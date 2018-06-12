@@ -1,6 +1,7 @@
 import React from 'react'
-import WrappedButton from './WrappedButton'
 import { Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+
+import WrappedButton from './WrappedButton'
 
 const ConfirmationModal = ({ toggle, handleDelete, isOpen, text }) => {
   return (

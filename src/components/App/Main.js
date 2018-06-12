@@ -1,10 +1,12 @@
 import React, { Component } from 'react'
-import { withRouter } from 'react-router-dom'
 import styled from 'styled-components'
-import { Container, Row, Col } from 'reactstrap'
 import { connect } from 'react-redux'
+import { withRouter } from 'react-router-dom'
+import { Container, Row, Col } from 'reactstrap'
+
 import { fetchTable } from '../../actions/Table'
 import { fetchCodes } from '../../actions/Codes'
+
 import RoleCard from '../UI/RoleCard'
 
 class MainApp extends Component {

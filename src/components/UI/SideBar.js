@@ -1,8 +1,9 @@
 import React from 'react'
 import styled from 'styled-components'
-import menus from '../../data/SidebarMenus'
 import { Link } from 'react-router-dom'
 import { Col } from 'reactstrap'
+
+import menus from '../../data/SidebarMenus'
 
 const SideBar = () => {
   return (

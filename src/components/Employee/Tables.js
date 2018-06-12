@@ -1,10 +1,13 @@
 import React, { Component } from 'react'
+import styled from 'styled-components'
 import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
-import styled from 'styled-components'
-import { fetchTable } from '../../actions/Table'
-import TableBox from '../UI/TableBox'
 import { Col } from 'reactstrap'
+
+import { fetchTable } from '../../actions/Table'
+
+import TableBox from '../UI/TableBox'
+
 
 class EmployeeApp extends Component {
   componentDidMount() {

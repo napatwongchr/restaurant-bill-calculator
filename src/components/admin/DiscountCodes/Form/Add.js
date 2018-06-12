@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
+
 import { addCode } from '../../../../actions/Codes'
+
 import { DiscountCodesFormAdd } from './Form'
 
 class DiscountCodesAdd extends Component {

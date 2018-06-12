@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { Container } from 'reactstrap'
+
 import EmployeeHeading from '../../components/UI/EmployeeHeading'
 import EmployeeContent from '../../components/UI/EmployeeContent'
 import EmployeeTables from '../../components/Employee/Tables'

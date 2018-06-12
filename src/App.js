@@ -26,33 +26,31 @@ class App extends Component {
 
   render() {
     return (
-      <div>
-        <Router>
-          <div>
-            <Switch>
-                <Route path='/customer/soon' component={ScreensCustomerSoon} />
-                <Redirect from='/customer' to='/customer/soon' />
+      <Router>
+        <div>
+          <Switch>
+              <Route path='/customer/soon' component={ScreensCustomerSoon} />
+              <Redirect from='/customer' to='/customer/soon' />
 
-                <Route path='/employee/calculator/:tableId' component={ScreensEmployeeCalculator} />
-                <Route path='/employee/tables' component={ScreensEmployeeTables} />
-                <Redirect from='/employee' to='/employee/tables' />
+              <Route path='/employee/calculator/:tableId' component={ScreensEmployeeCalculator} />
+              <Route path='/employee/tables' component={ScreensEmployeeTables} />
+              <Redirect from='/employee' to='/employee/tables' />
 
-                <Route path='/admin/discount-codes/edit/:codeId' component={ScreensAdminDiscountCodesEdit} />
-                <Route path='/admin/discount-codes/add' component={ScreensAdminDiscountCodesAdd} />
-                <Route path='/admin/discount-codes' component={ScreensAdminDiscountCodesList} />
-                <Route path='/admin/dashboard' component={ScreensAdminDashboard} />
-                <Redirect from='/admin' to='/admin/dashboard' />
+              <Route path='/admin/discount-codes/edit/:codeId' component={ScreensAdminDiscountCodesEdit} />
+              <Route path='/admin/discount-codes/add' component={ScreensAdminDiscountCodesAdd} />
+              <Route path='/admin/discount-codes' component={ScreensAdminDiscountCodesList} />
+              <Route path='/admin/dashboard' component={ScreensAdminDashboard} />
+              <Redirect from='/admin' to='/admin/dashboard' />
 
-                <Route path='/' component={ScreensMainApp} />
-            </Switch>
-            <ShortcutMenu
-              shortCutMenuToggle={this.state.shortCutMenuToggle}
-              onMouseEnter={() => this.setState({ shortCutMenuToggle: true })}
-              onMouseLeave={() => this.setState({ shortCutMenuToggle: false })} />
-          </div>
-        </Router>
-      </div>
-    );
+              <Route path='/' component={ScreensMainApp} />
+          </Switch>
+          <ShortcutMenu
+            shortCutMenuToggle={this.state.shortCutMenuToggle}
+            onMouseEnter={() => this.setState({ shortCutMenuToggle: true })}
+            onMouseLeave={() => this.setState({ shortCutMenuToggle: false })} />
+        </div>
+      </Router>
+    )
   }
 }
 

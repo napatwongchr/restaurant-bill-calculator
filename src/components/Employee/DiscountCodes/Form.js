@@ -1,40 +1,40 @@
 import React from 'react'
 import styled from 'styled-components'
 import { Row, Col } from 'reactstrap'
-import WrappedButton from '../../UI/WrappedButton'
 import { Field, reduxForm } from 'redux-form'
 
-const EmployeeDiscountCodesForm = ({ handleSubmit, inputCodes, toggle, singleTable }) => {
-  return (
-    <Row>
-      <Col>
-        <Field
-          name='discountCode'
-          inputCodes={inputCodes}
-          className='form-control'
-          component={renderSelectField} />
-          <Row>
-            <ButtonActionWrapper>
-              <WrappedButton
-                className='mr-2'
-                iconName='send'
-                color='#f9bc02'
-                size='sm'
-                text='APPLY'
-                onClick={handleSubmit} />
-              <WrappedButton
-                textcolor='#FFF'
-                iconName='clear'
-                color='#ef405a'
-                size='sm'
-                text='CANCLE'
-                onClick={toggle} />
-            </ButtonActionWrapper>
-          </Row>
-      </Col>
-    </Row>
-  )
-}
+import WrappedButton from '../../UI/WrappedButton'
+
+
+const EmployeeDiscountCodesForm = ({ handleSubmit, inputCodes, toggle, singleTable }) => (
+  <Row>
+    <Col>
+      <Field
+        name='discountCode'
+        inputCodes={inputCodes}
+        className='form-control'
+        component={renderSelectField} />
+        <Row>
+          <ButtonActionWrapper>
+            <WrappedButton
+              className='mr-2'
+              iconName='send'
+              color='#f9bc02'
+              size='sm'
+              text='APPLY'
+              onClick={handleSubmit} />
+            <WrappedButton
+              textcolor='#FFF'
+              iconName='clear'
+              color='#ef405a'
+              size='sm'
+              text='CANCLE'
+              onClick={toggle} />
+          </ButtonActionWrapper>
+        </Row>
+    </Col>
+  </Row>
+)
 
 const renderSelectField = ({
   inputCodes,
