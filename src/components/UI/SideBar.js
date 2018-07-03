@@ -7,14 +7,16 @@ import menus from 'data/SidebarMenus'
 
 const SideBar = () => {
   return (
-    <SideBarWrapper md='2'>
-      <div className='sticky-top pt-3'>
-          <MenuWrapper>
-            { menus.map(menu => <MenuLink key={menu.title} to={menu.url}>
-              <i className='material-icons pr-2'>{menu.icon}</i>
+    <SideBarWrapper md="2">
+      <div className="sticky-top pt-3">
+        <MenuWrapper>
+          {menus.map(menu => (
+            <MenuLink key={menu.title} to={menu.url}>
+              <i className="material-icons pr-2">{menu.icon}</i>
               <span>{menu.title}</span>
-            </MenuLink>)}
-          </MenuWrapper>
+            </MenuLink>
+          ))}
+        </MenuWrapper>
       </div>
     </SideBarWrapper>
   )
@@ -36,7 +38,7 @@ const MenuLink = styled(Link)`
   color: #000;
   &:hover {
     text-decoration: none;
-    color: #FFF;
+    color: #fff;
   }
 `
 

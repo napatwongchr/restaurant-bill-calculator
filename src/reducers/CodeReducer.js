@@ -17,7 +17,7 @@ const INITIAL_STATE = {
   appliedCode: null
 }
 
-export default (state=INITIAL_STATE, action) => {
+export default (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case FETCH_CODES:
       return { ...state, codes: action.payload }
@@ -26,7 +26,7 @@ export default (state=INITIAL_STATE, action) => {
     case ADD_CODE:
       return { ...state, codes: addCode(state, action) }
     case EDIT_CODE:
-      return { ...state, codes: updateCode(state, action)}
+      return { ...state, codes: updateCode(state, action) }
     case DELETE_CODE:
       return { ...state, codes: deleteCode(state, action) }
     case SELECTED_CODE:
@@ -42,11 +42,13 @@ export default (state=INITIAL_STATE, action) => {
   }
 }
 
-const fetchCodeById = (state, action) => state.codes.find(code => code.id === action.payload)
+const fetchCodeById = (state, action) =>
+  state.codes.find(code => code.id === action.payload)
 
 const addCode = (state, action) => [...state.codes, action.payload]
 
-const deleteCode = (state, action) => state.codes.filter(code => code.id !== action.payload)
+const deleteCode = (state, action) =>
+  state.codes.filter(code => code.id !== action.payload)
 
 const updateCode = (state, action) => {
   const codeIndex = state.codes.findIndex(code => code.id === action.payload.id)

@@ -4,10 +4,10 @@ import styled from 'styled-components'
 
 const TableBox = ({ number, onClick, hasPeople }) => {
   return (
-    <CircleBox
-      className='circle-box'
-      onClick={onClick}>
-      { hasPeople && <HasPeopleIcon className='material-icons'>person</HasPeopleIcon> }
+    <CircleBox className="circle-box" onClick={onClick}>
+      {hasPeople && (
+        <HasPeopleIcon className="material-icons">person</HasPeopleIcon>
+      )}
       <TableHeadings>Table</TableHeadings>
       <TableNumber>{number}</TableNumber>
     </CircleBox>
@@ -21,7 +21,7 @@ const CircleBox = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   border-radius: 50%;
   width: 100px;
   height: 100px;

@@ -32,21 +32,27 @@ export const fetchTableById = (id, allCodes) => {
 
 export const calculateExchange = (total, recieve) => {
   let exchange = 0
-  recieve.length !== 0 ? exchange = recieve - total : exchange = 0
+  recieve.length !== 0 ? (exchange = recieve - total) : (exchange = 0)
   return { type: CALCULATE_EXCHANGE, payload: exchange }
 }
 
-export const calculateBillTotal = (table, selectedCode, allCodes, promotion, dispatch) => {
+export const calculateBillTotal = (
+  table,
+  selectedCode,
+  allCodes,
+  promotion,
+  dispatch
+) => {
   let total = 0
-  table.items.map(item => total = total + (item.quantity * item.price))
+  table.items.map(item => (total = total + item.quantity * item.price))
 
-  dispatch({ type: CALCULATE_BILL_SUBTOTAL, payload: total})
+  dispatch({ type: CALCULATE_BILL_SUBTOTAL, payload: total })
 
   if (promotion) {
     if (selectedCode) {
       const discountItems = generateDiscountItems(total, allCodes)
       const minPriceItem = findMinPrice(discountItems, table.people)
-      if(minPriceItem.codeName !== selectedCode) {
+      if (minPriceItem.codeName !== selectedCode) {
         dispatch({ type: SELECTED_CODE, payload: selectedCode })
         dispatch({ type: CALCULATE_BILL_TOTAL, payload: minPriceItem.price })
         dispatch({ type: APPLY_CODE, payload: minPriceItem.codeName })
@@ -56,18 +62,18 @@ export const calculateBillTotal = (table, selectedCode, allCodes, promotion, dis
       }
     } else {
       if (total > 6000) {
-        total = total - (total * 0.25)
-        dispatch({ type: CALCULATE_BILL_TOTAL, payload: total})
+        total = total - total * 0.25
+        dispatch({ type: CALCULATE_BILL_TOTAL, payload: total })
         dispatch({ type: APPLY_CODE, payload: 'CODE_6000' })
       } else if (total > 1000) {
-        total = total - (total * 0.15)
-        dispatch({ type: CALCULATE_BILL_TOTAL, payload: total})
+        total = total - total * 0.15
+        dispatch({ type: CALCULATE_BILL_TOTAL, payload: total })
         dispatch({ type: APPLY_CODE, payload: 'LUCKY ONE' })
       }
-      dispatch({ type: CALCULATE_BILL_TOTAL, payload: total})
+      dispatch({ type: CALCULATE_BILL_TOTAL, payload: total })
     }
   } else {
-    dispatch({ type: CALCULATE_BILL_TOTAL, payload: total})
+    dispatch({ type: CALCULATE_BILL_TOTAL, payload: total })
   }
 }
 
@@ -94,23 +100,23 @@ export const findMinPrice = (items, condition) => {
 export const generateDiscountItems = (total, allCodes) => {
   let discountItems = []
 
-  if(total > 6000) {
-    let calculatedTotal = total - (total * 0.25)
+  if (total > 6000) {
+    let calculatedTotal = total - total * 0.25
     discountItems.push({ codeName: 'CODE_6000', price: calculatedTotal })
   }
 
-  if(total > 1000) {
-    let calculatedTotal = total - (total * 0.15)
-    discountItems.push({ codeName: 'LUCKY ONE', price: calculatedTotal})
+  if (total > 1000) {
+    let calculatedTotal = total - total * 0.15
+    discountItems.push({ codeName: 'LUCKY ONE', price: calculatedTotal })
   }
 
-  for(let code of allCodes) {
-    if(code.discountCodeType === 'fixed') {
+  for (let code of allCodes) {
+    if (code.discountCodeType === 'fixed') {
       let calculatedTotal = total - code.amountDiscount
-      discountItems.push({ ...code, price: calculatedTotal})
-    } else if(code.discountCodeType === 'percent') {
-      let calculatedTotal = total - (total * code.amountDiscount)
-      discountItems.push({ ...code, price: calculatedTotal})
+      discountItems.push({ ...code, price: calculatedTotal })
+    } else if (code.discountCodeType === 'percent') {
+      let calculatedTotal = total - total * code.amountDiscount
+      discountItems.push({ ...code, price: calculatedTotal })
     }
   }
 

@@ -3,11 +3,7 @@ import PropTypes from 'prop-types'
 import { Col } from 'reactstrap'
 
 const AdminContent = ({ headings, children }) => {
-  return (
-    <Col className='py-4 px-4'>
-      { children }
-    </Col>
-  )
+  return <Col className="py-4 px-4">{children}</Col>
 }
 
 AdminContent.defaultProps = {
@@ -16,10 +12,7 @@ AdminContent.defaultProps = {
 
 AdminContent.propTypes = {
   headings: PropTypes.string,
-  children: PropTypes.oneOfType([
-    PropTypes.element,
-    PropTypes.array
-  ]).isRequired
+  children: PropTypes.oneOfType([PropTypes.element, PropTypes.array]).isRequired
 }
 
 export default AdminContent

@@ -3,33 +3,45 @@ import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import { Button } from 'reactstrap'
 
-const WrappedButton = ({ text, onClick, size,
-  color, textcolor, iconName,
-  onRight, className }) => {
+const WrappedButton = ({
+  text,
+  onClick,
+  size,
+  color,
+  textcolor,
+  iconName,
+  onRight,
+  className
+}) => {
   return (
     <ButtonWrapper
       className={className}
       textcolor={textcolor}
       color={color}
       onClick={onClick}
-      size={size}>
-      { onRight ? iconOnRight(text, iconName) : iconOnLeft(text, iconName) }
+      size={size}
+    >
+      {onRight ? iconOnRight(text, iconName) : iconOnLeft(text, iconName)}
     </ButtonWrapper>
   )
 }
 
 const iconOnRight = (text, iconName) => {
-  return <ButtonContentWrapper>
-            <span>{ text }</span>
-            <IconRight className='material-icons'>{iconName}</IconRight>
-          </ButtonContentWrapper>
+  return (
+    <ButtonContentWrapper>
+      <span>{text}</span>
+      <IconRight className="material-icons">{iconName}</IconRight>
+    </ButtonContentWrapper>
+  )
 }
 
 const iconOnLeft = (text, iconName) => {
-  return <ButtonContentWrapper>
-            <IconLeft className='material-icons'>{iconName}</IconLeft>
-            <span>{ text }</span>
-          </ButtonContentWrapper>
+  return (
+    <ButtonContentWrapper>
+      <IconLeft className="material-icons">{iconName}</IconLeft>
+      <span>{text}</span>
+    </ButtonContentWrapper>
+  )
 }
 
 const IconLeft = styled.i`
@@ -41,9 +53,9 @@ const IconRight = styled.i`
 `
 
 const ButtonWrapper = styled(Button)`
-  color: ${ props => props.textcolor || '#000' }
+  color: ${props => props.textcolor || '#000'}
   border-radius: 20px;
-  background-color: ${ props => props.color };
+  background-color: ${props => props.color};
   &:hover{
     transform: translate(0px, 3px);
   }

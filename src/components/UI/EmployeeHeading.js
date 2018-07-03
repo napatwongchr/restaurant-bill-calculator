@@ -7,8 +7,8 @@ const EmployeeHeading = ({ mainHeading, subHeading }) => {
   return (
     <HeadingWrapper>
       <HeadingContent>
-        <MainHeadingText>{ mainHeading }</MainHeadingText>
-        <h5>{ subHeading }</h5>
+        <MainHeadingText>{mainHeading}</MainHeadingText>
+        <h5>{subHeading}</h5>
       </HeadingContent>
     </HeadingWrapper>
   )

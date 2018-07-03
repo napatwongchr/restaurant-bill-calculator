@@ -9,7 +9,7 @@ const Root = ({ children }) => {
   return (
     <Provider store={activate.store}>
       <PersistGate loading={null} persistor={activate.persistor}>
-        { children }
+        {children}
       </PersistGate>
     </Provider>
   )

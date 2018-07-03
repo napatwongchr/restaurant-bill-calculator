@@ -20,15 +20,16 @@ class DiscountCodesAdd extends Component {
   }
 
   handleSelect(event) {
-    this.setState({ discountType: event.target.value})
+    this.setState({ discountType: event.target.value })
   }
 
   render() {
     return (
       <div>
         <DiscountCodesFormAdd
-          buttonText='Add'
-          onSubmit={this.submit.bind(this)} />
+          buttonText="Add"
+          onSubmit={this.submit.bind(this)}
+        />
       </div>
     )
   }
@@ -40,5 +41,8 @@ const mapStateToProps = ({ code }) => {
 }
 
 export default withRouter(
-  connect(mapStateToProps, { addCode })(DiscountCodesAdd)
+  connect(
+    mapStateToProps,
+    { addCode }
+  )(DiscountCodesAdd)
 )

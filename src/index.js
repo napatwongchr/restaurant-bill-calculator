@@ -6,7 +6,10 @@ import registerServiceWorker from './registerServiceWorker'
 
 import Root from './Root'
 
-ReactDOM.render(<Root>
-                  <App />
-                </Root>, document.getElementById('root'));
-registerServiceWorker();
+ReactDOM.render(
+  <Root>
+    <App />
+  </Root>,
+  document.getElementById('root')
+)
+registerServiceWorker()

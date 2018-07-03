@@ -11,10 +11,10 @@ import {
 } from './types'
 
 export const fetchCodes = () => {
-  return { type: FETCH_CODES, payload: data}
+  return { type: FETCH_CODES, payload: data }
 }
 
-export const fetchCodeById = (id) => {
+export const fetchCodeById = id => {
   return { type: FETCH_CODE_BY_ID, payload: id }
 }
 
@@ -29,14 +29,20 @@ export const editCode = (data, callback) => {
   return { type: EDIT_CODE, payload: data }
 }
 
-export const deleteCode = (id) => {
+export const deleteCode = id => {
   return { type: DELETE_CODE, payload: id }
 }
 
 export const applyCode = (table, selectedCode, allCodes, callback) => {
   return dispatch => {
     dispatch({ type: CLEAR_SELECTED_CODE })
-    calculateBillTotal(table, selectedCode.discountCode, allCodes, true, dispatch)
+    calculateBillTotal(
+      table,
+      selectedCode.discountCode,
+      allCodes,
+      true,
+      dispatch
+    )
     callback()
   }
 }

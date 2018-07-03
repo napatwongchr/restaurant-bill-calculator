@@ -7,18 +7,20 @@ const ShortcutMenu = ({ shortCutMenuToggle, onMouseEnter, onMouseLeave }) => {
   return (
     <ShortcutMenuWrapper
       onMouseEnter={onMouseEnter}
-      onMouseLeave={onMouseLeave}>
-      { shortCutMenuToggle
-        ? <div>
-            <MenuLink to='/employee'>Employee</MenuLink>
-            <MenuLink to='/customer'>Customer</MenuLink>
-            <MenuLink to='/admin'>Admin</MenuLink>
-          </div>
-        : <i className='material-icons'>menu</i> }
+      onMouseLeave={onMouseLeave}
+    >
+      {shortCutMenuToggle ? (
+        <div>
+          <MenuLink to="/employee">Employee</MenuLink>
+          <MenuLink to="/customer">Customer</MenuLink>
+          <MenuLink to="/admin">Admin</MenuLink>
+        </div>
+      ) : (
+        <i className="material-icons">menu</i>
+      )}
     </ShortcutMenuWrapper>
   )
 }
-
 
 const expandMenuBox = keyframes`
   from {
@@ -44,7 +46,7 @@ const MenuLink = styled(Link)`
   margin: 0px 8px;
   color: #fff;
   &:hover {
-    color:#F9BC02;
+    color: #f9bc02;
     text-decoration: none;
     animation: ${textPop} 0.3s forwards;
   }

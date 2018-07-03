@@ -5,33 +5,40 @@ import { Field, reduxForm } from 'redux-form'
 
 import WrappedButton from 'components/UI/WrappedButton'
 
-
-const EmployeeDiscountCodesForm = ({ handleSubmit, inputCodes, toggle, singleTable }) => (
+const EmployeeDiscountCodesForm = ({
+  handleSubmit,
+  inputCodes,
+  toggle,
+  singleTable
+}) => (
   <Row>
     <Col>
       <Field
-        name='discountCode'
+        name="discountCode"
         inputCodes={inputCodes}
-        className='form-control'
-        component={renderSelectField} />
-        <Row>
-          <ButtonActionWrapper>
-            <WrappedButton
-              className='mr-2'
-              iconName='send'
-              color='#f9bc02'
-              size='sm'
-              text='APPLY'
-              onClick={handleSubmit} />
-            <WrappedButton
-              textcolor='#FFF'
-              iconName='clear'
-              color='#ef405a'
-              size='sm'
-              text='CANCLE'
-              onClick={toggle} />
-          </ButtonActionWrapper>
-        </Row>
+        className="form-control"
+        component={renderSelectField}
+      />
+      <Row>
+        <ButtonActionWrapper>
+          <WrappedButton
+            className="mr-2"
+            iconName="send"
+            color="#f9bc02"
+            size="sm"
+            text="APPLY"
+            onClick={handleSubmit}
+          />
+          <WrappedButton
+            textcolor="#FFF"
+            iconName="clear"
+            color="#ef405a"
+            size="sm"
+            text="CANCLE"
+            onClick={toggle}
+          />
+        </ButtonActionWrapper>
+      </Row>
     </Col>
   </Row>
 )
@@ -45,11 +52,15 @@ const renderSelectField = ({
   meta: { touched, error, warning }
 }) => (
   <div>
-    <Field className='form-control mb-2' component='select' name='discountCode'>
-      <option value=''>Please select discount code</option>
-      {inputCodes.map(code => <option key={code.id} value={code.codeName}>{code.codeName}</option>)}
+    <Field className="form-control mb-2" component="select" name="discountCode">
+      <option value="">Please select discount code</option>
+      {inputCodes.map(code => (
+        <option key={code.id} value={code.codeName}>
+          {code.codeName}
+        </option>
+      ))}
     </Field>
-    { touched && (error && <ImportantText>{ error }</ImportantText>)}
+    {touched && (error && <ImportantText>{error}</ImportantText>)}
   </div>
 )
 
@@ -68,10 +79,15 @@ const validate = (value, { inputCodes, singleTable }) => {
   if (!value.discountCode) {
     errors.discountCode = 'Press cancle or outside area to dismiss.'
   } else {
-    for(let code of inputCodes) {
-      if(value.discountCode === code.codeName) {
-        if(+code.limitPeople !== singleTable.people && +code.limitPeople !== 0) {
-          errors.discountCode = `${value.discountCode} needs ${code.limitPeople} people to be applied`
+    for (let code of inputCodes) {
+      if (value.discountCode === code.codeName) {
+        if (
+          +code.limitPeople !== singleTable.people &&
+          +code.limitPeople !== 0
+        ) {
+          errors.discountCode = `${value.discountCode} needs ${
+            code.limitPeople
+          } people to be applied`
         }
       }
     }

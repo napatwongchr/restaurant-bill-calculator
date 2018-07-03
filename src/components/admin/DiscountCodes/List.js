@@ -15,8 +15,8 @@ class DiscountCodesList extends Component {
       modal: false,
       code: {}
     }
-   this.toggle = this.toggle.bind(this)
-   this.handleDelete = this.handleDelete.bind(this)
+    this.toggle = this.toggle.bind(this)
+    this.handleDelete = this.handleDelete.bind(this)
   }
 
   toggle() {
@@ -36,28 +36,32 @@ class DiscountCodesList extends Component {
     const { codes, history } = this.props
     return codes.map((code, index) => (
       <tr key={index}>
-        <th scope='row'>{ code.id }</th>
+        <th scope="row">{code.id}</th>
         <td>{code.codeName}</td>
         <td>
           <WrappedButton
-            className='ml-2'
-            onClick={() => history.push(`/admin/discount-codes/edit/${code.id}`)}
-            iconName='edit'
-            textcolor='#FFFFFF'
-            color='#407fed'
-            size='sm'
-            text='EDIT' />
+            className="ml-2"
+            onClick={() =>
+              history.push(`/admin/discount-codes/edit/${code.id}`)
+            }
+            iconName="edit"
+            textcolor="#FFFFFF"
+            color="#407fed"
+            size="sm"
+            text="EDIT"
+          />
           <WrappedButton
-            className='ml-2'
+            className="ml-2"
             onClick={() => {
               this.setState({ code })
               this.toggle()
             }}
-            iconName='clear'
-            textcolor='#FFFFFF'
-            color='#ef405a'
-            size='sm'
-            text='DELETE' />
+            iconName="clear"
+            textcolor="#FFFFFF"
+            color="#ef405a"
+            size="sm"
+            text="DELETE"
+          />
         </td>
       </tr>
     ))
@@ -67,7 +71,7 @@ class DiscountCodesList extends Component {
     const { code, modal } = this.state
     return (
       <div>
-        <Table className='mt-3' bordered>
+        <Table className="mt-3" bordered>
           <thead>
             <tr>
               <th>Id</th>
@@ -75,9 +79,7 @@ class DiscountCodesList extends Component {
               <th>Actions</th>
             </tr>
           </thead>
-          <tbody>
-            { this.renderTableRows() }
-          </tbody>
+          <tbody>{this.renderTableRows()}</tbody>
         </Table>
         <ConfirmationModal
           text={`Are you sure you want to delete ${code.codeName}?`}
@@ -97,5 +99,8 @@ const mapStateToProps = ({ code }) => {
 }
 
 export default withRouter(
-  connect(mapStateToProps, { deleteCode })(DiscountCodesList)
+  connect(
+    mapStateToProps,
+    { deleteCode }
+  )(DiscountCodesList)
 )

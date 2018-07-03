@@ -4,11 +4,7 @@ import styled from 'styled-components'
 import { Row } from 'reactstrap'
 
 const EmployeeContent = ({ children }) => {
-  return (
-    <EmployeeContentWrapper>
-      { children }
-    </EmployeeContentWrapper>
-  )
+  return <EmployeeContentWrapper>{children}</EmployeeContentWrapper>
 }
 
 const EmployeeContentWrapper = styled(Row)`
@@ -19,10 +15,7 @@ const EmployeeContentWrapper = styled(Row)`
 `
 
 EmployeeContent.propTypes = {
-  children: PropTypes.oneOfType([
-    PropTypes.element,
-    PropTypes.array
-  ]).isRequired
+  children: PropTypes.oneOfType([PropTypes.element, PropTypes.array]).isRequired
 }
 
 export default EmployeeContent

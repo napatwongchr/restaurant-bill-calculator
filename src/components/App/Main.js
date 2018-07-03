@@ -24,20 +24,23 @@ class MainApp extends Component {
             <SelectRoleHeading>SELECT ROLE</SelectRoleHeading>
           </HeadingWrapper>
         </Row>
-        <Row className='h-50'>
+        <Row className="h-50">
           <RoleCardWrapper>
             <RoleCard
               onClick={() => history.push('/customer')}
-              icon='store_mall_directory'
-              text='CUSTOMER'/>
+              icon="store_mall_directory"
+              text="CUSTOMER"
+            />
             <RoleCard
               onClick={() => history.push('/employee')}
-              icon='restaurant_menu'
-              text='EMPLOYEE'/>
+              icon="restaurant_menu"
+              text="EMPLOYEE"
+            />
             <RoleCard
               onClick={() => history.push('/admin')}
-              icon='settings'
-              text='ADMIN'/>
+              icon="settings"
+              text="ADMIN"
+            />
           </RoleCardWrapper>
         </Row>
       </ContainerWrapper>
@@ -68,5 +71,8 @@ const SelectRoleHeading = styled.h1`
 `
 
 export default withRouter(
-  connect(null, { fetchTable, fetchCodes })(MainApp)
+  connect(
+    null,
+    { fetchTable, fetchCodes }
+  )(MainApp)
 )

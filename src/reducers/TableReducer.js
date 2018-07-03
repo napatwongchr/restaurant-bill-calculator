@@ -15,7 +15,7 @@ const INITIAL_STATE = {
   exchange: 0
 }
 
-export default (state=INITIAL_STATE, action) => {
+export default (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case FETCH_TABLE:
       return { ...state, tables: action.payload }

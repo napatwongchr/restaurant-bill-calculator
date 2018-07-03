@@ -10,20 +10,15 @@ const AdminLayout1 = ({ headings, children }) => {
     <Container fluid>
       <Row>
         <SideBar />
-        <AdminContent headings={headings}>
-          { children }
-        </AdminContent>
+        <AdminContent headings={headings}>{children}</AdminContent>
       </Row>
     </Container>
   )
 }
 
-AdminLayout1.propTypes ={
+AdminLayout1.propTypes = {
   headings: PropTypes.string,
-  children: PropTypes.oneOfType([
-    PropTypes.element,
-    PropTypes.array
-  ]).isRequired
+  children: PropTypes.oneOfType([PropTypes.element, PropTypes.array]).isRequired
 }
 
 export default AdminLayout1

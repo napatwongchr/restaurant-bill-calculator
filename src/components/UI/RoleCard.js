@@ -4,12 +4,10 @@ import PropTypes from 'prop-types'
 
 const RoleCard = ({ onClick, text, icon }) => {
   return (
-    <RoleCardWrapper onClick={onClick} className='card'>
-      <RoleCardContent className='card-body'>
-        <RoleIcon className='material-icons'>
-          {icon}
-        </RoleIcon>
-        <RoleText>{ text }</RoleText>
+    <RoleCardWrapper onClick={onClick} className="card">
+      <RoleCardContent className="card-body">
+        <RoleIcon className="material-icons">{icon}</RoleIcon>
+        <RoleText>{text}</RoleText>
       </RoleCardContent>
     </RoleCardWrapper>
   )
@@ -24,7 +22,7 @@ const RoleCardWrapper = styled.div`
   border-radius: 50%;
   cursor: pointer;
   &:hover {
-    transform: translate(0, -3px)
+    transform: translate(0, -3px);
   }
 `
 

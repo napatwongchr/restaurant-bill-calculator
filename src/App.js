@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
-import { HashRouter as Router, Route, Switch,
-Redirect } from 'react-router-dom'
+import { HashRouter as Router, Route, Switch, Redirect } from 'react-router-dom'
 
 import ShortcutMenu from './components/UI/ShortcutMenu'
 
@@ -17,10 +16,10 @@ import ScreensEmployeeTables from './screens/Employee/Tables'
 import ScreensMainApp from './screens/App/Main'
 
 class App extends Component {
-  constructor(props){
+  constructor(props) {
     super(props)
     this.state = {
-      shortCutMenuToggle: false,
+      shortCutMenuToggle: false
     }
   }
 
@@ -29,30 +28,42 @@ class App extends Component {
       <Router>
         <div>
           <Switch>
-              <Route path='/customer/soon' component={ScreensCustomerSoon} />
-              <Redirect from='/customer' to='/customer/soon' />
+            <Route path="/customer/soon" component={ScreensCustomerSoon} />
+            <Redirect from="/customer" to="/customer/soon" />
 
-              <Route path='/employee/calculator/:tableId' component={ScreensEmployeeCalculator} />
-              <Route path='/employee/tables' component={ScreensEmployeeTables} />
-              <Redirect from='/employee' to='/employee/tables' />
+            <Route
+              path="/employee/calculator/:tableId"
+              component={ScreensEmployeeCalculator}
+            />
+            <Route path="/employee/tables" component={ScreensEmployeeTables} />
+            <Redirect from="/employee" to="/employee/tables" />
 
-              <Route path='/admin/discount-codes/edit/:codeId' component={ScreensAdminDiscountCodesEdit} />
-              <Route path='/admin/discount-codes/add' component={ScreensAdminDiscountCodesAdd} />
-              <Route path='/admin/discount-codes' component={ScreensAdminDiscountCodesList} />
-              <Route path='/admin/dashboard' component={ScreensAdminDashboard} />
-              <Redirect from='/admin' to='/admin/dashboard' />
+            <Route
+              path="/admin/discount-codes/edit/:codeId"
+              component={ScreensAdminDiscountCodesEdit}
+            />
+            <Route
+              path="/admin/discount-codes/add"
+              component={ScreensAdminDiscountCodesAdd}
+            />
+            <Route
+              path="/admin/discount-codes"
+              component={ScreensAdminDiscountCodesList}
+            />
+            <Route path="/admin/dashboard" component={ScreensAdminDashboard} />
+            <Redirect from="/admin" to="/admin/dashboard" />
 
-              <Route path='/' component={ScreensMainApp} />
+            <Route path="/" component={ScreensMainApp} />
           </Switch>
           <ShortcutMenu
             shortCutMenuToggle={this.state.shortCutMenuToggle}
             onMouseEnter={() => this.setState({ shortCutMenuToggle: true })}
-            onMouseLeave={() => this.setState({ shortCutMenuToggle: false })} />
+            onMouseLeave={() => this.setState({ shortCutMenuToggle: false })}
+          />
         </div>
       </Router>
     )
   }
 }
-
 
 export default App

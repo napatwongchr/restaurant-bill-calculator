@@ -14,7 +14,7 @@ class EmployeeCalculator extends Component {
     this.state = {
       modal: false
     }
-    this.toggle = this.toggle.bind(this);
+    this.toggle = this.toggle.bind(this)
     this.handleExchange = this.handleExchange.bind(this)
     this.handleRemoveCode = this.handleRemoveCode.bind(this)
     this.handleSubmitCode = this.handleSubmitCode.bind(this)
@@ -25,42 +25,65 @@ class EmployeeCalculator extends Component {
   }
 
   handleExchange(event) {
-    const { table: { billTotal }, calculateExchange } = this.props
+    const {
+      table: { billTotal },
+      calculateExchange
+    } = this.props
     calculateExchange(billTotal, event.target.value)
   }
 
   handleSubmitCode(value) {
-    const { applyCode, code: { codes }, table: { singleTable } } = this.props
+    const {
+      applyCode,
+      code: { codes },
+      table: { singleTable }
+    } = this.props
     applyCode(singleTable, value, codes, this.toggle)
   }
 
   handleRemoveCode() {
-    const { removeCodeFromBill, code: { codes }, table: { singleTable } } = this.props
+    const {
+      removeCodeFromBill,
+      code: { codes },
+      table: { singleTable }
+    } = this.props
     removeCodeFromBill(singleTable, codes)
   }
 
   componentDidMount() {
-    const { fetchTableById, codes, match: { params: { tableId } } } = this.props
+    const {
+      fetchTableById,
+      codes,
+      match: {
+        params: { tableId }
+      }
+    } = this.props
     fetchTableById(+tableId, codes)
   }
 
   renderBill() {
-    const { code: { codes }, table: { singleTable }, history } = this.props
+    const {
+      code: { codes },
+      table: { singleTable },
+      history
+    } = this.props
     return (
       <div>
         <EmployeeBill
-          { ...this.props.table }
-          { ...this.props.code }
+          {...this.props.table}
+          {...this.props.code}
           history={history}
           handleRemoveCode={this.handleRemoveCode}
           handleExchange={this.handleExchange}
-          modalToggle={this.toggle} />
+          modalToggle={this.toggle}
+        />
         <EmployeeDiscountCodesModal
           singleTable={singleTable}
           inputCodes={codes}
           handleSubmitCode={this.handleSubmitCode}
           isOpen={this.state.modal}
-          toggle={this.toggle} />
+          toggle={this.toggle}
+        />
       </div>
     )
   }
@@ -76,7 +99,13 @@ const mapStateToProps = ({ table, code }) => {
 }
 
 export default withRouter(
-  connect(mapStateToProps,
-    { fetchTableById, calculateExchange, applyCode,
-      removeCodeFromBill })(EmployeeCalculator)
+  connect(
+    mapStateToProps,
+    {
+      fetchTableById,
+      calculateExchange,
+      applyCode,
+      removeCodeFromBill
+    }
+  )(EmployeeCalculator)
 )
