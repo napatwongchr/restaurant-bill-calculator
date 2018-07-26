@@ -7,7 +7,8 @@ import {
   DELETE_CODE,
   EDIT_CODE,
   REMOVE_CODE_FROM_BILL,
-  CLEAR_SELECTED_CODE
+  CLEAR_SELECTED_CODE,
+  ADD_EXTRA
 } from '../actions/types'
 
 const INITIAL_STATE = {
@@ -37,6 +38,8 @@ export default (state = INITIAL_STATE, action) => {
       return { ...state, appliedCode: null }
     case CLEAR_SELECTED_CODE:
       return { ...state, selectedCode: null }
+    case ADD_EXTRA:
+      return { ...state, singleCode: action.payload }
     default:
       return state
   }

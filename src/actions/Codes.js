@@ -7,7 +7,8 @@ import {
   DELETE_CODE,
   EDIT_CODE,
   CLEAR_SELECTED_CODE,
-  REMOVE_CODE_FROM_BILL
+  REMOVE_CODE_FROM_BILL,
+  ADD_EXTRA
 } from './types'
 
 export const fetchCodes = () => {
@@ -24,7 +25,13 @@ export const addCode = (values, collectionLength, callback) => {
   return { type: ADD_CODE, payload: codeData }
 }
 
+export const addExtra = (code) => {
+  const addExtraCode = { ...code, extra: 'extra ja'}
+  return { type: ADD_EXTRA, payload: addExtraCode }
+}
+
 export const editCode = (data, callback) => {
+  console.log(data)
   callback()
   return { type: EDIT_CODE, payload: data }
 }

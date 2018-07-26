@@ -57,6 +57,16 @@ const DiscountCodesForm = ({ handleSubmit, buttonText }) => {
               placeholder="people number condition"
             />
           </FormGroup>
+          <FormGroup>
+            <Field
+              label="Extra"
+              className="form-control"
+              type="text"
+              name="extra"
+              component={renderField}
+              placeholder="just test add extra"
+            />
+          </FormGroup>
         </Col>
       </Row>
       <Row>
@@ -76,7 +86,7 @@ const DiscountCodesForm = ({ handleSubmit, buttonText }) => {
 }
 
 const numberFormatter = value => String(value)
-const numberParser = value => (value === undefined ? undefined : Number(value))
+const numberParser = value =>  Number(value)
 
 const renderField = ({
   input,
@@ -140,6 +150,7 @@ const ImportantText = styled.span`
 `
 
 const validate = values => {
+  console.log('values from validate:', values);
   const errors = {}
   if (!values.codeName) {
     errors.codeName = 'Required'
