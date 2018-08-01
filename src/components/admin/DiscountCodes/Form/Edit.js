@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
-import { arrayPush, change, arrayInsert } from 'redux-form'
+import { change } from 'redux-form'
 
 import { fetchCodeById, editCode, addExtra } from 'actions/Codes'
 
