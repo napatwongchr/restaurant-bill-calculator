@@ -27,7 +27,7 @@ class DiscountCodesAdd extends Component {
     return (
       <div>
         <DiscountCodesFormAdd
-          buttonText="Add"
+          buttonText="Add na ja"
           onSubmit={this.submit.bind(this)}
         />
       </div>
