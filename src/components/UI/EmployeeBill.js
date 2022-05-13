@@ -194,13 +194,13 @@ const BillPrice = ({ billTotal, subTotal, handleExchange, exchange }) => {
       <Row className="my-3 d-flex justify-content-end">
         <Col className="d-flex flex-column align-items-end" md="6">
           <SummaryText color="#a0a0a0">
-            SUB TOTAL: {parseFloat(subTotal).toFixed(2)} BAHT
+            SUB TOTAL: {parseFloat(subTotal).toFixed(2)} R
           </SummaryText>
           <SummaryText>
-            TOTAL: {parseFloat(billTotal).toFixed(2)} BAHT
+            TOTAL: {parseFloat(billTotal).toFixed(2)} R
           </SummaryText>
           <SummaryText>
-            EXCHANGE: {parseFloat(exchange).toFixed(2)} BAHT
+            EXCHANGE: {parseFloat(exchange).toFixed(2)} R
           </SummaryText>
         </Col>
       </Row>
